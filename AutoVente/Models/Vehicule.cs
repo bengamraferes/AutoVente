@@ -9,5 +9,7 @@ namespace AutoVente.Models
     {
         public int Id { get; set; }
         public string Marque { get; set; }
+
+        public string Description { get; set; }
     }
 }
