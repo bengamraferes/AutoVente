@@ -52,7 +52,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
@@ -124,6 +126,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Couleur.cs" />
+    <Compile Include="Models\HystoriqueAchat.cs" />
+    <Compile Include="Models\HystoriqueFrai.cs" />
+    <Compile Include="Models\Marque.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Vehicule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
