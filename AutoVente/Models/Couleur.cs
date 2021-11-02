@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoVente.Models
 {
+
+    [Table("t_couleurs")]
     public class Couleur : BaseEntity
     {
         [Required]
@@ -10,5 +13,10 @@ namespace AutoVente.Models
         public List<Model> Models { get; set; }
         public List<Vehicule> Vehicules { get; set; }
 
+        public Couleur()
+        {
+            Vehicules = new List<Vehicule>();
+        }
     }
+
 }
