@@ -9,5 +9,6 @@ namespace AutoVente.Models
         public string CodeCouleur { get; set; }
         public List<Model> Models { get; set; }
         public List<Vehicule> Vehicules { get; set; }
+
     }
 }
