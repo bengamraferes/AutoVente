@@ -8,5 +8,6 @@ namespace AutoVente.Models
     public class Vehicule
     {
         public int Id { get; set; }
+        public string Marque { get; set; }
     }
 }
