@@ -128,7 +128,7 @@
     </Compile>
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Couleur.cs" />
-    <Compile Include="Models\HystoriqueAchat.cs" />
+    <Compile Include="Models\HystoriqueAchatVente.cs" />
     <Compile Include="Models\HystoriqueFrai.cs" />
     <Compile Include="Models\Marque.cs" />
     <Compile Include="Models\Model.cs" />

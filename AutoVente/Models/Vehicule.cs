@@ -33,13 +33,13 @@ namespace AutoVente.Models
 
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
 
-        public List<HystoriqueAchat> HystoriqueAchats { get; set; }
+        public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
 
         public Vehicule()
         {
             Photos = new List<Photo>();
             HystoriqueFrais = new List<HystoriqueFrai>();
-            HystoriqueAchats = new List<HystoriqueAchat>();
+            HystoriqueAchats = new List<HystoriqueAchatVente>();
         }
     }
 }

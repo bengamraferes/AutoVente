@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoVente.Models
 {
@@ -12,6 +13,8 @@ namespace AutoVente.Models
 
         [Required]
         [DataType(DataType.DateTime)]
-        public string DateFrai { get; set; }
+        public DateTime DateFrai { get; set; }
+
+        public Vehicule Vehicules { get; set; }
     }
 }

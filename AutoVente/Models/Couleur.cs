@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoVente.Models
 {
@@ -6,5 +7,7 @@ namespace AutoVente.Models
     {
         [Required]
         public string CodeCouleur { get; set; }
+        public List<Model> Models { get; set; }
+        public List<Vehicule> Vehicules { get; set; }
     }
 }
