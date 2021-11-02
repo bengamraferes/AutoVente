@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
 
-    [Table("t_couleurs")]
+    [Table("couleurs")]
     public class Couleur : BaseEntity
     {
         [Required]

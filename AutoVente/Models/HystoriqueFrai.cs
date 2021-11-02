@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoVente.Models
 {
+    [Table("hystoriqueFrais")]
     public class HystoriqueFrai : BaseEntity
     {
         [Required]
@@ -17,9 +18,9 @@ namespace AutoVente.Models
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateFrai { get; set; }
-        [Required]
+
         public Vehicule Vehicule { get; set; }
         [ForeignKey("Vehicule")]
-        public int Immatriculation { get; set; }
+        public char Immatriculation { get; set; }
     }
 }

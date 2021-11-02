@@ -7,6 +7,7 @@ using System.Web;
 
 namespace AutoVente.Models
 {
+    [Table("utilisateurs")]
     public class Utilisateur :BaseEntity
     {
         [Required(ErrorMessage ="Prenom non valide")]
@@ -17,12 +18,19 @@ namespace AutoVente.Models
         [MaxLength(10)]
         [Required(ErrorMessage = "Numero Téléphone non valide")]
         public char Telephone { get; set; }
-        [Required]
+    
         public Adresse Adresse { get; set; }
 
         [ForeignKey("Adresse")]
         public int IdAdress { get; set; }
         [NotMapped] //ignore ce champ pendant la migration
         public string FullName { get { return Nom + " " + Prenom; } }
+
+        public List<Message> Messages { get; set; }
+
+        public Utilisateur()
+        {
+            Messages = new List<Message>();
+        }
     }
 }

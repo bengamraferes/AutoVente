@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoVente.Models
 {
+    [Table("hystoriqueAchatsVentes")]
     public class HystoriqueAchatVente : BaseEntity
     {
         [Required]
@@ -12,5 +14,8 @@ namespace AutoVente.Models
 
         public bool Etat { get; set; }
 
+        public Vehicule Vehicules { get; set; }
+        [ForeignKey("Vehicule")]
+        public char Immatriculation { get; set; }
     }
 }

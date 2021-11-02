@@ -7,6 +7,7 @@ using System.Web;
 
 namespace AutoVente.Models
 {
+    [Table("messages")]
     public class Message
     {
         public int Id { get; set; }
@@ -23,7 +24,7 @@ namespace AutoVente.Models
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        [Required]
+        
         public Utilisateur Utilisateur { get; set; }
         [ForeignKey("Utilisateur")]
         public int IdUtilisateur { get; set; }

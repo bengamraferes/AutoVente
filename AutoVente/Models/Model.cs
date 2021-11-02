@@ -5,20 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoVente.Models
 {
+    [Table("models")]
     public class Model : BaseEntity
     {
-        [Required(ErrorMessage = "Numéro de modèle obligatoire")]
+        [Required(ErrorMessage = "Numéro obligatoire")]
         [MaxLength(50)]
         public string Numero { get; set; }
 
-        [Required(ErrorMessage = "Type de carburent modèle obligatoire")]
+        [Required(ErrorMessage = "Type de carburent obligatoire")]
         public Carburent Carburent { get; set; }
 
         [Required(ErrorMessage = "Taux d'émission obligatoire")]
         [Display(Name ="Emission CO2")]
         public decimal EmissionCo2 { get; set; }
 
-        [Required (ErrorMessage = "Date  obligatoire")]
+        [Required (ErrorMessage = "Date obligatoire")]
         [DataType(DataType.Date)]
         public string Annee { get; set; }
 
@@ -41,7 +42,7 @@ namespace AutoVente.Models
         public BoiteVitesse BoiteDeVitesse { get; set; }
 
         public List<Vehicule> Vehicules { get; set; }
-        [Required]
+       
         public Marque Marque { get; set; }
         [ForeignKey("Marque")]
         public int MarqueId { get; set; }
