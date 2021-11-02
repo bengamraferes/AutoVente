@@ -14,7 +14,8 @@ namespace AutoVente.Models
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime Date_mise_en_circulation { get; set; }
+        [Display(Name = "Date de mise en circulation non valide")]
+        public string DateMisEnCirculation { get; set; }
 
         [Required]
         [Column(TypeName="bigint")]
@@ -22,33 +23,40 @@ namespace AutoVente.Models
 
         [Required]
         public EtatVoiture Etat { get; set; }
-
+        [Required]
         public Model Model { get; set; }
 
         [ForeignKey("Model")]
-        public int Model_Id { get; set; }
+        public int IdModel { get; set; }
+        [Required]
         public Couleur Couleur { get; set; }
-
+        [ForeignKey("Couleur")]
+        public int IdCouleur { get; set; }
         public List<Photo> Photos { get; set; }
+        // Au niveau du set condition pour avoir au moins une photo
 
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
 
         public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
 
+        public List<Client> clients { get; set; }
+
         public Vehicule()
         {
             Photos = new List<Photo>();
             HystoriqueFrais = new List<HystoriqueFrai>();
+            clients = new List<Client>();
             HystoriqueAchats = new List<HystoriqueAchatVente>();
         }
+    }
+    public enum EtatVoiture
+    {
+        OCCASSION = 1,
+        BON = 2,
+        NEUF = 3
     }
 }
 
 
 
-public enum EtatVoiture
-{
-    OCCASSION = 1,
-    BON = 2,
-    NEUF = 3
-}
+
