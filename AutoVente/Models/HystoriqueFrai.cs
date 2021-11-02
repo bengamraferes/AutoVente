@@ -15,6 +15,6 @@ namespace AutoVente.Models
         [DataType(DataType.DateTime)]
         public DateTime DateFrai { get; set; }
 
-        public Vehicule Vehicules { get; set; }
+        public Vehicule Vehicule { get; set; }
     }
 }

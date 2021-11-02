@@ -16,6 +16,6 @@ namespace AutoVente.Models
         public byte Numero { get; set; }
         public Vehicule Vehicule { get; set; }
         [ForeignKey("Vehicule")]
-        public int IdVehicule { get; set; }
+        public int Immatriculation { get; set; }
     }
 }
