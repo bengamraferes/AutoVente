@@ -18,17 +18,28 @@ namespace AutoVente.Models
         public string DateMisEnCirculation { get; set; }
 
         [Required]
-        [Column(TypeName="bigint")]
+        [Column(TypeName = "bigint")]
         public int Kilometrage { get; set; }
 
         [Required]
         public EtatVoiture Etat { get; set; }
-        [Required]
+
+        public bool TypeVente
+        {
+            get { return TypeVente; }
+            set
+            {
+                if (value)
+                {
+                    this.Etat = EtatVoiture.NEUF;
+                }
+            }
+        }
         public Model Model { get; set; }
 
         [ForeignKey("Model")]
         public int IdModel { get; set; }
-        [Required]
+
         public Couleur Couleur { get; set; }
         [ForeignKey("Couleur")]
         public int IdCouleur { get; set; }
@@ -48,14 +59,20 @@ namespace AutoVente.Models
             clients = new List<Client>();
             HystoriqueAchats = new List<HystoriqueAchatVente>();
         }
+       
     }
     public enum EtatVoiture
     {
-        OCCASSION = 1,
-        BON = 2,
-        NEUF = 3
+        NEUF = 1,
+        PARFAIT = 2,
+        TRES_BON = 3,
+        BON = 4,
+        MOYEN = 5,
+        MAUVAIS = 6,
+        TRES_MOVAIS = 7
     }
 }
+  
 
 
 

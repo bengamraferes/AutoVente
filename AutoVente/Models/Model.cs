@@ -57,8 +57,7 @@ namespace AutoVente.Models
         ESSENCE = 1,
         GASOLE = 2,
         ELECTRIQUE = 3,
-        HYBRIDERECHARGEABLE = 4,
-        HYBRIDENONRECHARGEABLE = 5
+        HYBRIDE= 4,
     }
 
     public enum Type

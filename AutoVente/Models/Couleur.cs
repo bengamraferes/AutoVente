@@ -9,6 +9,7 @@ namespace AutoVente.Models
     public class Couleur : BaseEntity
     {
         [Required]
+        [MaxLength(15)]
         public string CodeCouleur { get; set; }
         public List<Model> Models { get; set; }
         public List<Vehicule> Vehicules { get; set; }

@@ -10,6 +10,7 @@ namespace AutoVente.Models
         [Required(ErrorMessage ="Photo non valide!")]
         [FileExtensions(Extensions = "png, jpg, jpeg")]
         [Display(Name = "Photo du Vehicule")]
+        [DataType(DataType.ImageUrl)]
         public string Url { get; set; }
         [Required(ErrorMessage = "Au minimum une photo")]
         [Range(1,5)]

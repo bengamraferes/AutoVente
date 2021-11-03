@@ -12,9 +12,9 @@ namespace AutoVente.Models
 
         public List<Model> Models { get; set; }
 
-        public Marque(List<Model> models)
+        public Marque()
         {
-            Models = models;
+            Models = new List<Model>();
         }
     }
     public enum Pays

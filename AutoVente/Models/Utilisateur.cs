@@ -7,8 +7,8 @@ using System.Web;
 
 namespace AutoVente.Models
 {
-    [Table("utilisateurs")]
-    public class Utilisateur :BaseEntity
+    
+    public abstract class Utilisateur :BaseEntity
     {
         [Required(ErrorMessage ="Prenom non valide")]
         public string Prenom { get; set; }
@@ -17,7 +17,8 @@ namespace AutoVente.Models
         public string Email { get; set; }
         [MaxLength(10)]
         [Required(ErrorMessage = "Numero Téléphone non valide")]
-        public char Telephone { get; set; }
+        [RegularExpression("^[+]?(?=(?:[^\\dx]*\\d){7})(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?)(?:[ -]?(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?))*(?:[ ]?(?:x|ext)\\.?[ ]?\\d{1,5})?$")]
+        public string Telephone { get; set; }
     
         public Adresse Adresse { get; set; }
 

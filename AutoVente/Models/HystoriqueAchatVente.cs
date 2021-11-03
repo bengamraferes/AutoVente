@@ -16,6 +16,6 @@ namespace AutoVente.Models
 
         public Vehicule Vehicules { get; set; }
         [ForeignKey("Vehicule")]
-        public char Immatriculation { get; set; }
+        public string Immatriculation { get; set; }
     }
 }
