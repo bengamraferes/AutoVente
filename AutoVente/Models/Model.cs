@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
     [Table("models")]
-    public class Model : BaseEntity
+    public class Model : BaseEntityNom
     {
         [Required(ErrorMessage = "Numéro obligatoire")]
         [MaxLength(50)]
@@ -43,6 +43,7 @@ namespace AutoVente.Models
 
         public List<Vehicule> Vehicules { get; set; }
        
+        public List<Couleur> Couleurs { get; set; }
         public Marque Marque { get; set; }
         [ForeignKey("Marque")]
         public int MarqueId { get; set; }
@@ -50,6 +51,7 @@ namespace AutoVente.Models
         public Model()
         {
             Vehicules = new List<Vehicule>();
+            Couleurs = new List<Couleur>();
         }
     }
     public enum Carburent

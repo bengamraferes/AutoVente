@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
     [Table("hystoriqueFrais")]
-    public class HystoriqueFrai : BaseEntity
+    public class HystoriqueFrai : BaseEntityNom
     {
         [Required]
         [DataType(DataType.Text)]

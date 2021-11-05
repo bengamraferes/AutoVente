@@ -8,7 +8,7 @@ using System.Web;
 namespace AutoVente.Models
 {
     
-    public abstract class Utilisateur :BaseEntity
+    public abstract class Utilisateur :BaseEntityNom
     {
         [Required(ErrorMessage ="Prenom non valide")]
         public string Prenom { get; set; }

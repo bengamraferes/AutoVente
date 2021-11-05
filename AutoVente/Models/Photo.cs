@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
     [Table("images")]
-    public class Photo
+    public class Photo: BaseEntity
     {
-        public int Id { get; set; }
+       
         [Required(ErrorMessage ="Photo non valide!")]
         [FileExtensions(Extensions = "png, jpg, jpeg")]
         [Display(Name = "Photo du Vehicule")]

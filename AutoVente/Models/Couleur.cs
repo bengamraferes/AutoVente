@@ -6,7 +6,7 @@ namespace AutoVente.Models
 {
 
     [Table("couleurs")]
-    public class Couleur : BaseEntity
+    public class Couleur : BaseEntityNom
     {
         [Required]
         [MaxLength(15)]

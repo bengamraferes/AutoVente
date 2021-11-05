@@ -6,9 +6,10 @@ using System.Web;
 
 namespace AutoVente.Models
 {
-    public class BaseEntity
+    public class BaseEntityNom : BaseEntity
     {
-        public  int Id { get; set; }
-
+        [Required]
+        [MaxLength(100)]
+        public string Nom { get; set; }
     }
 }

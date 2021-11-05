@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AutoVente.Models
 {
-    public class Vehicule
+    public class Vehicule : BaseEntity
     {
         [Key]
         public int Immatriculation { get; set; }

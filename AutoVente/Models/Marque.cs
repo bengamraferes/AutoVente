@@ -5,10 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
     [Table("marques")]
-    public class Marque : BaseEntity
+    public class Marque : BaseEntityNom
     {
         [Required]
-        public Pays Pays { get; set; }
+        public Origine Origine { get; set; }
 
         public List<Model> Models { get; set; }
 
@@ -17,7 +17,7 @@ namespace AutoVente.Models
             Models = new List<Model>();
         }
     }
-    public enum Pays
+    public enum Origine
     {
         FRANCAISE = 1,
         ALLEMANDE = 2,

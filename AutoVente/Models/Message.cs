@@ -8,9 +8,9 @@ using System.Web;
 namespace AutoVente.Models
 {
     [Table("messages")]
-    public class Message
+    public class Message : BaseEntity
     {
-        public int Id { get; set; }
+      
         [Required]
         [MaxLength(3000)]
         [DataType(DataType.MultilineText)]

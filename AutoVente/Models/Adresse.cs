@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoVente.Models
 {
     [Table("adresses")]
-    public class Adresse
+    public class Adresse: BaseEntity
     {
-        public int Id { get; set; }
+     
 
         [MaxLength(100)]
         public string Ville { get; set; }
