@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace AutoVente.DAO
 {
-    public class SqlRepository<T> : IRepository<T> where T : BaseEntity
+    public  class SqlRepository<T> : IRepository<T> where T : BaseEntity
     {
         internal MyContext dataContext;
      

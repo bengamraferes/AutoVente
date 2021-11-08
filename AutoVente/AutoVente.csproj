@@ -131,8 +131,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\IRepositoryModel.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
+    <Compile Include="DAO\SqlRepositoryModel.cs" />
+    <Compile Include="DAO\SqlRepositoryNom.cs" />
     <Compile Include="DAO\SqlRepositoryVehicule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

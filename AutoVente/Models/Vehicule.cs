@@ -9,6 +9,8 @@ namespace AutoVente.Models
 {
     public class Vehicule : BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override int Id { get => base.Id; set => base.Id = value; }
         [Key]
         public int Immatriculation { get; set; }
 

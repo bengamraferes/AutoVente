@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoVente.Metier
 {
-    public interface IRepositoryNom<T> : IRepository<T> where T: BaseEntity
+    public interface IRepositoryNom<T> : IRepository<T> where T: BaseEntityNom
     {
        
         T FindByKey(string key);
