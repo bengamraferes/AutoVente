@@ -134,8 +134,12 @@
     <Compile Include="DAO\IRepositoryModel.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
+    <Compile Include="DAO\SqlRepositoryAdresse.cs" />
+    <Compile Include="DAO\SqlRepositoryCouleur.cs" />
+    <Compile Include="DAO\SqlRepositoryMarque.cs" />
     <Compile Include="DAO\SqlRepositoryModel.cs" />
     <Compile Include="DAO\SqlRepositoryNom.cs" />
+    <Compile Include="DAO\SqlRepositoryUtilisateur.cs" />
     <Compile Include="DAO\SqlRepositoryVehicule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
