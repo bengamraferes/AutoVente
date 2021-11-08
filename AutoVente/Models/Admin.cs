@@ -8,7 +8,7 @@ using System.Web;
 namespace AutoVente.Models
 {
     [Table("users")]
-    public class User : Utilisateur
+    public class Admin : Utilisateur
     {
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un carathére special et 8 caractères ")]
@@ -22,7 +22,7 @@ namespace AutoVente.Models
     }
    public enum Roles
     {
-        ADMNISTRATEUR =3 ,
+        ADMNISTRATEUR =3,
         SECRETAIRE = 2,
         UTILISATEUR = 1
 

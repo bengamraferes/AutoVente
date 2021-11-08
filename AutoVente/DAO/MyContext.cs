@@ -17,10 +17,16 @@ namespace AutoVente.DAO
         {
         }
 
-        // Ajoutez un DbSet pour chaque type d'entité à inclure dans votre modèle. Pour plus d'informations 
-        // sur la configuration et l'utilisation du modèle Code First, consultez http://go.microsoft.com/fwlink/?LinkId=390109.
-
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Marque> Marques { get; set; }
+        public DbSet<Couleur> Couleurs { get; set; }
+        public DbSet<Vehicule> Vehicule { get; set; }
+        public DbSet<HystoriqueFrai> hystoriqueFrais { get; set; }
+        public DbSet<HystoriqueAchatVente> HystoriqueAchatVentes { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Adresse> Adresses { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 
     //public class MyEntity
