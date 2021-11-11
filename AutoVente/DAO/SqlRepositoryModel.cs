@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.WebPages;
 
 namespace AutoVente.DAO
 {
@@ -25,29 +26,73 @@ namespace AutoVente.DAO
             return vehicules;
         }
 
-        public List<Vehicule> FindByAnnees(string dateMin, string dateMax)
+        public List<Vehicule> FindByAnnees(DateTime dateMin, DateTime dateMax)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = new List<Vehicule>();
+
+            //Verifier si les 2 dates ne sont pas égales
+            List<Model> models = dbSet.AsNoTracking()
+                .Where(m => m.Annee.AsDateTime().Ticks >= dateMin.Ticks)
+                .Where(m => m.Annee.AsDateTime().Ticks <= dateMax.Ticks).ToList();
+
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+
+            return vehicules;
         }
 
         public List<Vehicule> FindByCarburent(Carburent carburent)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = new List<Vehicule>();
+            List<Model> models = dbSet.AsNoTracking().Where(m => m.Carburent == carburent).ToList();
+
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+
+            return vehicules;
         }
 
         public List<Vehicule> FindByPrix(decimal PrixMin, decimal prixMax)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = new List<Vehicule>();
+            List<Model> models = dbSet.AsNoTracking().Where(m => m.Prix >= PrixMin && m.Prix <= prixMax).ToList();
+
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+
+            return vehicules;
         }
 
         public List<Vehicule> FindByPuissanceReel(byte PuissanceMin, byte PuissanceMax)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = new List<Vehicule>();
+            List<Model> models = dbSet.AsNoTracking().Where(m => m.PuissanceReel >= PuissanceMin && m.PuissanceReel <= PuissanceMax).ToList();
+
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+
+            return vehicules;
         }
 
         public List<Vehicule> FindByType(Models.Type type)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = new List<Vehicule>();
+            List<Model> models = dbSet.AsNoTracking().Where(m => m.Type == type).ToList();
+
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+
+            return vehicules;
         }
     }
 }

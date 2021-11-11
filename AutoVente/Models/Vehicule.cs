@@ -12,7 +12,7 @@ namespace AutoVente.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get => base.Id; set => base.Id = value; }
         [Key]
-        public int Immatriculation { get; set; }
+        public string Immatriculation { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
