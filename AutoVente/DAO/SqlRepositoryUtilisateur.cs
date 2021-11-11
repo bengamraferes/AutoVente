@@ -16,12 +16,30 @@ namespace AutoVente.DAO
 
         public Utilisateur GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            Utilisateur utilisateur = dbSet.AsNoTracking().SingleOrDefault(x => x.Email == email);
+
+            if (utilisateur != null)
+            {
+                return utilisateur;
+            }
+            else
+            {
+                throw new Exception("Utilisateur introuvable");
+            }
         }
 
         public Utilisateur GetByTelephone(string telephone)
         {
-            throw new NotImplementedException();
+            Utilisateur utilisateur = dbSet.AsNoTracking().SingleOrDefault(x => x.Telephone == telephone);
+
+            if (utilisateur != null)
+            {
+                return utilisateur;
+            }
+            else
+            {
+                throw new Exception("Utilisateur introuvable");
+            }
         }
 
     }

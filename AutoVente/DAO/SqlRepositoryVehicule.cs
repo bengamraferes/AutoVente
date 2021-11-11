@@ -14,17 +14,21 @@ namespace AutoVente.DAO
         }
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();
+
+            return vehicules;
         }
 
         public Vehicule FindByImmatriculation(string immatriculation)
         {
-            throw new NotImplementedException();
+            return dbSet.AsNoTracking().SingleOrDefault(v => v.Immatriculation == immatriculation);
         }
 
         public List<Vehicule> FindByKilometrage(int min, int max)
         {
-            throw new NotImplementedException();
+            List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Kilometrage >= min && v.Kilometrage <= max).ToList();
+
+            return vehicules;
         }
     }
 }
