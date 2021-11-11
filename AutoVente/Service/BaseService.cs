@@ -9,7 +9,7 @@ namespace AutoVente.Service
 {
     public class BaseService<T> where T : BaseEntity
     {
-        private SqlRepository<T> dao ;
+        protected SqlRepository<T> dao ;
 
         public BaseService()
         {

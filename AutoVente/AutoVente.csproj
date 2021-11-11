@@ -167,6 +167,9 @@
     <Compile Include="Models\Vehicule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BaseServiceNom.cs" />
+    <Compile Include="Service\ModelService.cs" />
+    <Compile Include="Service\VehiculeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

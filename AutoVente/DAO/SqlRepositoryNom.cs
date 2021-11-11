@@ -15,7 +15,7 @@ namespace AutoVente.DAO
 
         public List<T> FindByNom(string nom)
         {
-            List<T> liste = (List<T>)dbSet.AsNoTracking().Where(T => T.Nom.Contains(nom)).OrderBy(T => T.Nom);
+            List<T> liste = dbSet.AsNoTracking().Where(T => T.Nom.Contains(nom)).OrderBy(T => T.Nom).ToList();
             return liste;
         }
     }
