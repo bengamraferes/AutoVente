@@ -13,9 +13,16 @@ namespace AutoVente.DAO
         {
         }
 
-        public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse)
+        public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse boiteVitesse)
         {
-            throw new NotImplementedException();
+            List<Model> models = dbSet.AsNoTracking().Where(m => m.BoiteDeVitesse == boiteVitesse).ToList();
+            List<Vehicule> vehicules = new List<Vehicule>();
+            foreach (var model in models)
+            {
+                vehicules.AddRange(model.Vehicules);
+            }
+            
+            return vehicules;
         }
 
         public List<Vehicule> FindByAnnees(string dateMin, string dateMax)

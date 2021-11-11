@@ -13,9 +13,10 @@ namespace AutoVente.DAO
         {
         }
 
-        public T FindByKey(string key)
+        public List<T> FindByNom(string nom)
         {
-            throw new NotImplementedException();
+            List<T> liste = (List<T>)dbSet.AsNoTracking().Where(T => T.Nom.Contains(nom)).OrderBy(T => T.Nom);
+            return liste;
         }
     }
 }

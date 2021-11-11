@@ -42,7 +42,16 @@ namespace AutoVente.DAO
 
         public T FindById(int id)
         {
-            return dbSet.AsNoTracking().SingleOrDefault(x => x.Id == id);
+            T obj = dbSet.AsNoTracking().SingleOrDefault(x => x.Id == id);
+
+            if (obj != null)
+            {
+                return obj;
+            }
+            else
+            {
+                throw new Exception($"{obj.GetType()} introuvable");
+            }
         }
 
         public void Insert(T t)

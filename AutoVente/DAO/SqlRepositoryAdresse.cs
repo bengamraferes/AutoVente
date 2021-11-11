@@ -15,7 +15,16 @@ namespace AutoVente.DAO
 
         public Adresse GetByIdUtilisateur(int idUtilisateur)
         {
-            throw new NotImplementedException();
+            Adresse adresse = FindById(idUtilisateur);
+
+            if (adresse != null)
+            {
+                return adresse;
+            }
+            else
+            {
+                throw new Exception("Adresse introuvable");
+            }
         }
     }
 }
