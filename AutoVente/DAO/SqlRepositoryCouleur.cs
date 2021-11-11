@@ -15,7 +15,16 @@ namespace AutoVente.DAO
 
         public Couleur GetByCode(string CodeCouleur)
         {
-            throw new NotImplementedException();
+            Couleur couleur = dbSet.AsNoTracking().SingleOrDefault(c => c.CodeCouleur == CodeCouleur);
+
+            if (couleur != null)
+            {
+                return couleur;
+            }
+            else
+            {
+                throw new Exception("Couleur introuvable");
+            }
         }
     }
 }

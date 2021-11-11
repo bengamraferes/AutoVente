@@ -13,9 +13,18 @@ namespace AutoVente.DAO
         {
         }
 
-        public List<Vehicule> FidByOrigine(Origine origine)
+        public List<Vehicule> FindByOrigine(Origine origine)
         {
-            throw new NotImplementedException();
+            List<Marque> marques = (List<Marque>)dbSet.AsNoTracking().Where(m => m.Origine == origine);
+            List<Vehicule> vehicules = new List<Vehicule>();
+            foreach (var marque in marques)
+            {
+                foreach (var model in marque.Models)
+                {
+                    vehicules.AddRange(model.Vehicules);
+                }
+            }
+            return vehicules;
         }
     }
 }
