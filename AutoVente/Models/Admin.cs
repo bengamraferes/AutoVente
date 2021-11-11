@@ -20,9 +20,9 @@ namespace AutoVente.Models
         public string ConfirmPassword { get; set; }
         public Roles Role { get; set; }
     }
-   public enum Roles
+    public enum Roles
     {
-        ADMNISTRATEUR =3,
+        ADMNISTRATEUR = 3,
         SECRETAIRE = 2,
         UTILISATEUR = 1
 

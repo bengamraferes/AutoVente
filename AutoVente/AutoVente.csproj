@@ -152,6 +152,7 @@
     <Compile Include="Metier\IRepositoryModel.cs" />
     <Compile Include="Metier\IRepositoryUtilisateur.cs" />
     <Compile Include="Metier\IRepositoryVehicule.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\BaseEntityNom.cs" />
