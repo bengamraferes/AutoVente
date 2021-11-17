@@ -25,7 +25,8 @@ namespace AutoVente.Models
 
         [Required(ErrorMessage = "Puissance du moteur obligatoire")]
         [Display(Name = "Puissance moteur")]
-        public byte PuissanceReel { get; set; }
+        [Range(0,500)]
+        public int PuissanceReel { get; set; }
 
         [Required(ErrorMessage = "Nombre de places obligatoire")]
         [Display(Name = "Nombres de places")]

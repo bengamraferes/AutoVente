@@ -69,7 +69,7 @@ namespace AutoVente.DAO
             return vehicules;
         }
 
-        public List<Vehicule> FindByPuissanceReel(byte PuissanceMin, byte PuissanceMax)
+        public List<Vehicule> FindByPuissanceReel(int PuissanceMin, int PuissanceMax)
         {
             List<Vehicule> vehicules = new List<Vehicule>();
             List<Model> models = dbSet.AsNoTracking().Where(m => m.PuissanceReel >= PuissanceMin && m.PuissanceReel <= PuissanceMax).ToList();
