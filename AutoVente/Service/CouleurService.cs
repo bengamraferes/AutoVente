@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AutoVente.Service
 {
-    public class CouleurService: BaseService<Couleur>
+    public class CouleurService : BaseService<Couleur>
     {
         private SqlRepositoryCouleur daoCouleur;
         public CouleurService()

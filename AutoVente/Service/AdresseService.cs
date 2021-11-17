@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AutoVente.Service
 {
-    public class AdresseService: BaseService<Adresse>
+    public class AdresseService : BaseService<Adresse>
     {
         private SqlRepositoryAdresse daoAdresse;
         public AdresseService()
