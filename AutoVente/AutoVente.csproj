@@ -164,6 +164,7 @@
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\TestGit.cs" />
+    <Compile Include="Models\TestGit2.cs" />
     <Compile Include="Models\TestGit3.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Models\Vehicule.cs" />
