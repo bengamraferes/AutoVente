@@ -170,7 +170,9 @@
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\BaseServiceNom.cs" />
     <Compile Include="Service\CouleurService.cs" />
+    <Compile Include="Service\MarqueService.cs" />
     <Compile Include="Service\ModelService.cs" />
+    <Compile Include="Service\UtilisateurService.cs" />
     <Compile Include="Service\VehiculeService.cs" />
   </ItemGroup>
   <ItemGroup>
