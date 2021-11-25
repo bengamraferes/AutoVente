@@ -9,17 +9,17 @@ namespace AutoVente.Service
 {
     public class MarqueService : BaseServiceNom<Marque>
     {
-     
-            private SqlRepositoryMarque daoMarque;
 
-            public MarqueService()
-            {
-                daoMarque = new SqlRepositoryMarque(new MyContext());
-            }
+        private SqlRepositoryMarque daoMarque;
 
-            public List<Vehicule> FindByOrigine(Origine origine)
-            {
-                return daoMarque.FindByOrigine(origine);
-            }
-        
+        public MarqueService()
+        {
+            daoMarque = new SqlRepositoryMarque(new MyContext());
+        }
+
+        public List<Vehicule> FindByOrigine(Origine origine)
+        {
+            return daoMarque.FindByOrigine(origine);
+        }
+    }
 }
