@@ -157,6 +157,7 @@
     <Compile Include="Models\BaseEntityNom.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Couleur.cs" />
+    <Compile Include="Models\Dam.cs" />
     <Compile Include="Models\HystoriqueAchatVente.cs" />
     <Compile Include="Models\HystoriqueFrai.cs" />
     <Compile Include="Models\Marque.cs" />
