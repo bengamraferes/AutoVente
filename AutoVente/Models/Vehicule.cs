@@ -13,55 +13,41 @@ namespace AutoVente.Models
         public override int Id { get => base.Id; set => base.Id = value; }
         [Key]
         public string Immatriculation { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Date de mise en circulation non valide")]
+        [Display(Name = "Date mise en circulation")]
         [DataType(DataType.Date)]
-        [Display(Name = "Date de mise en circulation non valide")]
         public string DateMisEnCirculation { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Kilometrage obligatoire")]
         [Column(TypeName = "bigint")]
         public int Kilometrage { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Etat du vehicule obligatoire")]
         public EtatVoiture Etat { get; set; }
-
-        public bool TypeVente
-        {
-            get { return TypeVente; }
-            set
-            {
-                if (value)
-                {
-                    this.Etat = EtatVoiture.NEUF;
-                }
-            }
-        }
-        public Model Model { get; set; }
-
+        public Model Model { get; private set; }
         [ForeignKey("Model")]
-        public int IdModel { get; set; }
-
+        public int IdModel { get; private set; }
         public Couleur Couleur { get; set; }
         [ForeignKey("Couleur")]
         public int IdCouleur { get; set; }
         public List<Photo> Photos { get; set; }
         // Au niveau du set condition pour avoir au moins une photo
-
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
-
         public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
-
-        public List<Client> clients { get; set; }
-
-        public Vehicule()
+        public List<Utilisateur> Utilisateurs { get; set; }
+        public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, Model model, Couleur couleur, List<Photo> photos)
         {
-            Photos = new List<Photo>();
-            HystoriqueFrais = new List<HystoriqueFrai>();
-            clients = new List<Client>();
-            HystoriqueAchats = new List<HystoriqueAchatVente>();
+            List<HystoriqueAchatVente> hystoriqueAchatVentes = new List<HystoriqueAchatVente>();
+            List<HystoriqueFrai> hystoriqueFrais = new List<HystoriqueFrai>();
+            List<Utilisateur> utilisateurs = new List<Utilisateur>();
+            Immatriculation = immatriculation;
+            DateMisEnCirculation = dateMisEnCirculation;
+            Kilometrage = kilometrage;
+            Etat = etat;
+            Model = model;
+            Couleur = couleur;
+            Photos = photos;
+            IdModel = Model.Id;
+            IdCouleur = Couleur.Id;
         }
-       
     }
     public enum EtatVoiture
     {

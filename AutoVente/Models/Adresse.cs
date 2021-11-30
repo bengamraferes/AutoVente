@@ -7,11 +7,8 @@ namespace AutoVente.Models
     [Table("adresses")]
     public class Adresse: BaseEntity
     {
-     
-
         [MaxLength(100)]
         public string Ville { get; set; }
-       
         [Required(ErrorMessage ="Code postale non valide")]
         [MaxLength(5)]
         [RegularExpression("^(?:[0-8]\\d|9[0-8])\\d{3}$")]
@@ -23,10 +20,12 @@ namespace AutoVente.Models
         [MaxLength(255)]
         public string ComplementAdresse { get; set; }
         public List<Utilisateur> Utilisateurs{ get; set; }
-
-        public Adresse()
+        public Adresse(string ville, string codePostale, string rue)
         {
             Utilisateurs = new List<Utilisateur>();
+            Ville = ville;
+            CodePostale = codePostale;
+            Rue = rue;
         }
     }
 }

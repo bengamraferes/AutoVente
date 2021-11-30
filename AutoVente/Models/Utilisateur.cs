@@ -7,11 +7,22 @@ using System.Web;
 
 namespace AutoVente.Models
 {
-    
-    public abstract class Utilisateur :BaseEntityNom
+    [Table("utilisateur")]
+    public class Utilisateur :BaseEntityNom
     {
         [Required(ErrorMessage ="Prenom non valide")]
         public string Prenom { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Mot de passe")]
+        [Required(ErrorMessage = "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un carathére special et 8 caractères ")]
+        [RegularExpression("^ (?=.*[a - z])(?=.*[A - Z])(?=.*\\d)(?=.*[@$!% *? &])[A - Za - z\\d@$!% *? &]{8,}$")]
+        public string Password { get; set; }
+        [MaxLength(255)]
+        [Required]
+        [NotMapped]
+        [DataType(DataType.Password)]
+        [Display(Name ="Confirmer le mot de passe")]
+        public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "Email non valide")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -19,19 +30,81 @@ namespace AutoVente.Models
         [Required(ErrorMessage = "Numero Téléphone non valide")]
         [RegularExpression("^[+]?(?=(?:[^\\dx]*\\d){7})(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?)(?:[ -]?(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?))*(?:[ ]?(?:x|ext)\\.?[ ]?\\d{1,5})?$")]
         public string Telephone { get; set; }
-    
         public Adresse Adresse { get; set; }
-
         [ForeignKey("Adresse")]
-        public int IdAdress { get; set; }
+        public int IdAdress { get; private set; }
         [NotMapped] //ignore ce champ pendant la migration
         public string FullName { get { return Nom + " " + Prenom; } }
-
-        public List<Message> Messages { get; set; }
-
-        public Utilisateur()
+        private List<Vehicule> _favories;
+        public List<Vehicule> Favories
         {
-            Messages = new List<Message>();
+            get
+            {
+                if (this.Role == Roles.CLIENT)
+                {
+                    return _favories;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set {
+                if (this.Role == Roles.CLIENT)
+                {
+                    _favories = value;
+                    
+                }
+            }
         }
+        private List<Message> _messages;
+
+        public List<Message> Messages
+        {
+            get
+            {
+                if (this.Role == Roles.SECRETAIRE)
+                {
+                       return _messages;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (this.Role == Roles.SECRETAIRE)
+                {
+                    _messages = value;
+
+                }
+            }
+        }
+        public Utilisateur(string prenom, string password, string email, Adresse adresse, Roles role, string nom) : base(nom) 
+        {
+            Prenom = prenom;
+            Password = password;
+            Email = email;
+            Adresse = adresse;
+            Role = role;
+            IdAdress = Adresse.Id;
+            if (role == Roles.SECRETAIRE)
+            {
+                List<Message> messages = new List<Message>();
+            }
+            if (role == Roles.CLIENT)
+            {
+                List<Vehicule> favories = new List<Vehicule>();
+            }
+        }
+        public Roles Role { get; set; }
+    }
+    public enum Roles
+    {
+        ADMNISTRATEUR = 3,
+        SECRETAIRE = 2,
+        UTILISATEUR = 1,
+        CLIENT = 0
     }
 }

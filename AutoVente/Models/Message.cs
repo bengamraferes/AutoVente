@@ -18,16 +18,22 @@ namespace AutoVente.Models
         [Required]
         [MaxLength(100)]
         public string Titre { get; set; }
-
         [Required]
         public bool Ouvert { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        
         public Utilisateur Utilisateur { get; set; }
         [ForeignKey("Utilisateur")]
-        public int IdUtilisateur { get; set; }
+        public int IdUtilisateur { get; private set; }
+        public Message(string contenu, string titre, Utilisateur utilisateur)
+        {
+            Contenu = contenu;
+            Titre = titre;
+            Date = DateTime.Now;
+            Utilisateur = utilisateur;
+            IdUtilisateur = utilisateur.Id;
+        }
 
     }
 }

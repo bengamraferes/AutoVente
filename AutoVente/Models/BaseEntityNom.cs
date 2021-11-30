@@ -11,5 +11,10 @@ namespace AutoVente.Models
         [Required]
         [MaxLength(100)]
         public string Nom { get; set; }
+
+        public BaseEntityNom(string nom)
+        {
+            Nom = nom;
+        }
     }
 }

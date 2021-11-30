@@ -9,12 +9,12 @@ namespace AutoVente.Models
     {
         [Required]
         public Origine Origine { get; set; }
-
         public List<Model> Models { get; set; }
-
-        public Marque()
+        public Marque(string nom, Origine origine) : base(nom)
         {
             Models = new List<Model>();
+            Origine = origine;
+            Nom = nom;
         }
     }
     public enum Origine
