@@ -35,9 +35,9 @@ namespace AutoVente.Models
         public List<Utilisateur> Utilisateurs { get; set; }
         public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, Model model, Couleur couleur, List<Photo> photos)
         {
-            List<HystoriqueAchatVente> hystoriqueAchatVentes = new List<HystoriqueAchatVente>();
-            List<HystoriqueFrai> hystoriqueFrais = new List<HystoriqueFrai>();
-            List<Utilisateur> utilisateurs = new List<Utilisateur>();
+            HystoriqueAchats = new List<HystoriqueAchatVente>();
+            HystoriqueFrais = new List<HystoriqueFrai>();
+            Utilisateurs = new List<Utilisateur>();
             Immatriculation = immatriculation;
             DateMisEnCirculation = dateMisEnCirculation;
             Kilometrage = kilometrage;

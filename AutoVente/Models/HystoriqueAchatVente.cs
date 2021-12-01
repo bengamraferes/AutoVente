@@ -9,7 +9,7 @@ namespace AutoVente.Models
     {
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime DateAchat { get; set; }
+        public DateTime DateAchatVente { get; set; }
         [Required]
         public int Prix { get; set; }
         [Required]
@@ -17,11 +17,12 @@ namespace AutoVente.Models
         public Vehicule Vehicule { get; set; }
         [ForeignKey("Vehicule")]
         public string Immatriculation { get; private set; }
-        public HystoriqueAchatVente(int prix, AchatVente etat, Vehicule vehicule)
+        public HystoriqueAchatVente(int prix, AchatVente etat, DateTime dateAchatVente , Vehicule vehicule)
         {
             Prix = prix;
             Etat = etat;
             Vehicule = vehicule;
+            DateAchatVente = dateAchatVente;
             Immatriculation = vehicule.Immatriculation;
         }
         public enum AchatVente

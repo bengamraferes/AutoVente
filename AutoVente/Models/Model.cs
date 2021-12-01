@@ -37,7 +37,7 @@ namespace AutoVente.Models
         public List<Couleur> Couleurs { get; set; }
         public Marque Marque { get; set; }
         [ForeignKey("Marque")]
-        public int MarqueId { get; set; }
+        public int MarqueId { get; private set; }
         public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, byte nbPlaces, Type type, decimal prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
         {
             Vehicules = new List<Vehicule>();
@@ -53,6 +53,7 @@ namespace AutoVente.Models
             BoiteDeVitesse = boiteDeVitesse;
             Couleurs = couleurs;
             Marque = marque;
+            MarqueId = marque.Id;
             Nom = nom;
         }
     }

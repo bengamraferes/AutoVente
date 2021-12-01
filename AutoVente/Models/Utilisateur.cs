@@ -91,11 +91,11 @@ namespace AutoVente.Models
             IdAdress = Adresse.Id;
             if (role == Roles.SECRETAIRE)
             {
-                List<Message> messages = new List<Message>();
+                _messages = new List<Message>();
             }
             if (role == Roles.CLIENT)
             {
-                List<Vehicule> favories = new List<Vehicule>();
+                _favories = new List<Vehicule>();
             }
         }
         public Roles Role { get; set; }

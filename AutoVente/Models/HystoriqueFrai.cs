@@ -29,6 +29,7 @@ namespace AutoVente.Models
             Commentaire = commentaire;
             Cout = cout;
             Vehicule = vehicule;
+            DateFrai = DateTime.Now;
             Immatriculation = vehicule.Immatriculation;
         }
     }
