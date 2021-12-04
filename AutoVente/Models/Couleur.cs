@@ -21,6 +21,10 @@ namespace AutoVente.Models
             CodeCouleur = codeCouleur;
             Nom = nom;
         }
+
+        public Couleur()
+        {
+        }
     }
 
 }

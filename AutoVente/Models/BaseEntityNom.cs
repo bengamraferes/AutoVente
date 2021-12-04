@@ -16,5 +16,9 @@ namespace AutoVente.Models
         {
             Nom = nom;
         }
+
+        public BaseEntityNom()
+        {
+        }
     }
 }
