@@ -133,6 +133,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CouleurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
     <Compile Include="DAO\SqlRepositoryAdresse.cs" />
@@ -142,6 +144,8 @@
     <Compile Include="DAO\SqlRepositoryNom.cs" />
     <Compile Include="DAO\SqlRepositoryUtilisateur.cs" />
     <Compile Include="DAO\SqlRepositoryVehicule.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
+    <Compile Include="Filter\AuthorisationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -442,9 +446,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Couleur\Index.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Utilisateur\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

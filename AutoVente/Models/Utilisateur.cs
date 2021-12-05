@@ -57,6 +57,7 @@ namespace AutoVente.Models
                 }
             }
         }
+        public Roles Role { get; set; }
         private List<Message> _messages;
 
         public List<Message> Messages
@@ -81,6 +82,11 @@ namespace AutoVente.Models
                 }
             }
         }
+
+        public Utilisateur()
+        {
+        }
+
         public Utilisateur(string prenom, string password, string email, Adresse adresse, Roles role, string nom) : base(nom) 
         {
             Prenom = prenom;
@@ -98,7 +104,6 @@ namespace AutoVente.Models
                 _favories = new List<Vehicule>();
             }
         }
-        public Roles Role { get; set; }
     }
     public enum Roles
     {
