@@ -2,6 +2,7 @@
 using AutoVente.Filter;
 using AutoVente.Models;
 using AutoVente.Service;
+using AutoVente.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +21,30 @@ namespace AutoVente.Controllers
             this.service = new UtilisateurService();
         }
         [AuthorisationFilter(Roles.CLIENT)]
-        public ActionResult Index()
+        public ActionResult Index( Utilisateur utilisateur)
         {
-            return View();
+            List<Vehicule> vehiculesFavories = utilisateur.Favories;
+            return View(vehiculesFavories);
         }
+       
+     
         public ActionResult Create()
         {
             Utilisateur utilisateur = new Utilisateur();
+            Adresse adresse = new Adresse();
+            AdresseUtilisateurViewModel adresseUtilisateurViewModel = new AdresseUtilisateurViewModel { Adresse = adresse, Utilisateur = utilisateur };
 
-            return View(utilisateur);
+
+            return View(adresseUtilisateurViewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult Create(Utilisateur user)
+        public ActionResult Create(AdresseUtilisateurViewModel adresseUtilisateurViewModel)
         {
+            Utilisateur user = adresseUtilisateurViewModel.Utilisateur;
+            Adresse adresse = adresseUtilisateurViewModel.Adresse;
+            user.Adresse = adresse;
             if (ModelState.IsValid)
             {
                 user.Role = Roles.CLIENT;

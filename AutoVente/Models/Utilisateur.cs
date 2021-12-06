@@ -15,7 +15,7 @@ namespace AutoVente.Models
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
         [Required(ErrorMessage = "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un carathére special et 8 caractères ")]
-        [RegularExpression("^ (?=.*[a - z])(?=.*[A - Z])(?=.*\\d)(?=.*[@$!% *? &])[A - Za - z\\d@$!% *? &]{8,}$")]
+        //[RegularExpression("^ (?=.*[a - z])(?=.*[A - Z])(?=.*\\d)(?=.*[@$!% *? &])[A - Za - z\\d@$!% *? &]{8,}$")]
         public string Password { get; set; }
         [MaxLength(255)]
         [Required]
@@ -28,7 +28,7 @@ namespace AutoVente.Models
         public string Email { get; set; }
         [MaxLength(10)]
         [Required(ErrorMessage = "Numero Téléphone non valide")]
-        [RegularExpression("^[+]?(?=(?:[^\\dx]*\\d){7})(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?)(?:[ -]?(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?))*(?:[ ]?(?:x|ext)\\.?[ ]?\\d{1,5})?$")]
+        //[RegularExpression("^[+]?(?=(?:[^\\dx]*\\d){7})(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?)(?:[ -]?(?:\\(\\d+(?:\\.\\d+)?\\)|\\d+(?:\\.\\d+)?))*(?:[ ]?(?:x|ext)\\.?[ ]?\\d{1,5})?$")]
         public string Telephone { get; set; }
         public Adresse Adresse { get; set; }
         [ForeignKey("Adresse")]
