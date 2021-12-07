@@ -20,7 +20,7 @@ namespace AutoVente.Controllers
         {
             this.service = new UtilisateurService();
         }
-        [AuthorisationFilter(Roles.CLIENT)]
+        [AuthorisationFilter(Roles.CLIENT,Roles.ADMINISTRATEUR)]
         public ActionResult Index( Utilisateur utilisateur)
         {
             List<Vehicule> vehiculesFavories = utilisateur.Favories;

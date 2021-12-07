@@ -46,7 +46,7 @@ namespace AutoVente.Controllers
                         string root = "~/Admin/";
                         switch (userDb.Role)
                         {
-                            case Roles.ADMNISTRATEUR:
+                            case Roles.ADMINISTRATEUR:
                                 root += "Administrateur";
                                 break;
                             case Roles.SECRETAIRE:

@@ -107,7 +107,7 @@ namespace AutoVente.Models
     }
     public enum Roles
     {
-        ADMNISTRATEUR = 3,
+        ADMINISTRATEUR = 3,
         SECRETAIRE = 2,
         UTILISATEUR = 1,
         CLIENT = 0
