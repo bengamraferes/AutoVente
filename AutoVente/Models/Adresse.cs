@@ -20,6 +20,11 @@ namespace AutoVente.Models
         [MaxLength(255)]
         public string ComplementAdresse { get; set; }
         public List<Utilisateur> Utilisateurs{ get; set; }
+
+        public Adresse()
+        {
+        }
+
         public Adresse(string ville, string codePostale, string rue)
         {
             Utilisateurs = new List<Utilisateur>();
