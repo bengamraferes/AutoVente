@@ -1,0 +1,39 @@
+﻿@model AutoVente.Models.Couleur
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h1>Etes vous sûr de vouloir supprimer cette couleur?</h1>
+
+    <div class="row">
+        <div>
+            @Html.DisplayNameFor(model => model.Nom) :
+            @Html.DisplayFor(model => model.Nom)
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            @Html.DisplayNameFor(model => model.CodeCouleur) :
+            @Html.DisplayFor(model => model.CodeCouleur)
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            Aperçu :
+            <input type="color" name="Color" value="@Model.CodeCouleur" disabled style="width:100px"/>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Supprimer" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    }
+</div>
