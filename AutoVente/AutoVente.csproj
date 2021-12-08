@@ -445,6 +445,7 @@
     <Content Include="Views\Utilisateur\Create.cshtml" />
     <Content Include="Views\Utilisateur\Index.cshtml" />
     <Content Include="Views\Login\Connexion.cshtml" />
+    <Content Include="Views\Couleur\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
