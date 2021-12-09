@@ -2,6 +2,7 @@
 using AutoVente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,11 @@ namespace AutoVente.DAO
 
         }
 
+        public override IQueryable<Utilisateur> Collection()
+        {
+            return dbSet.Include(u => u.Adresse);
+        }
+
         public Utilisateur GetByEmail(string email)
         {
             Utilisateur utilisateur = dbSet.AsNoTracking().SingleOrDefault(x => x.Email == email);
@@ -22,10 +28,7 @@ namespace AutoVente.DAO
             {
                 return utilisateur;
             }
-            else
-            {
-                throw new Exception("Utilisateur introuvable");
-            }
+            return null;
         }
 
         public Utilisateur GetByTelephone(string telephone)
@@ -36,10 +39,7 @@ namespace AutoVente.DAO
             {
                 return utilisateur;
             }
-            else
-            {
-                throw new Exception("Utilisateur introuvable");
-            }
+            return null;
         }
 
     }

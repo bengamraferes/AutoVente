@@ -22,7 +22,7 @@ namespace AutoVente.DAO
             dbSet = dataContext.Set<T>();
         }
 
-        public IQueryable<T> Collection()
+        public virtual IQueryable<T> Collection()
         {
             return dbSet;
         }

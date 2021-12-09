@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AutoVente.Models.Utilisateur>
+
+@{
+   
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AllUtilisateurs</h2>
+
+<section id="no-more-tables">
+    <table class="table table-bordered table-striped table-condensed cf text-center">
+        <thead class="cf">
+            <tr class="text-center">
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Prenom)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Adresse.Ville)
+                </th>
+
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </th>
+                <th >
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (TempData["EditUtilisateur"] != null && TempData["Id"].ToString() == item.Id.ToString())
+                    {
+                        @Html.Partial("_PartialEditUtilisateur", item);
+                        continue;
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresse.Ville)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+
+                    <td>
+
+                        <a href="EditUtilisateur/@item.Id" class="button btn btn-info"><i class="far fa-edit fontBlack"></i></a>
+                        
+                        <a href="Delete/@item.Id" class="button btn btn-info"><i class="far fa-edit fontBlack"></i></a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
