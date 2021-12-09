@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.fontBlack{
+    color:black;
+}
+
+.table{
+    text-align:center;
+}
+.table > tbody > tr > th {
+    text-align: center;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

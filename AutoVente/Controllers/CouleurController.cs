@@ -21,6 +21,7 @@ namespace AutoVente.Controllers
         public ActionResult Index()
         {
             List<Couleur> couleurs = service.GetAll().OrderBy(c => c.CodeCouleur).ToList();
+
             return View(couleurs);
         }
 
@@ -76,24 +77,19 @@ namespace AutoVente.Controllers
             Couleur couleur = service.FindById(id);
             if (couleur != null)
             {
-                return View(id);
+                return RedirectToAction("Index");
             }
             return HttpNotFound();
         }
 
         // POST: Couleur
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(int id)
         {
-            if (id != 0)
-            {
-                service.Delete(id);
-                service.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View();
+            service.Delete(id);
+            service.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
