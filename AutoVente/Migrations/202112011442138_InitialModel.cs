@@ -49,7 +49,7 @@
                         IdCouleur = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Immatriculation)
-                .ForeignKey("dbo.couleurs", t => t.IdCouleur, cascadeDelete: false)
+                .ForeignKey("dbo.couleurs", t => t.IdCouleur, cascadeDelete: true)
                 .ForeignKey("dbo.models", t => t.IdModel, cascadeDelete: true)
                 .Index(t => t.IdModel)
                 .Index(t => t.IdCouleur);
@@ -149,7 +149,7 @@
                         IdUtilisateur = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.utilisateur", t => t.IdUtilisateur, cascadeDelete: false)
+                .ForeignKey("dbo.utilisateur", t => t.IdUtilisateur, cascadeDelete: true)
                 .Index(t => t.IdUtilisateur);
 
             CreateTable(
@@ -161,7 +161,7 @@
                     })
                 .PrimaryKey(t => new { t.Model_Id, t.Couleur_Id })
                 .ForeignKey("dbo.models", t => t.Model_Id, cascadeDelete: true)
-                .ForeignKey("dbo.couleurs", t => t.Couleur_Id, cascadeDelete: false)
+                .ForeignKey("dbo.couleurs", t => t.Couleur_Id, cascadeDelete: true)
                 .Index(t => t.Model_Id)
                 .Index(t => t.Couleur_Id);
 
