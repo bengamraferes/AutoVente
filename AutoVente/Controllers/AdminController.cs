@@ -64,5 +64,14 @@ namespace AutoVente.Controllers
             }
             return RedirectToAction("AllUtilisateurs");
         }
+     
+        [HttpPost]
+        [ActionName("DeleteUtilisateur")]
+        public ActionResult ConfirmDeleteUtilisateur(int id)
+        {
+            utilisateurService.Delete(id);
+            utilisateurService.SaveChanges();
+            return RedirectToAction("AllUtilisateurs");
+        }
     }
 }
