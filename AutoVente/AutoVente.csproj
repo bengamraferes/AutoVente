@@ -124,6 +124,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CouleurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -446,6 +447,9 @@
     <Content Include="Views\Utilisateur\Index.cshtml" />
     <Content Include="Views\Login\Connexion.cshtml" />
     <Content Include="Views\Couleur\Create.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AllUtilisateurs.cshtml" />
+    <Content Include="Views\Admin\_PartialEditUtilisateur.cshtml" />
     <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>

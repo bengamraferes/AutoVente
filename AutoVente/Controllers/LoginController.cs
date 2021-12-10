@@ -1,4 +1,5 @@
-﻿using AutoVente.Models;
+﻿using AutoVente.Extensions;
+using AutoVente.Models;
 using AutoVente.Service;
 using System;
 using System.Collections.Generic;
@@ -43,44 +44,36 @@ namespace AutoVente.Controllers
                     {
                         Session["email"] = userDb.Email;
                         // Redirect to Admin selon le type
-                        string root = "~/Admin/";
-                        switch (userDb.Role)
+                        string root = "~/Login/Index";
+                        if (userDb.Role == Roles.CLIENT)
                         {
-                            case Roles.ADMINISTRATEUR:
-                                root += "Administrateur";
-                                break;
-                            case Roles.SECRETAIRE:
-                                root += "Secretaire";
-                                break;
-                            case Roles.UTILISATEUR:
-                                root += "Utilisateur";
-                                break;
-                            case Roles.CLIENT:
-                                root += "Client";
-                                break;
-                           
+                            root = "~/Utilisateur/Index";
+                        }
+                        else
+                        {
+                            root = "~/Admin/Index";
                         }
                         return Redirect(root);
                     }
                     else
                     {
-                        msgErreur = "Mod de passe Invalide";
-                        ViewBag.error = msgErreur;
+                        msgErreur = "Mot de passe Invalide ";
+                        
                     }
                 }
                 else
                 {
                     TempData["Email"] = user.Email;
-                    return RedirectToAction("Create");
+                    return Redirect("~/Utilisateur/Create");
                 }
             }
             else
             {
                 TempData["Email"] = user.Email;
-                return RedirectToAction("Create");
+                return Redirect("~/Utilisateur/Create");
             }
 
-
+            this.AddNotification(msgErreur, NotificationType.WARNING);
             return View(user);
         }
 

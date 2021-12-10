@@ -15,7 +15,7 @@ namespace AutoVente.Service
         {
             dao = new SqlRepository<T>(new MyContext());
         }
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return dao.Collection();
         }

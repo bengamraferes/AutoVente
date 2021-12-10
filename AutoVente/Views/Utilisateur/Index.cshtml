@@ -4,48 +4,59 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Compte Client</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DateMisEnCirculation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kilometrage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdModel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCouleur)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kilometrage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdModel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdCouleur)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+@{
+    if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateMisEnCirculation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kilometrage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdModel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCouleur)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kilometrage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdModel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCouleur)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <div>
+            <p>La Liste de Favories est vide Ajouter des vehicules</p>
+        </div>
+    }
 }
 
-</table>

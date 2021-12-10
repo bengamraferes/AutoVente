@@ -15,6 +15,11 @@ namespace AutoVente.Service
             daoUtilisateur = new SqlRepositoryUtilisateur(new MyContext());
         }
 
+        public override IQueryable<Utilisateur> GetAll()
+        {
+            return daoUtilisateur.Collection();
+        }
+
         public Utilisateur GetByEmail(string email)
         {
             return daoUtilisateur.GetByEmail(email);
