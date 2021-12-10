@@ -55,7 +55,34 @@ namespace AutoVente.Controllers
             }
             return RedirectToAction("index");
         }
-
+        public ActionResult Create()
+        {
+   
+        TempData["CreateMarque"] = "CreateMarque";
+        TempData.Keep();
+            
+        return RedirectToAction("index");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Marque marque)
+        {
+            if (ModelState.IsValid)
+            {
+                service.Insert(marque);
+                service.SaveChanges();
+                this.AddNotification("Creation de la" + marque.Nom, NotificationType.SUCCESS);
+                TempData["NomMarque"] = marque.Nom.ToString();
+                TempData.Keep();
+            }
+            else
+            {
+                this.AddNotification("Echec de creation", NotificationType.WARNING);
+                TempData["CreateMarque"] = "CreateMarque";
+                TempData.Keep();
+            }
+            return RedirectToAction("index");
+        }
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(int id)

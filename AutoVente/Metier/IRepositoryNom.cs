@@ -10,6 +10,7 @@ namespace AutoVente.Metier
     public interface IRepositoryNom<T> : IRepository<T> where T: BaseEntityNom
     {
        
-        List<T> FindByNom(string nom);
+        List<T> FindByKey(string key);
+        T FindByNom(string nom);
     }
 }

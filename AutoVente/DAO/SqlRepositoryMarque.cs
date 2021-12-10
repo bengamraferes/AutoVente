@@ -13,6 +13,8 @@ namespace AutoVente.DAO
         {
         }
 
+   
+
         public List<Vehicule> FindByOrigine(Origine origine)
         {
             List<Marque> marques = (List<Marque>)dbSet.AsNoTracking().Where(m => m.Origine == origine);

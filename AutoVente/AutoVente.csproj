@@ -139,6 +139,7 @@
     <Compile Include="DAO\SqlRepositoryNom.cs" />
     <Compile Include="DAO\SqlRepositoryUtilisateur.cs" />
     <Compile Include="DAO\SqlRepositoryVehicule.cs" />
+    <Compile Include="Extensions\CustomHtmlHelper.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Filter\AuthorisationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -454,6 +455,7 @@
     <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
     <Content Include="Views\Marque\Index.cshtml" />
     <Content Include="Views\Marque\_PartialEditMarque.cshtml" />
+    <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
