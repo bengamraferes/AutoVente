@@ -12,13 +12,13 @@ namespace AutoVente.DAO
     public  class SqlRepository<T> : IRepository<T> where T : BaseEntity
     {
         internal MyContext dataContext;
-     
+
         internal DbSet<T> dbSet;
 
         public SqlRepository(MyContext dataContext)
         {
             this.dataContext = dataContext;
-       
+
             dbSet = dataContext.Set<T>();
         }
 
@@ -30,10 +30,10 @@ namespace AutoVente.DAO
         public void Delete(int id)
         {
             T t = FindById(id);
-        
+
             if (dataContext.Entry(t).State == EntityState.Detached)
             {
-               
+
                 dbSet.Attach(t);
             }
 
@@ -66,7 +66,7 @@ namespace AutoVente.DAO
 
         public void Update(T t)
         {
-            dbSet.Attach(t); 
+            dbSet.Attach(t);
 
             dataContext.Entry(t).State = EntityState.Modified;
         }

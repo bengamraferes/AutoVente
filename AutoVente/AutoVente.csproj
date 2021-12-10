@@ -182,6 +182,7 @@
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
     <Content Include="Content\Admin\contactform\Readme.txt" />
+    <Content Include="Content\Admin\css\CutsomStyle.css" />
     <Content Include="Content\Admin\css\style-responsive.css" />
     <Content Include="Content\Admin\css\style.css" />
     <Content Include="Content\Admin\css\table-responsive.css" />
@@ -449,6 +450,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AllUtilisateurs.cshtml" />
     <Content Include="Views\Admin\_PartialEditUtilisateur.cshtml" />
+    <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
