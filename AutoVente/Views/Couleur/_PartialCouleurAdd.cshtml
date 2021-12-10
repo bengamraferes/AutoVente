@@ -1,45 +1,31 @@
 ﻿@model AutoVente.Models.Couleur
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-
-<h2>Create</h2>
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Couleur"))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Couleur</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <td class="textBoxPlace">
+        @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+    </td>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodeCouleur, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodeCouleur, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodeCouleur, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <td>
+        <input type="color" name="CodeCouleur" id="ColorPicker"/>
+    </td>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    <td class="noPhone">
+        <input type="text" id="CodeCouleurFix" value="#000000" disabled/>
+    </td>
+
+    <td>
+        <button type="submit" class="btn btn-success btnPersoCouleur fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+    </td>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<script>
+    var colorPicker = document.getElementById('ColorPicker');
+
+    colorPicker.addEventListener("input", function() {
+        document.getElementById('CodeCouleurFix').value = colorPicker.value;
+    })
+</script>

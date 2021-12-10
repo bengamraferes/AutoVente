@@ -1,4 +1,5 @@
-﻿using AutoVente.Models;
+﻿using AutoVente.Extensions;
+using AutoVente.Models;
 using AutoVente.Service;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,10 @@ namespace AutoVente.Controllers
         // GET: Couleur
         public ActionResult Create()
         {
-            Couleur couleur = new Couleur();
-            return View(couleur);
+            TempData["couleurAdd"] = "couleurAdd";
+            TempData.Keep();
+
+            return RedirectToAction("Index");
         }
 
         // POST: Couleur
@@ -39,11 +42,19 @@ namespace AutoVente.Controllers
         {
             if (ModelState.IsValid)
             {
+                this.AddNotification($"Couleur {couleur.Nom} ajoutée", NotificationType.SUCCESS);
+
                 service.Insert(couleur);
                 service.SaveChanges();
-                return RedirectToAction("index");
             }
-            return View(couleur);
+            else
+            {
+                this.AddNotification("Le champ Nom est obligatoire", NotificationType.ERROR);
+
+                TempData["couleurAdd"] = "couleurAdd";
+                TempData.Keep();
+            }
+            return RedirectToAction("index");
         }
 
         // GET: Couleur

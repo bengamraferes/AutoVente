@@ -1,0 +1,67 @@
+﻿/*
+    Liste des diffétenes résolution par defaut
+
+    320px — 480px: Mobile devices
+    481px — 768px: iPads, Tablets
+    769px — 1024px: Small screens, laptops
+    1025px — 1200px: Desktops, large screens
+    1201px and more —  Extra large screens, TV
+*/
+
+@media (min-width: 768px) {
+    .smallerContent {
+        width: 75%;
+        margin: auto;
+    }
+}
+
+@media (min-width: 482px) {
+    .btnPersoCouleur {
+        width: 150px;
+    }
+
+    table > tbody > tr > td > .form-control {
+        display: inherit;
+    }
+}
+
+@media (max-width: 481px) {
+    .noPhone {
+        visibility: hidden;
+        display: none;
+    }
+
+    .smallerContent {
+        width: 100%;
+    }
+}
+
+.fontBlack, .fontBlack > * {
+    color: black;
+}
+
+i {
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+#ColorPicker {
+    width: 100%;
+    max-width: 120px;
+}
+
+.table{
+    text-align:center;
+}
+
+.table > tbody > tr > th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    width:25%;
+}
+
+
