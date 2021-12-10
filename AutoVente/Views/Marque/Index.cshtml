@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AutoVente.Models.Marque>
+
+@{
+
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@Html.Partial("_Notifications")
+<section id="no-more-tables" class="smallerContent">
+    <table class="table table-bordered table-striped table-condensed cf text-center table-layout">
+        <thead class="cf">
+            <tr class="custom-tr text-center">
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Origine)
+                </th>
+
+                <th class="th-custom-button"></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (TempData["EditMarque"] != null && TempData["IdMarque"].ToString() == item.Id.ToString())
+                {
+                    @Html.Partial("_PartialEditMarque", item);
+                    continue;
+                }
+                <td data-title="@Html.DisplayNameFor(model => model.Nom)">
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Origine)">
+                    @Html.DisplayFor(modelItem => item.Origine)
+                </td>
+
+                <td class="btn-td">
+
+                    <a href="~/Marque/Edit/@item.Id" type="button" class=" button btn btn-info fontBlack">
+                        <i class="far fa-edit fontBlack"></i><span class="noPhone"> Modifier</span>
+                    </a>
+
+                    <a class=" button btn btn-danger fontBlack" data-toggle="modal" data-target="#@item.Id">
+                        <i class="fas fa-trash-alt "></i><span class="noPhone"> Supprimer</span>
+                    </a>
+
+                    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Vous êtes entrain de supprimer La Marque @item.Nom;
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="/Marque/Delete/@item.Id">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                        <input type="submit" class="btn btn-danger" value="Valider">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+

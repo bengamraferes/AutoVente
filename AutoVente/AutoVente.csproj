@@ -128,6 +128,7 @@
     <Compile Include="Controllers\CouleurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MarqueController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
@@ -445,12 +446,14 @@
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\Utilisateur\Create.cshtml" />
     <Content Include="Views\Utilisateur\Index.cshtml" />
-    <Content Include="Views\Login\Connexion.cshtml" />
+    <Content Include="Views\Shared\Login\Connexion.cshtml" />
     <Content Include="Views\Couleur\Create.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AllUtilisateurs.cshtml" />
     <Content Include="Views\Admin\_PartialEditUtilisateur.cshtml" />
     <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
+    <Content Include="Views\Marque\Index.cshtml" />
+    <Content Include="Views\Marque\_PartialEditMarque.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

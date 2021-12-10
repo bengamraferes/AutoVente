@@ -35,7 +35,7 @@ namespace AutoVente.Controllers
             if (user != null)
             {
                 TempData["EditUtilisateur"] = "EditUtilisateur";
-                TempData["Id"] = user.Id;
+                TempData["IdUtilisateur"] = user.Id;
                 TempData.Keep();
             }
             return RedirectToAction("AllUtilisateurs");
@@ -51,6 +51,7 @@ namespace AutoVente.Controllers
                 userDb.Prenom = user.Prenom;
                 userDb.Role = user.Role;
                 userDb.Email = user.Email;
+                userDb.Telephone = user.Telephone;
                 utilisateurService.Update(userDb);
                 utilisateurService.SaveChanges();
                 this.AddNotification("L'utilisateur " + user.Nom +" a été modifiée", NotificationType.SUCCESS);

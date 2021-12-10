@@ -16,7 +16,12 @@ namespace AutoVente.Models
             Origine = origine;
             Nom = nom;
         }
+
+        public Marque()
+        {
+        }
     }
+
     public enum Origine
     {
         FRANCAISE = 1,
