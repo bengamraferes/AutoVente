@@ -181,7 +181,7 @@
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
     <Content Include="Content\Admin\contactform\Readme.txt" />
-    <Content Include="Content\Admin\css\CutsomStyle.css" />
+    <Content Include="Content\Admin\css\CustomStyle.css" />
     <Content Include="Content\Admin\css\style-responsive.css" />
     <Content Include="Content\Admin\css\style.css" />
     <Content Include="Content\Admin\css\table-responsive.css" />
