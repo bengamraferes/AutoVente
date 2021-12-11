@@ -2520,7 +2520,10 @@ ul.labels-info li img {
 }
 .table-inbox tr.unread td {
     font-weight:600;
-    background:#f7f7f7;
+}
+
+.table-inbox tr.read {
+    background: #f7f7f7;
 }
 
 .table-inbox tr.unread a {

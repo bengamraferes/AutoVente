@@ -1,0 +1,122 @@
+﻿@model IEnumerable<AutoVente.Models.Message>
+@using AutoVente.Models
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Messagerie</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<section class="panel">
+    <header class="panel-heading wht-bg">
+        <h4 class="gen-case">
+            Inbox (@Model.Where(m => m.EtatMessage == EtatsMessage.FERME).Count())
+            @*<form action="#" class="pull-right mail-src-position">
+                    <div class="input-append">
+                        <input type="text" class="form-control " placeholder="Search Mail">
+                    </div>
+                </form>*@
+        </h4>
+    </header>
+    <div class="panel-body minimal">
+        <div class="mail-option">
+            <div class="chk-all">
+                <div class="btn-group">
+                    <a data-toggle="dropdown" href="#" class="btn mini all">
+                        All
+                        <i class="fa fa-angle-down "></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"> None</a></li>
+                        <li><a href="#"> Read</a></li>
+                        <li><a href="#"> Unread</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            @*<ul class="unstyled inbox-pagination">
+                    <li><span>1-50 of 99</span></li>
+                    <li>
+                        <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
+                    </li>
+                    <li>
+                        <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
+                    </li>
+                </ul>*@
+        </div>
+        <div class="table-inbox-wrap ">
+            <table class="table table-inbox table-hover">
+                <tbody class="vertical-align">
+                    @foreach (var item in Model)
+                    {
+                        if (item.EtatMessage == EtatsMessage.OUVERT)
+                        {
+                            <tr class="read">
+                                <td class="inbox-small-cells dont-show"><i class="far fa-envelope-open"></i></td>
+                                <td class="message-name-cell dont-show"><a href="mail_view.html">@Html.DisplayFor(modelItem => item.Utilisateur.FullName)</a></td>
+                                <td class="text-wrapper-message"><a href="mail_view.html"><span class="message-title">@Html.DisplayFor(modelItem => item.Titre) - </span>@Html.DisplayFor(modelItem => item.Contenu)</a></td>
+                                <td class="message-date-cell dont-show">@Html.DisplayFor(modelItem => item.Date)</td>
+                                <td class="text-right message-btn-cell">
+                                    <button type="button" class="btn btn-danger fontBlack" data-toggle="modal" data-target="#@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr class="unread">
+                                <td class="inbox-small-cells dont-show "><i class="fas fa-envelope"></i></td>
+                                <td class="message-name-cell dont-show "><a href="mail_view.html">@Html.DisplayFor(modelItem => item.Utilisateur.FullName)</a></td>
+                                <td class="text-wrapper-message"><a href="mail_view.html"><span class="message-title">@Html.DisplayFor(modelItem => item.Titre) - </span>@Html.DisplayFor(modelItem => item.Contenu)</a></td>
+                                <td class="message-date-cell dont-show">@Html.DisplayFor(modelItem => item.Date)</td>
+                                <td class="text-right message-btn-cell">
+                                    <button type="button" class="btn btn-danger fontBlack" data-toggle="modal" data-target="#@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @if (item.EtatMessage == EtatsMessage.FERME)
+                        {
+                            <p class="modal-warning"><i class="fas fa-exclamation-triangle"></i> ATTENTION ! Message non lus.</p>
+                        }
+
+                        <h3 class="modal-title" id="exampleModalLabel">@Html.DisplayFor(modelItem => item.Titre)</h3>
+                        <h4 class="modal-subtitle">@item.Utilisateur.FullName</h4>
+                    </div>
+                    <div class="modal-body text-modal-wrapper">
+                        @Html.DisplayFor(modelItem => item.Contenu)
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="/Couleur/Delete/@item.Id" class="custom-modal-form">
+                            <div>
+                                Voulez vous supprimer se message ?
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                <input type="submit" class="btn btn-danger" value="Valider">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

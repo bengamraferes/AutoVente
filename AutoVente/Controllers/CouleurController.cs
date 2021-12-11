@@ -82,17 +82,6 @@ namespace AutoVente.Controllers
             return View(couleur);
         }
 
-        // GET: Couleur
-        public ActionResult Delete(int id)
-        {
-            Couleur couleur = service.FindById(id);
-            if (couleur != null)
-            {
-                return RedirectToAction("Index");
-            }
-            return HttpNotFound();
-        }
-
         // POST: Couleur
         [HttpPost]
         [ActionName("Delete")]
