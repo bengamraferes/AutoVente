@@ -7,12 +7,8 @@
     1025px — 1200px: Desktops, large screens
     1201px and more —  Extra large screens, TV
 */
-/*}
-@media only screen and (max-width: 800px) {
-    td {
-        padding-left: 0;
-    }
-}*/
+
+
 
 .btn-td {
     display: flex;
@@ -38,9 +34,6 @@
         width: 150px;
     }
 
-   /* table > tbody > tr > td > .form-control {
-        display: inherit;
-    }*/
 }
 
 @media (max-width: 481px) {
@@ -71,18 +64,5 @@ i {
     min-width : 110px;
 }
 
-    /*.table{
-    text-align:center;
-}
 
-.table > tbody > tr > th {
-    vertical-align: middle !important;
-    text-align: center;
-}
-
-.table > tbody > tr > td {
-    vertical-align: middle;
-    width:25%;
-}
-*/
 

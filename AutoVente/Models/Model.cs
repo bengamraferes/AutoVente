@@ -38,6 +38,11 @@ namespace AutoVente.Models
         public Marque Marque { get; set; }
         [ForeignKey("Marque")]
         public int MarqueId { get; private set; }
+
+        public Model()
+        {
+        }
+
         public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, int nbPlaces, Type type, decimal prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
         {
             Vehicules = new List<Vehicule>();

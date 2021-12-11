@@ -1,0 +1,143 @@
+﻿@model IEnumerable<AutoVente.Models.Model>
+@using AutoVente.Extensions;
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Models</h2>
+@Html.Partial("_Notifications")
+<section id="no-more-tables" class="smallerContent">
+    <table class="table table-bordered table-striped table-condensed cf text-center table-layout">
+        <thead class="cf">
+            <tr class="custom-tr text-center">
+                <th>
+                    @Html.DisplayNameFor(model => model.Marque.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carburent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmissionCo2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Annee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PuissanceReel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NbPlaces)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prix)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BoiteDeVitesse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            bool isCreate = false;
+
+
+            if (TempData["NomModel"] != null && item.Nom.ToString() == TempData["NomModel"].ToString())
+            {
+                isCreate = true;
+
+
+            }
+            <tr class="@Html.Conditional(isCreate, "bg-success", "")">
+
+                @if (TempData["EditModel"] != null && TempData["IdModel"].ToString() == item.Id.ToString())
+                {
+                    @Html.Partial("_PartialEditModel", item);
+                    continue;
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Marque.Nom)">
+                    @Html.DisplayFor(modelItem => item.Marque.Nom)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Numero)">
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Carburent)">
+                    @Html.DisplayFor(modelItem => item.Carburent)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.EmissionCo2)">
+                    @Html.DisplayFor(modelItem => item.EmissionCo2)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Annee)">
+                    @Html.DisplayFor(modelItem => item.Annee)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.PuissanceReel)">
+                    @Html.DisplayFor(modelItem => item.PuissanceReel)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.NbPlaces)">
+                    @Html.DisplayFor(modelItem => item.NbPlaces)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Type)">
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.Prix)">
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
+                <td data-title="@Html.DisplayNameFor(model => model.BoiteDeVitesse)">
+                    @Html.DisplayFor(modelItem => item.BoiteDeVitesse)
+                </td>
+
+                <td class="btn-td">
+
+                    <a href="~/Model/Edit/@item.Id" type="button" class=" button btn btn-info fontBlack">
+                        <i class="far fa-edit fontBlack"></i><span class="noPhone"> Modifier</span>
+                    </a>
+
+                    <a class=" button btn btn-danger fontBlack" data-toggle="modal" data-target="#@item.Id">
+                        <i class="fas fa-trash-alt "></i><span class="noPhone"> Supprimer</span>
+                    </a>
+
+                    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Vous êtes entrain de supprimer Le Model @item.Nom;
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="/Model/Delete/@item.Id">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                        <input type="submit" class="btn btn-danger" value="Valider">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+

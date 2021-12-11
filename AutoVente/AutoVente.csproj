@@ -129,6 +129,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MarqueController.cs" />
+    <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
@@ -456,6 +457,7 @@
     <Content Include="Views\Marque\Index.cshtml" />
     <Content Include="Views\Marque\_PartialEditMarque.cshtml" />
     <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
+    <Content Include="Views\Model\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

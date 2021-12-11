@@ -14,7 +14,13 @@ namespace AutoVente.Service
         {
             daoModel = new SqlRepositoryModel(new MyContext());
         }
-       public  List<Vehicule> FindByCarburent(Carburent carburent) {
+
+        public override IQueryable<Model> GetAll()
+        {
+            return daoModel.Collection();
+        }
+
+        public  List<Vehicule> FindByCarburent(Carburent carburent) {
             return daoModel.FindByCarburent(carburent);
         }
 
