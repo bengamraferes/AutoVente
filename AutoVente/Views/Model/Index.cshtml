@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<AutoVente.Models.Model>
 @using AutoVente.Extensions;
+@using AutoVente.ViewsModels
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,15 +9,18 @@
 
 <h2>Models</h2>
 @Html.Partial("_Notifications")
-<section id="no-more-tables" class="smallerContent">
+<section id="no-more-tables">
     <table class="table table-bordered table-striped table-condensed cf text-center table-layout">
         <thead class="cf">
             <tr class="custom-tr text-center">
                 <th>
-                    @Html.DisplayNameFor(model => model.Marque.Nom)
+                    @Html.DisplayNameFor(model => model.Nom)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Numero)
+                    Marque
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero) Model
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Carburent)
@@ -42,13 +46,27 @@
                 <th>
                     @Html.DisplayNameFor(model => model.BoiteDeVitesse)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nom)
+
+                <th class="th-custom-button">
+                    @if (TempData["CreateModel"] != null)
+                    {
+                        <a href="~/Model" class="btnPersoCouleur btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
+                    }
+                    else
+                    {
+                        <a href="~/Model/Create" class="btnPersoCouleur btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle Marque</span></a>
+
+                    }
                 </th>
-                <th></th>
             </tr>
         </thead>
+        <tr>
+            @if (TempData["CreateModel"] != null)
+            {
+                @Html.Partial("_PartialCreateModel", new ModelMarqueViewModel())
 
+            }
+        </tr>
 
         @foreach (var item in Model)
         {
