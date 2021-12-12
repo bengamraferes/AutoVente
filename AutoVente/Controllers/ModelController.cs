@@ -95,5 +95,12 @@ namespace AutoVente.Controllers
             service.SaveChanges();
             return RedirectToAction("index");
         }
+        public ActionResult Couleur()
+        {
+            TempData["AddModelouleurs"] = "AddModelouleurs";
+            TempData.Keep();
+
+            return RedirectToAction("index");
+        }
     }
 }

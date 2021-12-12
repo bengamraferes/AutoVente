@@ -13,6 +13,7 @@
     <table class="table table-bordered table-striped table-condensed cf text-center table-layout">
         <thead class="cf">
             <tr class="custom-tr text-center">
+                <th></th>
                 <th>
                     @Html.DisplayNameFor(model => model.Nom)
                 </th>
@@ -50,11 +51,11 @@
                 <th class="th-custom-button">
                     @if (TempData["CreateModel"] != null)
                     {
-                        <a href="~/Model" class="btnPersoCouleur btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
+                        <a href="~/Model" class=" btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
                     }
                     else
                     {
-                        <a href="~/Model/Create" class="btnPersoCouleur btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle Marque</span></a>
+                        <a href="~/Model/Create" class=" btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle Marque</span></a>
 
                     }
                 </th>
@@ -68,8 +69,10 @@
             }
         </tr>
 
+
         @foreach (var item in Model)
         {
+
             bool isCreate = false;
 
 
@@ -79,6 +82,7 @@
 
 
             }
+
             <tr class="@Html.Conditional(isCreate, "bg-success", "")">
 
                 @if (TempData["EditModel"] != null && TempData["IdModel"].ToString() == item.Id.ToString())
@@ -86,9 +90,14 @@
                     @Html.Partial("_PartialEditModel", item);
                     continue;
                 }
+                <td id="detail-btn-@item.Id" class="detail-btn row align-self-center ">
+                    <i class="fas fa-2x fa-plus-circle"></i>
+                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Nom)
                 </td>
+
                 <td data-title="@Html.DisplayNameFor(model => model.Marque.Nom)">
                     @Html.DisplayFor(modelItem => item.Marque.Nom)
                 </td>
@@ -154,8 +163,41 @@
 
                 </td>
             </tr>
+            <tr class="hidden" id="detail-tr-@item.Id">
+                <td colspan="100" data-title="Couleurs models">
+                    @if (TempData["AddModelouleurs"] != null)
+                    {
+                       @Html.Partial("_PartialCouleursAdd", new CouleurModelViewModel(item))
+                    }
+                    else
+                    {
+                        <div class=" col-xs-11 row">
+                            @foreach (var couleur in item.Couleurs)
+                            {
+                                <div class="col-xs-2">
+                                    <p>
+                                        @couleur.Nom
+                                    </p>
+                                    <input type="color" name="Color" id="ColorPicker" value="@couleur.CodeCouleur" disabled />
+                                </div>
+
+                            }
+                        </div>
+                        <div class="col-xs-1">
+                            <a href="~/Model/Couleur" class=" btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle Couleur</span></a>
+                        </div>
+                    }
+
+
+
+
+                </td>
+              
+            </tr>
+
         }
 
     </table>
 </section>
 
+<script src="~/Content/Admin/lib/detailTable.js"></script>

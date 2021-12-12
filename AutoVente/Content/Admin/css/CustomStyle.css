@@ -21,6 +21,11 @@
 .custom-tr > th {
     text-align: center
 }
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 @media (min-width: 768px) {
     .smallerContent {
         width: 75%;

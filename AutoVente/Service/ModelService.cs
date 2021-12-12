@@ -46,5 +46,9 @@ namespace AutoVente.Service
         {
             return daoModel.FindBoiteDeVitesse(BoiteVitesse);
         }
+        public void AddCouleurs(List<Couleur> couleurs, Model model)
+        {
+            daoModel.AddCouleurs(couleurs, model);
+        }
     }
 }

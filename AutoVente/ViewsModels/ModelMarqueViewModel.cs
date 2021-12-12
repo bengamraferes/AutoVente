@@ -12,12 +12,14 @@ namespace AutoVente.ViewsModels
         public Model Model { get; set; }
         public List<Marque> Marques { get; set; }
         public Marque Marque { get; set; }
+        public List<Couleur> couleurs { get; set; }
 
-        private MarqueService service;
+        private MarqueService serviceMarque;
+
         public ModelMarqueViewModel()
         {
-            service = new MarqueService();
-            Marques = service.GetAll().ToList();
+            serviceMarque = new MarqueService();
+            Marques = serviceMarque.GetAll().ToList();
         }
     }
 }

@@ -181,6 +181,7 @@
     <Compile Include="Service\UtilisateurService.cs" />
     <Compile Include="Service\VehiculeService.cs" />
     <Compile Include="ViewsModels\AdresseUtilisateurViewModel.cs" />
+    <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +332,7 @@
     <Content Include="Content\Admin\lib\gritter\images\gritter.png" />
     <Content Include="Content\Admin\lib\gritter\images\ie-spacer.gif" />
     <Content Include="Content\Admin\lib\gritter\js\jquery.gritter.js" />
+    <Content Include="Content\Admin\lib\detailTable.js" />
     <Content Include="Content\Admin\lib\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
     <Content Include="Content\Admin\lib\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
     <Content Include="Content\Admin\lib\jquery-ui-1.9.2.custom.min.js" />
@@ -353,6 +355,7 @@
     <Content Include="Content\Admin\lib\xchart\xcharts.css" />
     <Content Include="Content\Admin\lib\xchart\xcharts.min.js" />
     <Content Include="Content\Admin\lib\zabuto_calendar.js" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Layout\assets\css\fontawesome-all.min.css" />
     <Content Include="Content\Layout\assets\css\images\arrow.svg" />
     <Content Include="Content\Layout\assets\css\main.css" />
@@ -461,6 +464,8 @@
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
     <Content Include="Views\Model\_PartialEditModel.cshtml" />
+    <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
+    <Content Include="Views\Model\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

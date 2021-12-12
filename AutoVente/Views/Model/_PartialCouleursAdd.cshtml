@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AutoVente.ViewsModels.CouleurModelViewModel>
+    @using AutoVente.ViewsModels
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
+            @Model.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Couleur.Nom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Couleurs.CodeCouleur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Couleurs.Nom)
+        </td>
+        <td>
+       
+        </td>
+    </tr>
+}
+
+</table>
