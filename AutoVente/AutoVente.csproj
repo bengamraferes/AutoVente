@@ -182,6 +182,7 @@
     <Compile Include="Service\VehiculeService.cs" />
     <Compile Include="ViewsModels\AdresseUtilisateurViewModel.cs" />
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
+    <Compile Include="ViewsModels\CouleurViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -465,7 +466,6 @@
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
     <Content Include="Views\Model\_PartialEditModel.cshtml" />
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
-    <Content Include="Views\Model\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

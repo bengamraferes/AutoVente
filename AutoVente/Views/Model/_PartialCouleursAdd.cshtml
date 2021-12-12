@@ -1,31 +1,27 @@
-﻿@model IEnumerable<AutoVente.ViewsModels.CouleurModelViewModel>
-    @using AutoVente.ViewsModels
+﻿@model AutoVente.ViewsModels.CouleurModelViewModel
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
-            @Model.
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Couleur.Nom)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Couleurs.CodeCouleur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Couleurs.Nom)
-        </td>
-        <td>
+@using (Html.BeginForm("Couleur", "Model"))
+
+{
+   @Html.HiddenFor(model => model.Id);
+<div class=" col-xs-11 row">
+    @for (var i = 0; i < Model.Couleurs.Count(); i++)
+    {
        
-        </td>
-    </tr>
-}
+            <div class="col-xs-2">
+                @Html.CheckBoxFor(model => model.ChekboxViewModels[i].Checked)
+                <p>
+                    @Model.Couleurs[i].Nom
+                </p>
+                <input type="color" name="Color" id="ColorPicker" value="@Model.Couleurs[i].CodeCouleur" disabled />
+            </div>
+        
+    }
 
-</table>
+</div>
+<div class="col-xs-1">
+    <button type="submit" class="btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+</div>
+}

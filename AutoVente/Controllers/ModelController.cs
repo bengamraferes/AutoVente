@@ -102,5 +102,29 @@ namespace AutoVente.Controllers
 
             return RedirectToAction("index");
         }
+        [HttpPost]
+        public ActionResult Couleur(CouleurModelViewModel viewModel)
+        {
+            if (ModelState.IsValidField("Id") && ModelState.IsValidField("ChekboxViewModels"))
+            {
+                Model model = service.FindById(viewModel.Id);
+                List<Couleur> couleurs = new List<Couleur>();
+                foreach (var item in viewModel.ChekboxViewModels)
+                {
+                    //Couleur couleur = 
+                }
+                service.AddCouleurs(viewModel.Couleurs, model);
+                service.SaveChanges();
+                return RedirectToAction("index");
+            }
+            else
+            {
+                TempData["AddModelouleurs"] = "AddModelouleurs";
+                TempData.Keep();
+
+                return RedirectToAction("index");
+            }
+          
+        }
     }
 }

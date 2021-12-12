@@ -9,10 +9,11 @@ namespace AutoVente.ViewsModels
 {
     public class CouleurModelViewModel
     {
-        List<Couleur> Couleurs { get; set; }
-        Couleur Couleur { get; set; }
-        Model Model { get; set; }
-
+        public List<Couleur> Couleurs { get; set; }
+        public Couleur Couleur { get; set; }
+        public Model Model { get; set; }
+        public int Id { get; set; }
+        public List<CouleurChekboxViewModel> ChekboxViewModels { get; set; }
         private CouleurService Couleurservice;
 
         public CouleurModelViewModel()
@@ -24,16 +25,26 @@ namespace AutoVente.ViewsModels
             Couleurservice = new CouleurService();
             Model = model;
             Couleurs = Couleurservice.GetAll().ToList();
-            foreach (Couleur couleur in Couleurs)
+            ChekboxViewModels = new List<CouleurChekboxViewModel>();
+            Id = model.Id;
+           
+            for (int i = 0; i < Couleurs.Count; i++)
             {
-                foreach (Couleur couleurModel in Model.Couleurs)
+          
+                if (i < Model.Couleurs.Count && Couleurs[i].Id == Model.Couleurs[i].Id)
                 {
-                    if (couleur == couleurModel)
-                    {
-                        this.Couleurs.Remove(couleur);
-                    }
+                    Couleurs.Remove(Couleurs[i]);
                 }
             }
+            foreach (Couleur couleur in Couleurs)
+            {
+                CouleurChekboxViewModel ccvm = new CouleurChekboxViewModel();
+                ccvm.IdCouleur = couleur.Id;
+                ChekboxViewModels.Add(ccvm);
+            }
+
+        
+
         }
     }
 }
