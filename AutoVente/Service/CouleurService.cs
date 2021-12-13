@@ -15,6 +15,11 @@ namespace AutoVente.Service
             daoCouleur = new SqlRepositoryCouleur(new MyContext());
         }
 
+        public override Couleur FindById(int id)
+        {
+            return daoCouleur.FindById(id);
+        }
+
         public Couleur FindByCode(string code)
         {
             return daoCouleur.GetByCode(code);

@@ -13,10 +13,12 @@ namespace AutoVente.Controllers
     public class ModelController : Controller
     {
         private ModelService service;
+        private CouleurService serviceCouleur;
 
         public ModelController( )
         {
             service = new ModelService();
+            serviceCouleur = new CouleurService();
         }
 
         // GET: Model
@@ -103,7 +105,7 @@ namespace AutoVente.Controllers
             return RedirectToAction("index");
         }
         [HttpPost]
-        public ActionResult Couleur(CouleurModelViewModel viewModel)
+        public ActionResult Couleur([Bind(Include = "Id,ChekboxViewModels")] CouleurModelViewModel viewModel)
         {
             if (ModelState.IsValidField("Id") && ModelState.IsValidField("ChekboxViewModels"))
             {
@@ -111,9 +113,15 @@ namespace AutoVente.Controllers
                 List<Couleur> couleurs = new List<Couleur>();
                 foreach (var item in viewModel.ChekboxViewModels)
                 {
-                    //Couleur couleur = 
+                    if (item.Checked)
+                    {
+                        Couleur couleur = serviceCouleur.FindById(item.IdCouleur);
+                        couleurs.Add(couleur);
+                    }
+                  
+
                 }
-                service.AddCouleurs(viewModel.Couleurs, model);
+                service.AddCouleurs(couleurs, viewModel.Id);
                 service.SaveChanges();
                 return RedirectToAction("index");
             }

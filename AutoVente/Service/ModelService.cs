@@ -24,7 +24,6 @@ namespace AutoVente.Service
             return daoModel.FindByCarburent(carburent);
         }
 
-
         public  List<Vehicule> FindByAnnees(DateTime dateMin, DateTime dateMax)
         {
             return daoModel.FindByAnnees(dateMin, dateMax);
@@ -46,9 +45,9 @@ namespace AutoVente.Service
         {
             return daoModel.FindBoiteDeVitesse(BoiteVitesse);
         }
-        public void AddCouleurs(List<Couleur> couleurs, Model model)
+        public void AddCouleurs(List<Couleur> couleurs, int IdModel)
         {
-            daoModel.AddCouleurs(couleurs, model);
+            daoModel.AddCouleurs(couleurs, IdModel);
         }
     }
 }

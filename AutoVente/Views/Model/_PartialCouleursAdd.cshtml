@@ -10,13 +10,16 @@
     @for (var i = 0; i < Model.Couleurs.Count(); i++)
     {
        
-            <div class="col-xs-2">
-                @Html.CheckBoxFor(model => model.ChekboxViewModels[i].Checked)
-                <p>
-                    @Model.Couleurs[i].Nom
-                </p>
-                <input type="color" name="Color" id="ColorPicker" value="@Model.Couleurs[i].CodeCouleur" disabled />
-            </div>
+    <div class="col-xs-2">
+       
+        @Html.CheckBoxFor(model => model.ChekboxViewModels[i].Checked)
+     
+        @Html.HiddenFor(model => model.ChekboxViewModels[i].IdCouleur);
+        <p>
+            @Model.Couleurs[i].Nom
+        </p>
+        <input type="color" name="Color" id="ColorPicker" value="@Model.Couleurs[i].CodeCouleur" disabled />
+    </div>
         
     }
 
