@@ -2,6 +2,7 @@
 using AutoVente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.WebPages;
@@ -13,7 +14,10 @@ namespace AutoVente.DAO
         public SqlRepositoryModel(MyContext dataContext) : base(dataContext)
         {
         }
-
+        public override IQueryable<Model> Collection()
+        {
+            return dbSet.Include(m => m.Marque).Include(m => m.Couleurs);
+        }
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse boiteVitesse)
         {
             List<Model> models = dbSet.AsNoTracking().Where(m => m.BoiteDeVitesse == boiteVitesse).ToList();
@@ -93,6 +97,21 @@ namespace AutoVente.DAO
             }
 
             return vehicules;
+        }
+        public void AddCouleurs( List<Couleur> couleurs ,int IdModel)
+        {
+            Model model = dbSet.Include(m => m.Couleurs).SingleOrDefault(m => m.Id == IdModel);
+            foreach (Couleur couleur in couleurs)
+            {
+                
+                model.Couleurs.Add(couleur);
+                couleur.Models.Add(model);
+                dataContext.Couleurs.Attach(couleur);
+                dataContext.Entry(couleur).State = EntityState.Modified;
+            }
+
+            Update(model);
+            
         }
     }
 }

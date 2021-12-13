@@ -10,11 +10,6 @@
 i {
     vertical-align: middle;
     font-size: 20px;
-}
-
-i {
-    vertical-align: middle;
-    font-size: 20px;
     width: 23px;
     text-align: center;
 }
@@ -37,8 +32,6 @@ i {
     vertical-align: middle;
     width: 25%;
 }
-
-
 
 
 .vertical-align tr td {
@@ -141,15 +134,47 @@ i {
 }
 
 
+.btn-td {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.th-custom-button{
+    width:33%;
+}
+.custom-tr > th {
+    text-align: center
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 
+#ColorPicker {
+    width: 100%;
+    max-width: 120px;
+}
+.min-width-th{
+    min-width : 110px;
+}
+
+.card-message-details > .message-title {
+    font-size: 20px;
+}
+
+.card-message-details > .message-content {
+    font-size: 14px;
+}
+  
 /*
-    Liste des diffétenes résolution par defaut
+  Liste des diffétenes résolution par defaut
 
-    320px — 480px: Mobile devices
-    481px — 768px: iPads, Tablets
-    769px — 1024px: Small screens, laptops
-    1025px — 1200px: Desktops, large screens
-    1201px and more —  Extra large screens, TV
+  320px — 480px: Mobile devices
+  481px — 768px: iPads, Tablets
+  769px — 1024px: Small screens, laptops
+  1025px — 1200px: Desktops, large screens
+  1201px and more —  Extra large screens, TV
 */
 @media (min-width: 768px) {
     .smallerContent {
@@ -209,14 +234,6 @@ i {
     }
 
     .modal-subtitle {
-        font-size: 14px;
-    }
-
-    .card-message-details > .message-title {
-        font-size: 20px;
-    }
-
-    .card-message-details > .message-content {
         font-size: 14px;
     }
 }

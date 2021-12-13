@@ -25,7 +25,7 @@ namespace AutoVente.Service
             dao.Delete(id);
         }
 
-        public T FindById(int id)
+        public virtual T FindById(int id)
         {
             return dao.FindById(id);
         }

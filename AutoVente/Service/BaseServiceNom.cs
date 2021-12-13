@@ -15,9 +15,13 @@ namespace AutoVente.Service
             daoNom = new SqlRepositoryNom<T>(new MyContext());
         }
 
-        List<T> FindByNom(string nom)
+        public List<T> FindBykey(string nom)
         {
-           return  daoNom.FindByNom(nom);
+            return daoNom.FindByKey(nom);
+        }
+        public T FindByNom(string nom)
+        {
+            return daoNom.FindByNom(nom);
         }
     }
 }

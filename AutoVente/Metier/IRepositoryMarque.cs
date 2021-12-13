@@ -9,6 +9,7 @@ namespace AutoVente.Metier
 {
     public interface IRepositoryMarque : IRepositoryNom<Marque>
     {
+       
         List<Vehicule> FindByOrigine(Origine origine);
     }
 }

@@ -1,0 +1,62 @@
+﻿@model AutoVente.ViewsModels.ModelMarqueViewModel
+
+
+@using (Html.BeginForm("Create", "Model"))
+{
+    @Html.AntiForgeryToken()
+
+    <td>
+        @Html.EditorFor(model => model.Model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.Nom, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Marque.Nom)">
+        @Html.DropDownListFor(model => model.Model.MarqueId, new SelectList(Model.Marques, "Id", "Nom"), new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.Marque.Nom, "", new { @class = "text-danger" })
+    </td>
+
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Numero)">
+        @Html.EditorFor(model => model.Model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.Numero, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Carburent)">
+        @Html.EnumDropDownListFor(model => model.Model.Carburent, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Model.Carburent, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.EmissionCo2)">
+        @Html.EditorFor(model => model.Model.EmissionCo2, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.EmissionCo2, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Annee)">
+        @Html.EditorFor(model => model.Model.Annee, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.Annee, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.PuissanceReel)">
+        @Html.EditorFor(model => model.Model.PuissanceReel, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.PuissanceReel, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.NbPlaces)">
+        @Html.EditorFor(model => model.Model.NbPlaces, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.NbPlaces, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Type)">
+        @Html.EnumDropDownListFor(model => model.Model.Type, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Model.Type, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.Prix)">
+        @Html.EditorFor(model => model.Model.Prix, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Model.Prix, "", new { @class = "text-danger" })
+    </td>
+    <td data-title="@Html.DisplayNameFor(model => model.Model.BoiteDeVitesse)">
+        @Html.EnumDropDownListFor(model => model.Model.BoiteDeVitesse, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Model.BoiteDeVitesse, "", new { @class = "text-danger" })
+    </td>
+
+    <td class="btn-td">
+        <button type="submit" class="btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+    </td>
+
+}
+
+
+
+
