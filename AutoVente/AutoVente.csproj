@@ -128,8 +128,11 @@
     <Compile Include="Controllers\CouleurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MarqueController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
+    
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
@@ -157,6 +160,10 @@
     <Compile Include="Migrations\202112011442138_InitialModel.cs" />
     <Compile Include="Migrations\202112011442138_InitialModel.designer.cs">
       <DependentUpon>202112011442138_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112101252353_EtatMessage.cs" />
+    <Compile Include="Migrations\202112101252353_EtatMessage.Designer.cs">
+      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
@@ -434,6 +441,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\Admin\js\ColorPicker.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -459,6 +467,11 @@
     <Content Include="Views\Admin\AllUtilisateurs.cshtml" />
     <Content Include="Views\Admin\_PartialEditUtilisateur.cshtml" />
     <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
+
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Contact.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+
     <Content Include="Views\Marque\Index.cshtml" />
     <Content Include="Views\Marque\_PartialEditMarque.cshtml" />
     <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
@@ -466,6 +479,7 @@
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
     <Content Include="Views\Model\_PartialEditModel.cshtml" />
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -482,6 +496,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112011442138_InitialModel.resx">
       <DependentUpon>202112011442138_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112101252353_EtatMessage.resx">
+      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,11 +10,11 @@
     </td>
 
     <td>
-        <input type="color" name="CodeCouleur" id="ColorPicker"/>
+        <input type="color" name="CodeCouleur" id="ColorPicker" />
     </td>
 
     <td class="noPhone">
-        <input type="text" id="CodeCouleurFix" value="#000000" disabled/>
+        <input type="text" id="CodeCouleurFix" value="#000000" disabled />
     </td>
 
     <td>
@@ -22,10 +22,4 @@
     </td>
 }
 
-<script>
-    var colorPicker = document.getElementById('ColorPicker');
-
-    colorPicker.addEventListener("input", function() {
-        document.getElementById('CodeCouleurFix').value = colorPicker.value;
-    })
-</script>
+<script type="text/javascript" src="@Url.Content("/Content/Admin/js/ColorPicker.js")"></script>

@@ -2520,7 +2520,10 @@ ul.labels-info li img {
 }
 .table-inbox tr.unread td {
     font-weight:600;
-    background:#f7f7f7;
+}
+
+.table-inbox tr.read {
+    background: #f7f7f7;
 }
 
 .table-inbox tr.unread a {
@@ -3376,6 +3379,7 @@ ul.chat-available-user li a:hover {
   box-shadow: none;
   font-size: 14px;
   height: auto;
+  max-width: 100%;
 }
 
 .contact-form .form-send {
