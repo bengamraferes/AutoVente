@@ -31,9 +31,9 @@
                         <i class="fa fa-angle-down "></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Message"> Tous</a></li>
-                        <li><a href="/Message/Sorting/1"> Lus</a></li>
-                        <li><a href="/Message/Sorting/0"> Non lus</a></li>
+                        <li><a onclick="showAll()"> Tous</a></li>
+                        <li><a onclick="showOpened()"> Lus</a></li>
+                        <li><a onclick="showClosed()"> Non lus</a></li>
                     </ul>
                 </div>
             </div>
@@ -122,5 +122,36 @@
 </section>
 
 <script>
-    document.getElementsByClassName("read")
+    var read = document.getElementsByClassName('read');
+    var unread = document.getElementsByClassName('unread');
+
+    function showAll() {
+        for (var i = 0; i < read.length; i++) {
+            read[i].className = "read";
+        }
+
+        for (var i = 0; i < unread.length; i++) {
+            unread[i].className = "unread";
+        }
+    }
+
+    function showOpened() {
+        for (var i = 0; i < read.length; i++) {
+            read[i].className = "read";
+        }
+
+        for (var i = 0; i < unread.length; i++) {
+            unread[i].className = "unread hidden";
+        }
+    }
+
+    function showClosed() {
+        for (var i = 0; i < read.length; i++) {
+            read[i].className = "read hidden";
+        }
+
+        for (var i = 0; i < unread.length; i++) {
+            unread[i].className = "unread";
+        }
+    }
 </script>

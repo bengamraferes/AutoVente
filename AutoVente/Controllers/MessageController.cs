@@ -21,12 +21,6 @@ namespace AutoVente.Controllers
         // GET
         public ActionResult Index()
         {
-            if (TempData["MessagesSorted"] != null)
-            {
-                List<Message> messagesSorted = (List<Message>)TempData["MessagesSorted"];
-                return View(messagesSorted);
-            }
-
             List<Message> messages = service.GetAll().ToList();
             return View(messages);
         }
@@ -75,31 +69,6 @@ namespace AutoVente.Controllers
 
             service.Update(message);
             service.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
-        // GET Sorting/{param:alpha}
-        [Route("Message/Sorting/{id}")]
-        public ActionResult Sorting(int id)
-        {
-            EtatsMessage etat;
-            //var test = Request.Url.Segments[3];
-            if (id == 0)
-            {
-                etat = EtatsMessage.FERME;
-            }
-            else
-            {
-                etat = EtatsMessage.OUVERT;
-            }
-
-            //EtatsMessage etat = (EtatsMessage)Enum.Parse(typeof(EtatsMessage),test);
-
-            List<Message> messages = service.GetAll().Where(m => m.EtatMessage == etat).ToList();
-
-            TempData["MessagesSorted"] = messages;
-            TempData.Keep();
 
             return RedirectToAction("Index");
         }
