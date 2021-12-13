@@ -8,11 +8,30 @@
     1201px and more —  Extra large screens, TV
 */
 
+
+
+.btn-td {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.th-custom-button{
+    width:33%;
+}
+.custom-tr > th {
+    text-align: center
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 @media (min-width: 768px) {
     .smallerContent {
         width: 75%;
         margin: auto;
     }
+
 }
 
 @media (min-width: 482px) {
@@ -20,9 +39,6 @@
         width: 150px;
     }
 
-    table > tbody > tr > td > .form-control {
-        display: inherit;
-    }
 }
 
 @media (max-width: 481px) {
@@ -49,19 +65,9 @@ i {
     width: 100%;
     max-width: 120px;
 }
-
-.table{
-    text-align:center;
+.min-width-th{
+    min-width : 110px;
 }
 
-.table > tbody > tr > th {
-    vertical-align: middle !important;
-    text-align: center;
-}
-
-.table > tbody > tr > td {
-    vertical-align: middle;
-    width:25%;
-}
 
 

@@ -14,10 +14,15 @@ namespace AutoVente.Service
         {
             daoModel = new SqlRepositoryModel(new MyContext());
         }
-       public  List<Vehicule> FindByCarburent(Carburent carburent) {
-            return daoModel.FindByCarburent(carburent);
+
+        public override IQueryable<Model> GetAll()
+        {
+            return daoModel.Collection();
         }
 
+        public  List<Vehicule> FindByCarburent(Carburent carburent) {
+            return daoModel.FindByCarburent(carburent);
+        }
 
         public  List<Vehicule> FindByAnnees(DateTime dateMin, DateTime dateMax)
         {
@@ -39,6 +44,10 @@ namespace AutoVente.Service
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse)
         {
             return daoModel.FindBoiteDeVitesse(BoiteVitesse);
+        }
+        public void AddCouleurs(List<Couleur> couleurs, int IdModel)
+        {
+            daoModel.AddCouleurs(couleurs, IdModel);
         }
     }
 }

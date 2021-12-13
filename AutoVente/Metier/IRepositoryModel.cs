@@ -16,6 +16,7 @@ namespace AutoVente.Metier
         List<Vehicule> FindByPuissanceReel(int PuissanceMin, int PuissanceMax);
         List<Vehicule> FindByType(Type type);
         List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse);
+        void AddCouleurs(List<Couleur> couleurs, int IdModel);
 
     }
 }

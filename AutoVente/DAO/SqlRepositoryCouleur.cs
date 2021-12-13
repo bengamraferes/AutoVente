@@ -2,6 +2,7 @@
 using AutoVente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,20 @@ namespace AutoVente.DAO
     {
         public SqlRepositoryCouleur(MyContext dataContext) : base(dataContext)
         {
+        }
+
+        public override Couleur FindById(int id)
+        {
+            Couleur obj = dbSet.AsNoTracking().Include(c => c.Models).SingleOrDefault(x => x.Id == id);
+
+            if (obj != null)
+            {
+                return obj;
+            }
+            else
+            {
+                throw new Exception($"{obj.GetType()} introuvable");
+            }
         }
 
         public Couleur GetByCode(string CodeCouleur)

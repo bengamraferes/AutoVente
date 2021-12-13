@@ -1,0 +1,30 @@
+﻿@model AutoVente.ViewsModels.CouleurModelViewModel
+
+
+
+@using (Html.BeginForm("Couleur", "Model"))
+
+{
+   @Html.HiddenFor(model => model.Id);
+<div class=" col-xs-11 row">
+    @for (var i = 0; i < Model.Couleurs.Count(); i++)
+    {
+       
+    <div class="col-xs-2">
+       
+        @Html.CheckBoxFor(model => model.ChekboxViewModels[i].Checked)
+     
+        @Html.HiddenFor(model => model.ChekboxViewModels[i].IdCouleur);
+        <p>
+            @Model.Couleurs[i].Nom
+        </p>
+        <input type="color" name="Color" id="ColorPicker" value="@Model.Couleurs[i].CodeCouleur" disabled />
+    </div>
+        
+    }
+
+</div>
+<div class="col-xs-1">
+    <button type="submit" class="btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+</div>
+}

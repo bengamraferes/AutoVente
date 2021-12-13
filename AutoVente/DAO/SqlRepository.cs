@@ -40,7 +40,7 @@ namespace AutoVente.DAO
             dbSet.Remove(t);
         }
 
-        public T FindById(int id)
+        public virtual T FindById(int id)
         {
             T obj = dbSet.AsNoTracking().SingleOrDefault(x => x.Id == id);
 
