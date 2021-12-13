@@ -3379,6 +3379,7 @@ ul.chat-available-user li a:hover {
   box-shadow: none;
   font-size: 14px;
   height: auto;
+  max-width: 100%;
 }
 
 .contact-form .form-send {

@@ -12,6 +12,13 @@ i {
     font-size: 20px;
 }
 
+i {
+    vertical-align: middle;
+    font-size: 20px;
+    width: 23px;
+    text-align: center;
+}
+
 #ColorPicker {
     width: 100%;
     max-width: 120px;
@@ -36,6 +43,10 @@ i {
 
 .vertical-align tr td {
     vertical-align: middle !important;
+}
+
+.message-etat:hover {
+    cursor: alias;
 }
 
 .message-name-cell {
@@ -89,6 +100,48 @@ i {
     -webkit-box-orient: vertical;
 }
 
+.contact_details {
+    padding-top:5px;
+    padding-inline-start:20px;
+}
+
+.btn-contact {
+    max-width: 150px;
+    width: 150px;
+}
+
+.card-message-details {
+    height: auto;
+    border-radius: 15px;
+    background-color: lightcyan !important;
+    box-shadow: 0 2px 1px rgb(0 0 0 / 20%);
+}
+
+.card-message-details > * {
+    padding: 10px;
+}
+
+    .card-message-details > .message-title {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: rgb(0 0 0 / 8%);
+        font-size: 24px;
+        border-bottom: solid 1px;
+    }
+
+    .card-message-details > .message-content {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        font-size: 18px;
+    }
+
+.btnPersoMessage {
+    width: 120px;
+    max-width: inherit;
+}
+
+
+
 /*
     Liste des diffétenes résolution par defaut
 
@@ -116,6 +169,14 @@ i {
     }
 
     .modal-subtitle {
+        font-size: 16px;
+    }
+
+    .card-message-details > .message-title {
+        font-size: 22px;
+    }
+
+    .card-message-details > .message-content {
         font-size: 16px;
     }
 }
@@ -148,6 +209,14 @@ i {
     }
 
     .modal-subtitle {
+        font-size: 14px;
+    }
+
+    .card-message-details > .message-title {
+        font-size: 20px;
+    }
+
+    .card-message-details > .message-content {
         font-size: 14px;
     }
 }
