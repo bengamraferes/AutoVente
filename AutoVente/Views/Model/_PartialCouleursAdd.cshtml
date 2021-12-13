@@ -7,7 +7,7 @@
 {
    @Html.HiddenFor(model => model.Id);
 <div class=" col-xs-11 row">
-    @for (var i = 0; i < Model.Couleurs.Count(); i++)
+    @for (var i = 0; i < Model.ChekboxViewModels.Count; i++)
     {
        
     <div class="col-xs-2">
@@ -16,9 +16,9 @@
      
         @Html.HiddenFor(model => model.ChekboxViewModels[i].IdCouleur);
         <p>
-            @Model.Couleurs[i].Nom
+            @Model.couleurView[i].Nom
         </p>
-        <input type="color" name="Color" id="ColorPicker" value="@Model.Couleurs[i].CodeCouleur" disabled />
+        <input type="color" name="Color" id="ColorPicker" value="@Model.couleurView[i].CodeCouleur" disabled />
     </div>
         
     }

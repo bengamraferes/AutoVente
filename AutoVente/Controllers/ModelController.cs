@@ -1,10 +1,13 @@
-﻿using AutoVente.Extensions;
+﻿using AutoVente.DAO;
+using AutoVente.Extensions;
 using AutoVente.Models;
 using AutoVente.Service;
 using AutoVente.ViewsModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,11 +17,12 @@ namespace AutoVente.Controllers
     {
         private ModelService service;
         private CouleurService serviceCouleur;
-
+        private MyContext context;
         public ModelController( )
         {
             service = new ModelService();
             serviceCouleur = new CouleurService();
+            context =  new MyContext();
         }
 
         // GET: Model
@@ -97,9 +101,9 @@ namespace AutoVente.Controllers
             service.SaveChanges();
             return RedirectToAction("index");
         }
-        public ActionResult Couleur()
+        public ActionResult Couleur(int id)
         {
-            TempData["AddModelouleurs"] = "AddModelouleurs";
+            TempData["AddModelouleurs"+ id.ToString()] = "AddModelouleurs" + id.ToString();
             TempData.Keep();
 
             return RedirectToAction("index");
@@ -109,20 +113,22 @@ namespace AutoVente.Controllers
         {
             if (ModelState.IsValidField("Id") && ModelState.IsValidField("ChekboxViewModels"))
             {
-                Model model = service.FindById(viewModel.Id);
+                
                 List<Couleur> couleurs = new List<Couleur>();
                 foreach (var item in viewModel.ChekboxViewModels)
                 {
                     if (item.Checked)
                     {
                         Couleur couleur = serviceCouleur.FindById(item.IdCouleur);
+                        context.Models.Include(m => m.Couleurs).SingleOrDefault(x => x.Id == viewModel.Id).Couleurs.Add(couleur);
+
                         couleurs.Add(couleur);
                     }
                   
-
                 }
-                service.AddCouleurs(couleurs, viewModel.Id);
-                service.SaveChanges();
+                context.SaveChanges();
+               
+         
                 return RedirectToAction("index");
             }
             else
