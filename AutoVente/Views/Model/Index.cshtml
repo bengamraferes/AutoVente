@@ -59,20 +59,16 @@
                 <th class="th-custom-button">
                     @if (TempData["CreateModel"] != null)
                     {
-                        <a href="~/Model" class=" btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
+                        @*<a href="~/Model" class=" btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>*@
                     }
                     else
                     {
-                        <a href="~/Model/Create" class=" btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle Marque</span></a>
+                        <a href="~/Model/Create" class=" btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouveau Model</span></a>
 
                     }
                 </th>
             </tr>
         </thead>
- 
-        
-        
-
 
         @foreach (var item in Model)
         {
@@ -89,12 +85,8 @@
 
             <tr class="@Html.Conditional(isCreate, "bg-success", "")">
 
-                @if (TempData["EditModel"] != null && TempData["IdModel"].ToString() == item.Id.ToString())
-                {
-                    @Html.Partial("_PartialEditModel", item);
-                    continue;
-                }
-                <td id="detail-btn-@item.Id" class="detail-btn row align-self-center ">
+                
+                <td id="detail-btn-@item.Id" class="detail-btn align-self-center ">
                     <i class="fas fa-2x fa-plus-circle"></i>
                 </td>
 
@@ -135,11 +127,8 @@
 
                 <td class="btn-td">
 
-                    <a href="~/Model/Edit/@item.Id" type="button" class=" button btn btn-info fontBlack">
-                        <i class="far fa-edit fontBlack"></i><span class="noPhone"> Modifier</span>
-                    </a>
 
-                    <a class=" button btn btn-danger fontBlack" data-toggle="modal" data-target="#@item.Id">
+                    <a class="btnAllwidth button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
                         <i class="fas fa-trash-alt "></i><span class="noPhone"> Supprimer</span>
                     </a>
 
@@ -167,32 +156,35 @@
 
                 </td>
             </tr>
-            <tr class="hidden" id="detail-tr-@item.Id">
+            <tr class="hidden" id="detail-tr-@item.Id" data-id="@item.Id">
                 <td colspan="100" data-title="Couleurs models">
                     @if (TempData["AddModelouleurs" + @item.Id] != null)
 
                     {
-                        @TempData["AddModelouleurs" + @item.Id]
+                       
                         @Html.Partial("_PartialCouleursAdd", new CouleurModelViewModel(item))
 
                     }
                     else
                     {
                     <div class=" d-flex flex-row  justify-content-between">
-                        @foreach (var couleur in item.Couleurs)
-                        {
+                        <div class="p-2 row row-flex w-75  ">
+                            @foreach (var couleur in item.Couleurs)
+                            {
 
-                            <div class="p-2 w-75 justify-content-around">
-                                <p>
-                                    @couleur.Nom
-                                </p>
-                                <input type="color" name="Color" id="ColorPicker" value="@couleur.CodeCouleur" disabled />
-                            </div>
-                            @item.Id
-                        }
+                                <div class=" col-md-2 col-sm-6 col-xs-12 ">
+                                    <p>
+                                        @couleur.Nom
+                                    </p>
+                                    <input type="color" name="Color" id="ColorPicker" value="@couleur.CodeCouleur" disabled />
+                                </div>
+                               
+                            }
+                        </div>
+                      
                    
-                        <div class="p-2">
-                            <a href="~/Model/Couleur/@item.Id" class=" btn btn-info fontBlack"><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle </span></a>
+                        <div class="p-4 w-25 row row-flex justify-content-end align-items-start">
+                            <a href="~/Model/Couleur/@item.Id" class=" btn btn-info fontBlack btnNouvelleCouleur"><i class="fas fa-plus"></i><span class="noTable">Nouvelle couleur </span></a>
                         </div>
                      </div>
                     }
