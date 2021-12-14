@@ -128,6 +128,7 @@
     <Compile Include="Controllers\CouleurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MarqueController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
@@ -157,6 +158,10 @@
     <Compile Include="Migrations\202112131935305_InitialModel.cs" />
     <Compile Include="Migrations\202112131935305_InitialModel.Designer.cs">
       <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112101252353_EtatMessage.cs" />
+    <Compile Include="Migrations\202112101252353_EtatMessage.Designer.cs">
+      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
@@ -388,6 +393,37 @@
     <Content Include="Content\Layout\images\pic13.jpg" />
     <Content Include="Content\Layout\images\pic14.jpg" />
     <Content Include="Content\Layout\images\pic15.jpg" />
+    <Content Include="Content\Layout\Site\assets\favicon.ico" />
+    <Content Include="Content\Layout\Site\assets\img\about\1.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\about\2.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\about\3.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\about\4.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\close-icon.svg" />
+    <Content Include="Content\Layout\Site\assets\img\header-bg.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\logos\facebook.svg" />
+    <Content Include="Content\Layout\Site\assets\img\logos\google.svg" />
+    <Content Include="Content\Layout\Site\assets\img\logos\ibm.svg" />
+    <Content Include="Content\Layout\Site\assets\img\logos\microsoft.svg" />
+    <Content Include="Content\Layout\Site\assets\img\map-image.png" />
+    <Content Include="Content\Layout\Site\assets\img\navbar-logo.svg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\1.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\2.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\3.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\4.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\5.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\portfolio\6.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\team\1.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\team\2.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\team\3.jpg" />
+    <Content Include="Content\Layout\Site\css\colorpicker.css" />
+    <Content Include="Content\Layout\Site\css\layout.css" />
+    <Content Include="Content\Layout\Site\css\styles.css" />
+    <Content Include="Content\Layout\Site\js\colorpicker.js" />
+    <Content Include="Content\Layout\Site\js\eye.js" />
+    <Content Include="Content\Layout\Site\js\jquery.js" />
+    <Content Include="Content\Layout\Site\js\layout.js" />
+    <Content Include="Content\Layout\Site\js\scripts.js" />
+    <Content Include="Content\Layout\Site\js\utils.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -434,6 +470,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\Admin\js\ColorPicker.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -459,12 +496,16 @@
     <Content Include="Views\Admin\AllUtilisateurs.cshtml" />
     <Content Include="Views\Admin\_PartialEditUtilisateur.cshtml" />
     <Content Include="Views\Couleur\_PartialCouleurAdd.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\ContactAsupprimer.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
     <Content Include="Views\Marque\Index.cshtml" />
     <Content Include="Views\Marque\_PartialEditMarque.cshtml" />
     <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
+    <Content Include="Views\Message\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -481,6 +522,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112131935305_InitialModel.resx">
       <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112101252353_EtatMessage.resx">
+      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

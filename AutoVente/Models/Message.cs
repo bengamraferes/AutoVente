@@ -10,7 +10,7 @@ namespace AutoVente.Models
     [Table("messages")]
     public class Message : BaseEntity
     {
-      
+
         [Required]
         [MaxLength(3000)]
         [DataType(DataType.MultilineText)]
@@ -19,13 +19,14 @@ namespace AutoVente.Models
         [MaxLength(100)]
         public string Titre { get; set; }
         [Required]
-        public bool Ouvert { get; set; }
+        public EtatsMessage EtatMessage { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        public Utilisateur Utilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
         [ForeignKey("Utilisateur")]
         public int IdUtilisateur { get; private set; }
+
         public Message(string contenu, string titre, Utilisateur utilisateur)
         {
             Contenu = contenu;
@@ -35,5 +36,14 @@ namespace AutoVente.Models
             IdUtilisateur = utilisateur.Id;
         }
 
+        public Message()
+        {
+        }
+    }
+
+    public enum EtatsMessage
+    {
+        OUVERT,
+        FERME
     }
 }

@@ -1,0 +1,66 @@
+﻿@model AutoVente.Models.Message
+
+<h2>Contact</h2>
+
+<section>
+    <div class="row">
+        <div class="col-6">
+            JE SUIS ICI
+        </div>
+        <div class="col-6">
+            JE SUIS ICI
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Contenu, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <input type="submit" value="Envoyer" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-sm-6">
+            <h4 class="title">Autres contacts</h4>
+            <p>La façon la plus éfficace de nous contacter est le formulaire de cette page mais vous pouvez aussi nous contacter via les différentes façons citées ci-dessous.</p>
+            <ul class="contact_details">
+                <li><i class="fas fa-at"></i> : <a href="mailto:auto.vente@concession.fr">auto.vente@concession.fr</a></li>
+                <li><i class="fa fa-phone-square"></i> : <a href="tel:0627483612">+33 6.27.48.36.12</a></li>
+                <li>
+                    <i class="fa fa-home"></i> : <a href="https://www.google.com/maps/place/Nantes+Automobiles,+10+Imp.+de+Belgique,+44300+Nantes/@Html.Raw("@")47.2600598,-1.5073328,17z/data=!4m5!1m2!2m1!1snantes+automobile!3m1!1s0x4805ef141078dd59:0xa89229aa5b3f958f">
+                        10 Imp. de Belgique, 44300 Nantes
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</section>

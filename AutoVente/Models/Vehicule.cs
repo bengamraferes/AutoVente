@@ -48,6 +48,10 @@ namespace AutoVente.Models
             IdModel = Model.Id;
             IdCouleur = Couleur.Id;
         }
+
+        public Vehicule()
+        {
+        }
     }
     public enum EtatVoiture
     {
@@ -60,7 +64,7 @@ namespace AutoVente.Models
         TRES_MOVAIS = 7
     }
 }
-  
+
 
 
 
