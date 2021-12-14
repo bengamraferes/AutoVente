@@ -155,11 +155,19 @@ i {
     width: var(--wdth);
     
 }
-
+.detail-btn {
+    cursor: pointer
+}
+.table-layout{
+    margin-top: 3em
+}
+.section-form {
+    margin: 3em;
+}
 .btnNouvelleCouleur {
     min-width: var(--WidtMax);
     width: var(--wdth);
-    padding-left:5px
+    padding-left: 5px
 }
 .btnNouvelleCouleurVS {
     min-width: var(--WidtMax);

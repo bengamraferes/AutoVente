@@ -9,7 +9,7 @@
 
 <h2>Models</h2>
 @Html.Partial("_Notifications")
-<section >
+<section class="section-form ">
     @if (TempData["CreateModel"] != null)
     {
         @Html.Partial("_PartialCreateModel", new ModelMarqueViewModel())
@@ -74,6 +74,7 @@
         {
 
             bool isCreate = false;
+            bool isAddCouleur = false;
 
 
             if (TempData["NomModel"] != null && item.Nom.ToString() == TempData["NomModel"].ToString())
@@ -82,12 +83,15 @@
 
 
             }
-
+            if (TempData["AddModelouleurs" + @item.Id] != null)
+            {
+                isAddCouleur = true;
+            }
             <tr class="@Html.Conditional(isCreate, "bg-success", "")">
 
                 
                 <td id="detail-btn-@item.Id" class="detail-btn align-self-center ">
-                    <i class="fas fa-2x fa-plus-circle"></i>
+                    <i class="fas fa-2x @Html.Conditional(isAddCouleur, "fa-minus-circle", "fa-plus-circle")"></i>
                 </td>
 
                 <td>
@@ -156,7 +160,8 @@
 
                 </td>
             </tr>
-            <tr class="hidden" id="detail-tr-@item.Id" data-id="@item.Id">
+          
+            <tr class="hidden @Html.Conditional(isAddCouleur, "active", "")" id="detail-tr-@item.Id" data-id="@item.Id">
                 <td colspan="100" data-title="Couleurs models">
                     @if (TempData["AddModelouleurs" + @item.Id] != null)
 
