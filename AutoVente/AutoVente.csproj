@@ -155,13 +155,9 @@
     <Compile Include="Metier\IRepositoryModel.cs" />
     <Compile Include="Metier\IRepositoryUtilisateur.cs" />
     <Compile Include="Metier\IRepositoryVehicule.cs" />
-    <Compile Include="Migrations\202112131935305_InitialModel.cs" />
-    <Compile Include="Migrations\202112131935305_InitialModel.Designer.cs">
-      <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112101252353_EtatMessage.cs" />
-    <Compile Include="Migrations\202112101252353_EtatMessage.Designer.cs">
-      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
+    <Compile Include="Migrations\202112141058153_InitialModel.cs" />
+    <Compile Include="Migrations\202112141058153_InitialModel.Designer.cs">
+      <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
@@ -520,11 +516,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202112131935305_InitialModel.resx">
-      <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112101252353_EtatMessage.resx">
-      <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112141058153_InitialModel.resx">
+      <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

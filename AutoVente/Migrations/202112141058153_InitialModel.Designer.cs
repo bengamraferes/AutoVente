@@ -13,7 +13,7 @@ namespace AutoVente.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202112131935305_InitialModel"; }
+            get { return "202112141058153_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

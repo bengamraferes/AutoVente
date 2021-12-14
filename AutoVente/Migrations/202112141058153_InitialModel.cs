@@ -72,7 +72,7 @@ namespace AutoVente.Migrations
                         Numero = c.String(nullable: false, maxLength: 50),
                         Carburent = c.Int(nullable: false),
                         EmissionCo2 = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Annee = c.String(nullable: false),
+                        Annee = c.String(nullable: false, maxLength: 4),
                         PuissanceReel = c.Int(nullable: false),
                         NbPlaces = c.Int(nullable: false),
                         Type = c.Int(nullable: false),
@@ -144,7 +144,7 @@ namespace AutoVente.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Contenu = c.String(nullable: false, maxLength: 3000),
                         Titre = c.String(nullable: false, maxLength: 100),
-                        Ouvert = c.Boolean(nullable: false),
+                        EtatMessage = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         IdUtilisateur = c.Int(nullable: false),
                     })

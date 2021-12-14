@@ -17,7 +17,8 @@ namespace AutoVente.DAO
         public override IQueryable<Couleur> Collection()
         {
 
-            return dbSet.Include(c => c.Models);
+            return dbSet.Include(c => c.Models).Include(c => c.Vehicules);
+            
 
 
         }
