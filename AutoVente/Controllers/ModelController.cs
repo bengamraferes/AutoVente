@@ -17,11 +17,13 @@ namespace AutoVente.Controllers
     {
         private ModelService service;
         private CouleurService serviceCouleur;
+        private MarqueService serviceMarque;
         private MyContext context;
         public ModelController( )
         {
             service = new ModelService();
             serviceCouleur = new CouleurService();
+            serviceMarque = new MarqueService();
             context =  new MyContext();
         }
 
@@ -73,12 +75,13 @@ namespace AutoVente.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ModelMarqueViewModel viewModel)
+        public ActionResult Create([Bind(Include = "MarqueId,Model")] ModelMarqueViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Model model = viewModel.Model;
-                //model.Marque = model.
+                List<Couleur> couleurs = serviceCouleur.GetBlackAndwhite();
+                Marque marque = serviceMarque.FindById(viewModel.MarqueId);
+                Model model =  new Model(viewModel.Model.Numero,viewModel.Model.Carburent, viewModel.Model.EmissionCo2, viewModel.Model.Annee, viewModel.Model.PuissanceReel, viewModel.Model.NbPlaces, viewModel.Model.Type, viewModel.Model.Prix, viewModel.Model.BoiteDeVitesse,couleurs,marque, viewModel.Model.Nom);
                 service.Insert(model);
                 service.SaveChanges();
                 this.AddNotification("Creation de la" + model.Nom, NotificationType.SUCCESS);
@@ -114,15 +117,15 @@ namespace AutoVente.Controllers
             if (ModelState.IsValidField("Id") && ModelState.IsValidField("ChekboxViewModels"))
             {
                 
-                List<Couleur> couleurs = new List<Couleur>();
+            
                 foreach (var item in viewModel.ChekboxViewModels)
                 {
                     if (item.Checked)
                     {
-                        Couleur couleur = serviceCouleur.FindById(item.IdCouleur);
-                        context.Models.Include(m => m.Couleurs).SingleOrDefault(x => x.Id == viewModel.Id).Couleurs.Add(couleur);
+                        Couleur c =  context.Couleurs.SingleOrDefault(co => co.Id == item.IdCouleur);
+                        context.Models.Include(m => m.Couleurs).SingleOrDefault(x => x.Id == viewModel.Id).Couleurs.Add(c);
 
-                        couleurs.Add(couleur);
+                        
                     }
                   
                 }

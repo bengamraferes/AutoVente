@@ -8,7 +8,11 @@
     1201px and more —  Extra large screens, TV
 */
 
-
+.longDropdownList {
+    width: 450px;
+    font-family: Wingdings !important;
+    font-size: .9em;
+}
 
 .btn-td {
     display: flex;
@@ -16,7 +20,8 @@
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .th-custom-button{
-    width:33%;
+    min-width:33%;
+    max-width :33%;
 }
 .custom-tr > th {
     text-align: center

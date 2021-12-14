@@ -13,6 +13,7 @@ namespace AutoVente.ViewsModels
         public List<Marque> Marques { get; set; }
         public Marque Marque { get; set; }
         public List<Couleur> couleurs { get; set; }
+        public int MarqueId { get; set; }
 
         private MarqueService serviceMarque;
 

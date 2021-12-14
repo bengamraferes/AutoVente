@@ -464,7 +464,6 @@
     <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
-    <Content Include="Views\Model\_PartialEditModel.cshtml" />
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>

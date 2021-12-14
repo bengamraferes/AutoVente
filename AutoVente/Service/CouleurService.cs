@@ -29,5 +29,16 @@ namespace AutoVente.Service
         {
             return daoCouleur.GetByCode(code);
         }
+        public List<Couleur> GetBlackAndwhite()
+        {
+            Couleur white = FindByCode("#FFFFFF");
+            Couleur black = FindByCode("#000000");
+            List<Couleur> lst = new List<Couleur>();
+            lst.Add(black);
+            lst.Add(white);
+            return lst;
+
+
+        }
     }
 }
