@@ -14,6 +14,11 @@ namespace AutoVente.DAO
         {
         }
 
+        public override IQueryable<Couleur> Collection()
+        {
+            return dbSet.AsNoTracking().Include(c => c.Vehicules);
+        }
+
         public override Couleur FindById(int id)
         {
             Couleur obj = dbSet.AsNoTracking().Include(c => c.Models).SingleOrDefault(x => x.Id == id);

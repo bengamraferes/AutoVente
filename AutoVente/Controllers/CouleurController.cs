@@ -87,6 +87,8 @@ namespace AutoVente.Controllers
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(int id)
         {
+            this.AddNotification($"Couleur {service.FindById(id).Nom} supprimé", NotificationType.SUCCESS);
+
             service.Delete(id);
             service.SaveChanges();
             return RedirectToAction("Index");

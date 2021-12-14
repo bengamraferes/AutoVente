@@ -53,11 +53,14 @@
                 <td class="noPhone">
                     @Html.DisplayFor(modelItem => item.CodeCouleur)
                 </td>
-                <td class="d-flex flex-column">
+                <td>
 
-                    <button type="button" class="btn btn-danger btnPersoCouleur fontBlack" data-toggle="modal" data-target="#@item.Id">
-                        <i class="fas fa-trash-alt"></i><span class="noPhone"> Supprimer</span>
-                    </button>
+                    @if (!item.Vehicules.Any())
+                    {
+                        <button type="button" class="btn btn-danger btnPersoCouleur fontBlack" data-toggle="modal" data-target="#@item.Id">
+                            <i class="fas fa-trash-alt"></i><span class="noPhone"> Supprimer</span>
+                        </button>
+                    }
 
                     <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

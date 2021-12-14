@@ -166,7 +166,7 @@ i {
 .card-message-details > .message-content {
     font-size: 14px;
 }
-  
+
 /*
   Liste des diffétenes résolution par defaut
 
@@ -178,7 +178,7 @@ i {
 */
 @media (min-width: 768px) {
     .smallerContent {
-        width: 75%;
+        width: 80%;
         margin: auto;
     }
 }
@@ -209,8 +209,8 @@ i {
 
 @media (min-width: 482px) {
     .btnPersoCouleur {
-        min-width: 150px;
-        width: 150px;
+        min-width: 180px;
+        width: 180px;
     }
 }
 
