@@ -16,7 +16,7 @@ namespace AutoVente.DAO
         }
         public override IQueryable<Model> Collection()
         {
-            return dbSet.Include(m => m.Marque).Include(m => m.Couleurs);
+            return dbSet.Include(m => m.Marque).Include(m =>m.Couleurs);
         }
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse boiteVitesse)
         {
@@ -101,17 +101,14 @@ namespace AutoVente.DAO
         public void AddCouleurs( List<Couleur> couleurs ,int IdModel)
         {
             Model model = dbSet.Include(m => m.Couleurs).SingleOrDefault(m => m.Id == IdModel);
+            
+            
             foreach (Couleur couleur in couleurs)
             {
-                
                 model.Couleurs.Add(couleur);
-                couleur.Models.Add(model);
-                dataContext.Couleurs.Attach(couleur);
-                dataContext.Entry(couleur).State = EntityState.Modified;
+               
             }
-
-            Update(model);
-            
+            dataContext.SaveChanges();
         }
     }
 }

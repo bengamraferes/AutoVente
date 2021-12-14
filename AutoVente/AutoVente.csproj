@@ -155,9 +155,9 @@
     <Compile Include="Metier\IRepositoryModel.cs" />
     <Compile Include="Metier\IRepositoryUtilisateur.cs" />
     <Compile Include="Metier\IRepositoryVehicule.cs" />
-    <Compile Include="Migrations\202112011442138_InitialModel.cs" />
-    <Compile Include="Migrations\202112011442138_InitialModel.designer.cs">
-      <DependentUpon>202112011442138_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202112131935305_InitialModel.cs" />
+    <Compile Include="Migrations\202112131935305_InitialModel.Designer.cs">
+      <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202112101252353_EtatMessage.cs" />
     <Compile Include="Migrations\202112101252353_EtatMessage.Designer.cs">
@@ -504,7 +504,6 @@
     <Content Include="Views\Marque\_PartialCreateMarque.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\_PartialCreateModel.cshtml" />
-    <Content Include="Views\Model\_PartialEditModel.cshtml" />
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
     <Content Include="Views\Message\Contact.cshtml" />
   </ItemGroup>
@@ -521,8 +520,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202112011442138_InitialModel.resx">
-      <DependentUpon>202112011442138_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112131935305_InitialModel.resx">
+      <DependentUpon>202112131935305_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112101252353_EtatMessage.resx">
       <DependentUpon>202112101252353_EtatMessage.cs</DependentUpon>

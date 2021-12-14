@@ -17,7 +17,6 @@ namespace AutoVente.Models
         [Display(Name ="Emission CO2")]
         public decimal EmissionCo2 { get; set; }
         [Required (ErrorMessage = "Date obligatoire")]
-        [DataType(DataType.Date)]
         public string Annee { get; set; }
         [Required(ErrorMessage = "Puissance du moteur obligatoire")]
         [Display(Name = "Puissance moteur")]
