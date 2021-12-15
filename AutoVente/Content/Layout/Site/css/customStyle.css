@@ -1,34 +1,17 @@
 ﻿
-.btn-circule {
+.btn-circle > div > a {
+    border-radius: 50% !important;
+    padding: inherit;
     width: 120px;
     height: 120px;
-    border: 5px solid #ffffff;
-    background-color: rgba(225,225,225,0.8) ;
-    
+    border: 5px solid #4a433b;
+    background-color: rgba(225,225,225,0.8);
     /* background-image: url("../assets/img/Citadine.jpg");*/
 }
-.btn-circule:hover {
+.btn-circle > div > a > img {
+    width: 100%;
+}
+    .btn-circle > div > a:hover {
+        background-color: rgba(225,225,225);
         box-shadow: #ffc800 -3px -3px 10px
     }
-#berline {
-    background-image: url("../assets/img/berline.png");
-    background-size:110%;
-    background-position: 30% 0%
-}
-#citadine {
-    background-image: url("../assets/img/citadine.png"); 
-    background-size:110%;
-    background-position: 60% 0%
-}
-#suv {
-    background-image: url("../assets/img/Suv.png") ;
-    background-size:110%;
-    background-position: 5% 0%
-}
-#sportive {
-    background-image: url("../assets/img/sportive.png");
-    background-size: 110%;
-    background-position: 5% 50%
-}
-
-    
