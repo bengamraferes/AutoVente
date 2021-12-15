@@ -1,4 +1,5 @@
-﻿using AutoVente.Extensions;
+﻿using AutoVente.DAO;
+using AutoVente.Extensions;
 using AutoVente.Models;
 using AutoVente.Service;
 using System;
@@ -12,10 +13,14 @@ namespace AutoVente.Controllers
     public class MessageController : Controller
     {
         private BaseService<Message> service;
+        private UtilisateurService utilisateurService;
+        private MyContext context;
 
         public MessageController()
         {
             service = new BaseService<Message>();
+            utilisateurService = new UtilisateurService();
+            context = new MyContext();
         }
 
         // GET
@@ -30,6 +35,21 @@ namespace AutoVente.Controllers
         {
             Message message = new Message();
             return View(message);
+        }
+
+        // POST
+        [HttpPost]
+        public ActionResult Contact(Message message)
+        {
+            if (ModelState.IsValid)
+            {
+                Utilisateur utilisateur = utilisateurService.GetByEmail(Session["email"].ToString());
+                Message messageFull = new Message(message.Contenu, message.Titre, utilisateur);
+
+                service.Insert(messageFull);
+                service.SaveChanges();
+            }
+            return RedirectToAction("Contact");
         }
 
         // GET

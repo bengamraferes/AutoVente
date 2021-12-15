@@ -24,6 +24,7 @@ namespace AutoVente.Service
         {
             return daoUtilisateur.GetByEmail(email);
         }
+
         public Utilisateur GetByTelephone(string telephone)
         {
             return daoUtilisateur.GetByTelephone(telephone);
