@@ -22,7 +22,7 @@
             <label class="form-label" for="form6Example1">Nom marque </label>
             <div class="form-outline">
                 <select class="form-control" aria-label=".form-select-lg example " name="MarqueId" pla>
-                    <option disabled  selected>Nom de la marque</option>
+                    <option disabled selected>Nom de la marque</option>
                     @foreach (var marque in Model.Marques)
                     {
                         <option value="@marque.Id">@marque.Nom</option>
@@ -53,7 +53,7 @@
         <div class="col">
             @Html.LabelFor(model => model.Model.Carburent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="form-outline">
-                @Html.EnumDropDownListFor(model => model.Model.Carburent, htmlAttributes: new { @class = "form-control" , @placeholder = "Essance" })
+                @Html.EnumDropDownListFor(model => model.Model.Carburent, htmlAttributes: new { @class = "form-control" , @selected = "Essence" })
                 @Html.ValidationMessageFor(model => model.Model.Carburent, "", new { @class = "text-danger" })
             </div>
         </div>
