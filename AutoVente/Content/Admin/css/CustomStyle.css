@@ -141,9 +141,40 @@ i {
     justify-content: space-around;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-.th-custom-button{
-    min-width:33%;
-    max-width :33%;
+
+.btnAllwidth, .btnNouvelleCouleur {
+    width: 100%;
+    max-width: inherit;
+}
+:root th.th-custom-button {
+    --WidtMax: calc(33%);
+    --wdth: 150px
+}
+.th-custom-button {
+    min-width: var(--WidtMax);
+    width: var(--wdth);
+    
+}
+.detail-btn {
+    cursor: pointer
+}
+.table-layout{
+    margin-top: 3em
+}
+.section-form {
+    margin: 3em;
+}
+.btnNouvelleCouleur {
+    min-width: var(--WidtMax);
+    width: var(--wdth);
+    padding-left: 5px
+}
+.btnNouvelleCouleurVS {
+    min-width: var(--WidtMax);
+    width: 150px;
+    padding-left: 5px;
+    max-width: inherit;
+    margin-bottom :5px;
 }
 .custom-tr > th {
     text-align: center
@@ -163,13 +194,15 @@ i {
 }
 
 .card-message-details > .message-title {
-    font-size: 20px;
+    font-size: 20px;>
 }
 
 .card-message-details > .message-content {
     font-size: 14px;
 }
-
+ th-custom-button> a {
+    width: 100% !important;
+}
 /*
   Liste des diffétenes résolution par defaut
 
@@ -184,9 +217,17 @@ i {
         width: 80%;
         margin: auto;
     }
+   
 }
 
 @media (max-width: 767px) {
+    .noTable {
+        visibility: hidden;
+        display: none;
+    }
+    .btnNouvelleCouleurVS{
+        width: 50px;
+    }
     .custom-modal-form {
         font-size: 18px;
         flex-direction: column;
