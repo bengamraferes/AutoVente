@@ -39,7 +39,16 @@ namespace AutoVente.Service
         }
         public List<Vehicule> FindByType(Models.Type type)
         {
-            return daoModel.FindByType(type);
+            List<Vehicule> vehicules = daoModel.FindByType(type);
+
+            if (vehicules.Count> 0)
+            {
+                return vehicules;
+            }
+            else
+            {
+                throw new Exception("Type introuvable");
+            }
         }
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse)
         {

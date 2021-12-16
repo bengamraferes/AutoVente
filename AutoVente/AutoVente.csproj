@@ -133,6 +133,7 @@
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Controllers\VehiculeController.cs" />
+    <Compile Include="Controllers\Voitures.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
     <Compile Include="DAO\SqlRepositoryAdresse.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\CouleurViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
+    <Compile Include="ViewsModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
@@ -522,6 +524,8 @@
     <Content Include="Views\Vehicule\Index.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateModel.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
+    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

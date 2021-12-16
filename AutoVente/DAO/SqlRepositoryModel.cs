@@ -89,7 +89,7 @@ namespace AutoVente.DAO
         public List<Vehicule> FindByType(Models.Type type)
         {
             List<Vehicule> vehicules = new List<Vehicule>();
-            List<Model> models = dbSet.AsNoTracking().Where(m => m.Type == type).ToList();
+            List<Model> models = dbSet.Include(m => m.Vehicules).AsNoTracking().Where(m => m.Type == type).ToList();
 
             foreach (var model in models)
             {
