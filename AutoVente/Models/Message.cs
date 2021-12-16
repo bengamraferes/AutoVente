@@ -27,17 +27,17 @@ namespace AutoVente.Models
         [ForeignKey("Utilisateur")]
         public int IdUtilisateur { get; private set; }
 
-        public Message(string contenu, string titre, Utilisateur utilisateur)
+        public Message(string contenu, string titre, Utilisateur utilisateur) : this()
         {
             Contenu = contenu;
             Titre = titre;
-            Date = DateTime.Now;
-            Utilisateur = utilisateur;
             IdUtilisateur = utilisateur.Id;
         }
 
         public Message()
         {
+            Date = DateTime.Now;
+            EtatMessage = EtatsMessage.FERME;
         }
     }
 

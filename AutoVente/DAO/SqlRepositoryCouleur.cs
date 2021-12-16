@@ -18,7 +18,7 @@ namespace AutoVente.DAO
         {
 
             return dbSet.Include(c => c.Models).Include(c => c.Vehicules);
-            
+
 
 
         }

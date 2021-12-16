@@ -2,6 +2,7 @@
 using AutoVente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,12 @@ namespace AutoVente.DAO
         public SqlRepositoryVehicule(MyContext dataContext) : base(dataContext)
         {
         }
+
+        public override IQueryable<Vehicule> Collection()
+        {
+            return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Couleur);
+        }
+
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();

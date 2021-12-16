@@ -53,7 +53,7 @@ namespace AutoVente.Models
                 if (this.Role == Roles.CLIENT)
                 {
                     _favories = value;
-                    
+
                 }
             }
         }
@@ -87,7 +87,7 @@ namespace AutoVente.Models
         {
         }
 
-        public Utilisateur(string prenom, string password, string email, Adresse adresse, Roles role, string nom) : base(nom) 
+        public Utilisateur(string prenom, string password, string email, Adresse adresse, Roles role, string nom) : base(nom)
         {
             Prenom = prenom;
             Password = password;
