@@ -11,7 +11,10 @@
 .btn-circle > div > a > img {
     width: 100%;
 }
-    .btn-circle > div > a:hover {
+.btn-circle > div > a  {
+       padding:0;
+}
+.btn-circle > div > a:hover {
         background-color: rgba(225,225,225);
         box-shadow: #ffc800 -3px -3px 10px
     }
