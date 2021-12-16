@@ -20,6 +20,9 @@ namespace AutoVente.Models
         [Required(ErrorMessage = "Kilometrage obligatoire")]
         [Column(TypeName = "bigint")]
         public int Kilometrage { get; set; }
+
+        [Required(ErrorMessage = "Prix obligatoire")]
+        public int Prix { get; set; }
         [Required(ErrorMessage = "Etat du vehicule obligatoire")]
         public EtatVoiture Etat { get; set; }
         public Model Model { get; private set; }

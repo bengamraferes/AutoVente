@@ -159,6 +159,10 @@
     <Compile Include="Migrations\202112141058153_InitialModel.Designer.cs">
       <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112160945414_AddPrixVoiture.cs" />
+    <Compile Include="Migrations\202112160945414_AddPrixVoiture.Designer.cs">
+      <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -530,6 +534,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112141058153_InitialModel.resx">
       <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112160945414_AddPrixVoiture.resx">
+      <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
