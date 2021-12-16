@@ -15,6 +15,11 @@ namespace AutoVente.Service
             daoVehicule = new SqlRepositoryVehicule(new MyContext());
         }
 
+        public override IQueryable<Vehicule> GetAll()
+        {
+            return daoVehicule.Collection();
+        }
+
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
            return daoVehicule.FindByEtat( etat);
