@@ -17,6 +17,12 @@
 <table class="table">
     <tr>
         <th>
+            Marque
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
         </th>
         <th>
@@ -39,31 +45,37 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kilometrage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Etat)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Immatriculation }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Immatriculation })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model.Nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model.Numero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kilometrage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Etat)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Immatriculation }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Immatriculation })
+    </td>
+</tr>
     }
 
 </table>

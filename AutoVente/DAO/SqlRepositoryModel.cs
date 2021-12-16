@@ -14,6 +14,21 @@ namespace AutoVente.DAO
         public SqlRepositoryModel(MyContext dataContext) : base(dataContext)
         {
         }
+
+        public override Model FindById(int id)
+        {
+            Model obj = dbSet.AsNoTracking().SingleOrDefault(x => x.Id == id);
+
+            if (obj != null)
+            {
+                return obj;
+            }
+            else
+            {
+                throw new Exception($"{obj.GetType()} introuvable");
+            }
+        }
+
         public override IQueryable<Model> Collection()
         {
             return dbSet.Include(m => m.Marque).Include(m =>m.Couleurs);
@@ -26,7 +41,7 @@ namespace AutoVente.DAO
             {
                 vehicules.AddRange(model.Vehicules);
             }
-            
+
             return vehicules;
         }
 
@@ -101,12 +116,12 @@ namespace AutoVente.DAO
         public void AddCouleurs( List<Couleur> couleurs ,int IdModel)
         {
             Model model = dbSet.Include(m => m.Couleurs).SingleOrDefault(m => m.Id == IdModel);
-            
-            
+
+
             foreach (Couleur couleur in couleurs)
             {
                 model.Couleurs.Add(couleur);
-               
+
             }
             dataContext.SaveChanges();
         }
