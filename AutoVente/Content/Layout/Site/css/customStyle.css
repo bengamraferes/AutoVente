@@ -1,0 +1,20 @@
+﻿
+.btn-circle > div > a {
+    border-radius: 50% !important;
+    padding: inherit;
+    width: 120px;
+    height: 120px;
+    border: 5px solid #4a433b;
+    background-color: rgba(225,225,225,0.8);
+    /* background-image: url("../assets/img/Citadine.jpg");*/
+}
+.btn-circle > div > a > img {
+    width: 100%;
+}
+.btn-circle > div > a  {
+       padding:0;
+}
+.btn-circle > div > a:hover {
+        background-color: rgba(225,225,225);
+        box-shadow: #ffc800 -3px -3px 10px
+    }

@@ -160,6 +160,10 @@
     <Compile Include="Migrations\202112141058153_InitialModel.Designer.cs">
       <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112160945414_AddPrixVoiture.cs" />
+    <Compile Include="Migrations\202112160945414_AddPrixVoiture.Designer.cs">
+      <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -359,6 +363,7 @@
     <Content Include="Content\Admin\lib\xchart\xcharts.min.js" />
     <Content Include="Content\Admin\lib\zabuto_calendar.js" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\img\istockphoto-931182692-170667a.jpg" />
     <Content Include="Content\Layout\assets\css\fontawesome-all.min.css" />
     <Content Include="Content\Layout\assets\css\images\arrow.svg" />
     <Content Include="Content\Layout\assets\css\main.css" />
@@ -397,6 +402,15 @@
     <Content Include="Content\Layout\Site\assets\img\about\4.jpg" />
     <Content Include="Content\Layout\Site\assets\img\close-icon.svg" />
     <Content Include="Content\Layout\Site\assets\img\header-bg.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\istockphoto-931182692-170667a.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\berline.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\break.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\citadine.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\ludospace.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\monospace.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\routiere.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\sportive.png" />
+    <Content Include="Content\Layout\Site\assets\img\logos-voiture\suv.png" />
     <Content Include="Content\Layout\Site\assets\img\logos\facebook.svg" />
     <Content Include="Content\Layout\Site\assets\img\logos\google.svg" />
     <Content Include="Content\Layout\Site\assets\img\logos\ibm.svg" />
@@ -409,10 +423,12 @@
     <Content Include="Content\Layout\Site\assets\img\portfolio\4.jpg" />
     <Content Include="Content\Layout\Site\assets\img\portfolio\5.jpg" />
     <Content Include="Content\Layout\Site\assets\img\portfolio\6.jpg" />
+    <Content Include="Content\Layout\Site\assets\img\Rolls_Royce_Car_Black_Background_Wallpaper.jpg" />
     <Content Include="Content\Layout\Site\assets\img\team\1.jpg" />
     <Content Include="Content\Layout\Site\assets\img\team\2.jpg" />
     <Content Include="Content\Layout\Site\assets\img\team\3.jpg" />
     <Content Include="Content\Layout\Site\css\colorpicker.css" />
+    <Content Include="Content\Layout\Site\css\customStyle.css" />
     <Content Include="Content\Layout\Site\css\layout.css" />
     <Content Include="Content\Layout\Site\css\styles.css" />
     <Content Include="Content\Layout\Site\js\colorpicker.js" />
@@ -522,6 +538,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112141058153_InitialModel.resx">
       <DependentUpon>202112141058153_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112160945414_AddPrixVoiture.resx">
+      <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
