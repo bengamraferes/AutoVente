@@ -33,6 +33,21 @@ i {
     width: 25%;
 }
 
+.noBootstrapHover {
+    --bs-table-hover-bg: inherit !important;
+}
+.custom-tbody {
+    border: 0px;
+}
+.custom-tbody > tr {
+    border: 1px solid #ddd;
+}
+.custom-tbody > tr:hover {
+    border: 1px solid #ddd;
+}
+.custom-tbody > tr > td{
+    border: 0px !important;
+}
 
 .vertical-align tr td {
     vertical-align: middle !important;
@@ -153,7 +168,7 @@ i {
 .th-custom-button {
     min-width: var(--WidtMax);
     width: var(--wdth);
-    
+
 }
 .detail-btn {
     cursor: pointer
@@ -217,7 +232,7 @@ i {
         width: 80%;
         margin: auto;
     }
-   
+
 }
 
 @media (max-width: 767px) {
