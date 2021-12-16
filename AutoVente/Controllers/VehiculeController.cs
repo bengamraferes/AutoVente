@@ -17,13 +17,14 @@ namespace AutoVente.Controllers
             service = new VehiculeService();
         }
 
-        // GET: Voiture
+        // GET
         public ActionResult Index()
         {
             List<Vehicule> vehicules = service.GetAll().OrderBy(v => v.Model.Marque.Nom).ToList();
             return View(vehicules);
         }
 
+        //GET
         public ActionResult Create()
         {
 

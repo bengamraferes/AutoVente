@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<AutoVente.Models.Vehicule>
+@using AutoVente.Models
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,7 +9,7 @@
 
 @if (TempData["CreateVehicule"] != null)
 {
-    @Html.Partial("_PartialCreateVehicule")
+    @Html.Partial("_PartialCreateVehicule", new Vehicule())
 }
 
 <a href="~/Vehicule/Create" class=" btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
