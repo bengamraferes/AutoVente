@@ -186,6 +186,7 @@
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\CouleurViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
+    <Compile Include="ViewsModels\VehiculeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
