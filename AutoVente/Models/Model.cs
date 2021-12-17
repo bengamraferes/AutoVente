@@ -17,9 +17,7 @@ namespace AutoVente.Models
         [Display(Name ="Emission CO2")]
         public decimal EmissionCo2 { get; set; }
         [Required (ErrorMessage = "Date obligatoire")]
-        [MaxLength(4)]
-        [MinLength(4)]
-        public string Annee { get; set; }
+        public int Annee { get; set; }
         [Required(ErrorMessage = "Puissance du moteur obligatoire")]
         [Display(Name = "Puissance moteur")]
         [Range(0,500)]
@@ -44,7 +42,7 @@ namespace AutoVente.Models
         {
         }
 
-        public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, int nbPlaces, Type type, decimal prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
+        public Model(string numero, Carburent carburent, decimal emissionCo2, int annee, int puissanceReel, int nbPlaces, Type type, decimal prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
         {
             Vehicules = new List<Vehicule>();
             Couleurs = new List<Couleur>();
@@ -58,7 +56,7 @@ namespace AutoVente.Models
             Prix = prix;
             BoiteDeVitesse = boiteDeVitesse;
             Couleurs = couleurs;
-            Marque = marque;
+            //Marque = marque;
             MarqueId = marque.Id;
             Nom = nom;
         }

@@ -103,13 +103,40 @@ namespace AutoVente.Controllers
             return View(SviewModel);
         }
         [HttpPost]
-        public ActionResult Search([Bind(Include = "IdModel")] SearchViewModel SviewModel)
+        public ActionResult Search( SearchViewModel SviewModel)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+            //Marque marque = marqueService.FindById(SviewModel.MarqueId);
+            //Model model = modelService.FindById(SviewModel.ModelId);
+            SviewModel.Marques = marqueService.GetAll().ToList();
+            SviewModel.Models = modelService.GetAll().ToList();
 
-            }
+            //List<Vehicule> vehiculesA =  modelService.FindByAnnees(SviewModel.AnneeMin, SviewModel.AnneeMax);
+            //List<Vehicule> vehiculesP = modelService.FindByPrix(SviewModel.PrixMin, SviewModel.PrixMax);
+            //List<Vehicule> vehiculesK = modelService.FindByPrix(SviewModel.kilometrageMin, SviewModel.kilometrageMax);
+            //List<Vehicule> _vehicules = new List<Vehicule>();
+            //_vehicules.AddRange(vehiculesA);
+            //_vehicules.AddRange(vehiculesP);
+            //_vehicules.AddRange(vehiculesK);
+            //List<string> AllImmatvehiculesNoDistict = _vehicules.Select(v => v.Immatriculation).ToList();
+            //List<string> AllImmatvehicules = AllImmatvehiculesNoDistict.Distinct().ToList();
+            //List<Vehicule> vehicules = from vehicule in _vehicules
+            //                group vehicule by vehicule
+            //                              into g
+            //                select g;
+            //foreach (var imatVehicule in AllImmatvehicules)
+            //{
+            //    Vehicule ve = _vehicules.FirstOrDefault(v => v.Immatriculation == imatVehicule);
+            //    vehicules.Add(ve);
+            //}
+            //List<Vehicule> vehicules = modelService.SearchModel(SviewModel.PrixMin, SviewModel.PrixMax, SviewModel.AnneeMin, SviewModel.AnneeMax, SviewModel.Carburent, SviewModel.Type);
+            List<Vehicule> vehicules = new List<Vehicule>();
+            SviewModel.Vehicules = vehicules;
+
             return View(SviewModel);
+
+
         }
     }
 }

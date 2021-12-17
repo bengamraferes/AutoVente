@@ -165,6 +165,10 @@
     <Compile Include="Migrations\202112160945414_AddPrixVoiture.Designer.cs">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112170942003_UpdateAnneeModel.cs" />
+    <Compile Include="Migrations\202112170942003_UpdateAnneeModel.Designer.cs">
+      <DependentUpon>202112170942003_UpdateAnneeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -187,6 +191,7 @@
     <Compile Include="Service\ModelService.cs" />
     <Compile Include="Service\UtilisateurService.cs" />
     <Compile Include="Service\VehiculeService.cs" />
+    <Compile Include="Tools\MyMethodes.cs" />
     <Compile Include="ViewsModels\AdresseUtilisateurViewModel.cs" />
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\CouleurViewModel.cs" />
@@ -545,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112160945414_AddPrixVoiture.resx">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112170942003_UpdateAnneeModel.resx">
+      <DependentUpon>202112170942003_UpdateAnneeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
