@@ -19,6 +19,10 @@ i {
     max-width: 120px;
 }
 
+.table-shadow {
+    box-shadow: 3px 3px 7px 3px rgba(0,0,0,0.4);
+}
+
 .table-couleur {
     text-align: center;
 }
