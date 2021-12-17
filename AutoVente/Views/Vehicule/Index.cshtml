@@ -12,6 +12,8 @@
     @Html.Partial("_PartialCreateVehicule", new VehiculeViewModel())
 }
 
+@Html.Partial("_Notifications")
+
 <a href="~/Vehicule/Create" class=" btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
 
 <table class="table">
@@ -45,37 +47,58 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Model.Nom)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Model.Numero)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Kilometrage)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Etat)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Immatriculation }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Immatriculation })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etat)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Immatriculation }) |
+                <a class="btnAllwidth button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
+                    <i class="fas fa-trash-alt "></i><span class="noPhone"> Supprimer</span>
+                </a>
+
+                <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Supprimer : @item.Model.Marque.Nom - @item.Model.Nom</h4>
+                            </div>
+                            <div class="modal-body">
+                                Etes vous sûr de vouloir supprimer se véhicule ?
+                            </div>
+                            <div class="modal-footer">
+                                <form method="post" action="/Vehicule/Delete/@item.Id">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                    <input type="submit" class="btn btn-danger" value="Valider">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
     }
 
 </table>

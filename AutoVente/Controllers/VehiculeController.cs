@@ -1,4 +1,6 @@
-﻿using AutoVente.Models;
+﻿using AutoVente.DAO;
+using AutoVente.Extensions;
+using AutoVente.Models;
 using AutoVente.Service;
 using AutoVente.ViewsModels;
 using System;
@@ -13,13 +15,17 @@ namespace AutoVente.Controllers
     {
         private VehiculeService service;
         private ModelService serviceModel;
+        private MarqueService serviceMarque;
         private CouleurService serviceCouleur;
+        private MyContext context;
 
         public VehiculeController()
         {
             service = new VehiculeService();
             serviceModel = new ModelService();
+            serviceMarque = new MarqueService();
             serviceCouleur = new CouleurService();
+            context = new MyContext();
         }
 
         // GET
@@ -46,21 +52,36 @@ namespace AutoVente.Controllers
         {
             if (ModelState.IsValid)
             {
-                Model mdl = serviceModel.FindById(viewModel.ModelId);
-                Couleur couleur = serviceCouleur.FindById(viewModel.CouleurId);
-
                 Vehicule vehicule = new Vehicule(
                 viewModel.Vehicule.Immatriculation,
                 viewModel.Vehicule.DateMisEnCirculation,
                 viewModel.Vehicule.Kilometrage,
                 viewModel.Vehicule.Etat,
-                mdl,
-                couleur
+                viewModel.ModelId,
+                viewModel.CouleurId
                 );
 
                 service.Insert(vehicule);
                 service.SaveChanges();
+
+                string modelNom = serviceModel.FindById(viewModel.ModelId).Nom;
+                string MarqueNom = serviceMarque.FindById(serviceModel.FindById(viewModel.ModelId).MarqueId).Nom;
+
+                this.AddNotification($"Creation du véhicule {MarqueNom} - {modelNom} réussi.", NotificationType.SUCCESS);
+                //context.Vehicule.Add(vehicule);
+                //context.SaveChanges();
             }
+
+            return RedirectToAction("index");
+        }
+
+        //GET
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            service.Delete(id);
+            service.SaveChanges();
 
             return RedirectToAction("index");
         }

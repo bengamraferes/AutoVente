@@ -33,7 +33,7 @@ namespace AutoVente.Models
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
         public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
         public List<Utilisateur> Utilisateurs { get; set; }
-        public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, Model model, Couleur couleur/*, List<Photo> photos*/)
+        public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, int idModel, int idCouleur/*, List<Photo> photos*/)
         {
             HystoriqueAchats = new List<HystoriqueAchatVente>();
             HystoriqueFrais = new List<HystoriqueFrai>();
@@ -42,11 +42,9 @@ namespace AutoVente.Models
             DateMisEnCirculation = dateMisEnCirculation;
             Kilometrage = kilometrage;
             Etat = etat;
-            Model = model;
-            Couleur = couleur;
             //Photos = photos;
-            IdModel = Model.Id;
-            IdCouleur = Couleur.Id;
+            IdModel = idModel;
+            IdCouleur = idCouleur;
         }
 
         public Vehicule()
