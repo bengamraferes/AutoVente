@@ -133,7 +133,6 @@
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Controllers\VehiculeController.cs" />
-    <Compile Include="Controllers\Voitures.cs" />
     <Compile Include="DAO\MyContext.cs" />
     <Compile Include="DAO\SqlRepository.cs" />
     <Compile Include="DAO\SqlRepositoryAdresse.cs" />

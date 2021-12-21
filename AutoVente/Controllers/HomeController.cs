@@ -1,5 +1,6 @@
 ﻿using AutoVente.Models;
 using AutoVente.Service;
+using AutoVente.Tools;
 using AutoVente.ViewsModels;
 using Microsoft.Ajax.Utilities;
 using System;
@@ -130,8 +131,8 @@ namespace AutoVente.Controllers
             //    Vehicule ve = _vehicules.FirstOrDefault(v => v.Immatriculation == imatVehicule);
             //    vehicules.Add(ve);
             //}
-            //List<Vehicule> vehicules = modelService.SearchModel(SviewModel.PrixMin, SviewModel.PrixMax, SviewModel.AnneeMin, SviewModel.AnneeMax, SviewModel.Carburent, SviewModel.Type);
-            List<Vehicule> vehicules = new List<Vehicule>();
+            List<Vehicule> vehicules = modelService.SearchModel(SviewModel.PrixMin, SviewModel.PrixMax, SviewModel.AnneeMin, SviewModel.AnneeMax, MyMethodes.GetValueCarburent(SviewModel.Carburent.ToString()), MyMethodes.GetValueType(SviewModel.Type.ToString()),MyMethodes.GetValueBoiteVitesse(SviewModel.BoiteVitesse.ToString()),SviewModel.MarqueId);
+            
             SviewModel.Vehicules = vehicules;
 
             return View(SviewModel);

@@ -13,10 +13,10 @@ namespace AutoVente.ViewsModels
         public List<Vehicule> Vehicules { get; set; }
         public int MarqueId { get; set; }
         public int ModelId { get; set; }
-        public Models.Type Type { get; set; }
+        public TypeViewModel Type { get; set; }
 
-        public CarburentVioModel Carburent { get; set; }
-        public BoiteVitesse BoiteVitesse { get; set; }
+        public CarburentViewModel Carburent { get; set; }
+        public BoiteVitesseViewModel BoiteVitesse { get; set; }
 
         public int PrixMin { get; set; }
         public int PrixMax { get; set; }
@@ -31,12 +31,31 @@ namespace AutoVente.ViewsModels
 
 
     }
-    public enum CarburentVioModel
+    public enum CarburentViewModel
     {
-        All =0,
+        TOUT =0,
         ESSENCE = 1,
         GASOLE = 2,
         ELECTRIQUE = 3,
         HYBRIDE = 4,
     }
+    public enum BoiteVitesseViewModel
+    {
+        TOUT = 0,
+        AUTO = 1,
+        MANUEL = 2
+    }
+    public enum TypeViewModel
+    {
+        TOUT = 0,
+        BREAK = 1,
+        CITADINE = 2,
+        ROUTIERE = 3,
+        SPROTIVE = 4,
+        MONOSPACE = 5,
+        SUV = 6,
+        LUDOSPACE = 7,
+        BERLINE = 8
+    }
+
 }

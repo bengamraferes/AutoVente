@@ -58,9 +58,9 @@ namespace AutoVente.Service
         {
             daoModel.AddCouleurs(couleurs, IdModel);
         }
-        public List<Vehicule> SearchModel(decimal PrixMin, decimal prixMax, int dateMin, int dateMax, Carburent carburent, Models.Type type)
+        public List<Vehicule> SearchModel(decimal PrixMin, decimal prixMax, int dateMin, int dateMax, Carburent carburent, Models.Type type, BoiteVitesse boiteVitesse, int marqueId)
         {
-          return  daoModel.SearchModel(PrixMin, prixMax, dateMin, dateMax, carburent, type);
+          return  daoModel.SearchModel(PrixMin, prixMax, dateMin, dateMax, carburent, type, boiteVitesse, marqueId);
         }
     }
 }

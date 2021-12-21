@@ -108,10 +108,14 @@ namespace AutoVente.DAO
             }
             dataContext.SaveChanges();
         }
-        public List<Vehicule> SearchModel(decimal PrixMin, decimal prixMax, int dateMin, int dateMax, Carburent carburent, Models.Type type)
+        public List<Vehicule> SearchModel(decimal PrixMin, decimal prixMax, int dateMin, int dateMax, Carburent carburent, Models.Type type, BoiteVitesse boiteVitesse, int marqueId)
         {
             List<Vehicule> vehicules = new List<Vehicule>();
             List<Model> models = dbSet.Include(m => m.Vehicules).AsNoTracking().Where(m => m.Prix >= PrixMin && m.Prix <= prixMax).Where(m => m.Annee >= dateMin && m.Annee <= dateMax).ToList();
+            if (marqueId != 0)
+            {
+                models = models.Where(m => m.MarqueId == marqueId).ToList();
+            }
             if (carburent != 0)
             {
                 models = models.Where(m => m.Carburent == carburent).ToList();
@@ -119,6 +123,10 @@ namespace AutoVente.DAO
             if (type != 0)
             {
                 models = models.Where(m => m.Type == type).ToList();
+            }
+            if (boiteVitesse != 0)
+            {
+                models = models.Where(m => m.BoiteDeVitesse == boiteVitesse).ToList();
             }
             foreach (var model in models)
             {
