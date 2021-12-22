@@ -10,16 +10,18 @@
 
     @using (Html.BeginForm())
     {
-    
+
 
     <div class="form-horizontal">
+        <div id="nonlinear"></div>
         <h4>SearchViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.PrixMin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrixMin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PrixMin, new { htmlAttributes = new { @class = "form-control", @id = "input-numberMin" } })
                 @Html.ValidationMessageFor(model => model.PrixMin, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PrixMax, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrixMax, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PrixMax, new { htmlAttributes = new { @class = "form-control", @id = "input-number" } })
                 @Html.ValidationMessageFor(model => model.PrixMax, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -123,7 +125,7 @@
 <table class="table">
     <tr>
         <th>
-          code couleur
+            code couleur
         </th>
         <th>
             Numero
@@ -146,7 +148,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.Vehicules) {
+    @foreach (var item in Model.Vehicules) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
@@ -169,8 +171,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Etat)
         </td>
-   
+
     </tr>
 }
 
 </table>
+

@@ -18,6 +18,22 @@ namespace AutoVente.DAO
         {
             return dbSet.Include(m => m.Marque).Include(m =>m.Couleurs);
         }
+        public List<Vehicule> FindByIdModel(int id, Carburent carburent, BoiteVitesse boiteVitesse)
+        {
+            List<Vehicule> Vehicules = dbSet.AsNoTracking().Include(m => m.Vehicules).SingleOrDefault(m => m.Id == id).Vehicules;
+            if (carburent != 0)
+            {
+                Vehicules = Vehicules.Where(m => m.Model.Carburent == carburent).ToList();
+            }
+         
+            if (boiteVitesse != 0)
+            {
+                Vehicules = Vehicules.Where(m => m.Model.BoiteDeVitesse == boiteVitesse).ToList();
+            }
+
+            return Vehicules;
+
+        }
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse boiteVitesse)
         {
             List<Model> models = dbSet.AsNoTracking().Where(m => m.BoiteDeVitesse == boiteVitesse).ToList();
@@ -108,10 +124,10 @@ namespace AutoVente.DAO
             }
             dataContext.SaveChanges();
         }
-        public List<Vehicule> SearchModel(decimal PrixMin, decimal prixMax, int dateMin, int dateMax, Carburent carburent, Models.Type type, BoiteVitesse boiteVitesse, int marqueId)
+        public List<Vehicule> SearchModel( int dateMin, int dateMax, Carburent carburent, Models.Type type, BoiteVitesse boiteVitesse, int marqueId)
         {
             List<Vehicule> vehicules = new List<Vehicule>();
-            List<Model> models = dbSet.Include(m => m.Vehicules).AsNoTracking().Where(m => m.Prix >= PrixMin && m.Prix <= prixMax).Where(m => m.Annee >= dateMin && m.Annee <= dateMax).ToList();
+            List<Model> models = dbSet.Include(m => m.Vehicules).AsNoTracking().Where(m => m.Annee >= dateMin && m.Annee <= dateMax).ToList();
             if (marqueId != 0)
             {
                 models = models.Where(m => m.MarqueId == marqueId).ToList();

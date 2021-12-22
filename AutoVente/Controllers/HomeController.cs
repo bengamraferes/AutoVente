@@ -108,11 +108,21 @@ namespace AutoVente.Controllers
         {
             //if (ModelState.IsValid)
             //{
-            //Marque marque = marqueService.FindById(SviewModel.MarqueId);
-            //Model model = modelService.FindById(SviewModel.ModelId);
             SviewModel.Marques = marqueService.GetAll().ToList();
             SviewModel.Models = modelService.GetAll().ToList();
+            Carburent carburent = MyMethodes.GetValueCarburent(SviewModel.Carburent.ToString());
+            BoiteVitesse boiteVitesse = MyMethodes.GetValueBoiteVitesse(SviewModel.BoiteVitesse.ToString());
 
+            List<Vehicule> vehicules = new List<Vehicule>();
+
+            if (SviewModel.ModelId != 0)
+            {
+                vehicules = modelService.FindByIdModel(SviewModel.ModelId,carburent,boiteVitesse);
+            }
+            else
+            {
+                 vehicules = modelService.SearchModel( SviewModel.AnneeMin, SviewModel.AnneeMax, carburent, MyMethodes.GetValueType(SviewModel.Type.ToString()), boiteVitesse, SviewModel.MarqueId);
+            }
             //List<Vehicule> vehiculesA =  modelService.FindByAnnees(SviewModel.AnneeMin, SviewModel.AnneeMax);
             //List<Vehicule> vehiculesP = modelService.FindByPrix(SviewModel.PrixMin, SviewModel.PrixMax);
             //List<Vehicule> vehiculesK = modelService.FindByPrix(SviewModel.kilometrageMin, SviewModel.kilometrageMax);
@@ -131,7 +141,8 @@ namespace AutoVente.Controllers
             //    Vehicule ve = _vehicules.FirstOrDefault(v => v.Immatriculation == imatVehicule);
             //    vehicules.Add(ve);
             //}
-            List<Vehicule> vehicules = modelService.SearchModel(SviewModel.PrixMin, SviewModel.PrixMax, SviewModel.AnneeMin, SviewModel.AnneeMax, MyMethodes.GetValueCarburent(SviewModel.Carburent.ToString()), MyMethodes.GetValueType(SviewModel.Type.ToString()),MyMethodes.GetValueBoiteVitesse(SviewModel.BoiteVitesse.ToString()),SviewModel.MarqueId);
+           
+
             
             SviewModel.Vehicules = vehicules;
 
