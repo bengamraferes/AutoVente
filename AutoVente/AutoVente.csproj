@@ -164,6 +164,10 @@
     <Compile Include="Migrations\202112160945414_AddPrixVoiture.Designer.cs">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112221408251_AddVenduVoiture.cs" />
+    <Compile Include="Migrations\202112221408251_AddVenduVoiture.Designer.cs">
+      <DependentUpon>202112221408251_AddVenduVoiture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -542,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112160945414_AddPrixVoiture.resx">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221408251_AddVenduVoiture.resx">
+      <DependentUpon>202112221408251_AddVenduVoiture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

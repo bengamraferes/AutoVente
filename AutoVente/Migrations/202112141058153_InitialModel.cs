@@ -2,7 +2,7 @@ namespace AutoVente.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class InitialModel : DbMigration
     {
         public override void Up()
@@ -18,7 +18,7 @@ namespace AutoVente.Migrations
                         ComplementAdresse = c.String(maxLength: 255),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.utilisateur",
                 c => new
@@ -35,7 +35,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.adresses", t => t.IdAdress, cascadeDelete: true)
                 .Index(t => t.IdAdress);
-            
+
             CreateTable(
                 "dbo.Vehicules",
                 c => new
@@ -53,7 +53,7 @@ namespace AutoVente.Migrations
                 .ForeignKey("dbo.models", t => t.IdModel, cascadeDelete: true)
                 .Index(t => t.IdModel)
                 .Index(t => t.IdCouleur);
-            
+
             CreateTable(
                 "dbo.couleurs",
                 c => new
@@ -63,7 +63,7 @@ namespace AutoVente.Migrations
                         Nom = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.models",
                 c => new
@@ -84,7 +84,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.marques", t => t.MarqueId, cascadeDelete: true)
                 .Index(t => t.MarqueId);
-            
+
             CreateTable(
                 "dbo.marques",
                 c => new
@@ -94,7 +94,7 @@ namespace AutoVente.Migrations
                         Nom = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.hystoriqueAchatsVentes",
                 c => new
@@ -108,7 +108,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Vehicules", t => t.Immatriculation)
                 .Index(t => t.Immatriculation);
-            
+
             CreateTable(
                 "dbo.hystoriqueFrais",
                 c => new
@@ -123,7 +123,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Vehicules", t => t.Immatriculation)
                 .Index(t => t.Immatriculation);
-            
+
             CreateTable(
                 "dbo.images",
                 c => new
@@ -136,7 +136,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Vehicules", t => t.Immatriculation)
                 .Index(t => t.Immatriculation);
-            
+
             CreateTable(
                 "dbo.messages",
                 c => new
@@ -151,7 +151,7 @@ namespace AutoVente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.utilisateur", t => t.IdUtilisateur, cascadeDelete: true)
                 .Index(t => t.IdUtilisateur);
-            
+
             CreateTable(
                 "dbo.ModelCouleurs",
                 c => new
@@ -164,7 +164,7 @@ namespace AutoVente.Migrations
                 .ForeignKey("dbo.couleurs", t => t.Couleur_Id, cascadeDelete: true)
                 .Index(t => t.Model_Id)
                 .Index(t => t.Couleur_Id);
-            
+
             CreateTable(
                 "dbo.VehiculeUtilisateurs",
                 c => new
@@ -177,9 +177,9 @@ namespace AutoVente.Migrations
                 .ForeignKey("dbo.utilisateur", t => t.Utilisateur_Id, cascadeDelete: true)
                 .Index(t => t.Vehicule_Immatriculation)
                 .Index(t => t.Utilisateur_Id);
-            
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.messages", "IdUtilisateur", "dbo.utilisateur");

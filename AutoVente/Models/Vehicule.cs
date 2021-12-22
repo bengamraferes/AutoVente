@@ -33,6 +33,7 @@ namespace AutoVente.Models
         public int IdCouleur { get; set; }
         public List<Photo> Photos { get; set; }
         // Au niveau du set condition pour avoir au moins une photo
+        public Vendu Vendu { get; set; }
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
         public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
         public List<Utilisateur> Utilisateurs { get; set; }
@@ -48,6 +49,7 @@ namespace AutoVente.Models
             //Photos = photos;
             IdModel = idModel;
             IdCouleur = idCouleur;
+            Vendu = Vendu.NON_VENDU;
         }
 
         public Vehicule()
@@ -63,6 +65,11 @@ namespace AutoVente.Models
         MOYEN = 5,
         MAUVAIS = 6,
         TRES_MOVAIS = 7
+    }
+    public enum Vendu
+    {
+        NON_VENDU = 1,
+        VENDU = 2
     }
 }
 

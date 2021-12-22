@@ -29,6 +29,14 @@
             </div>
         </div>
     </td>
+    <td data-title="Prix">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prix, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prix, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </td>
 
     <td>
         <button type="submit" class="btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
