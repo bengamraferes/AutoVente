@@ -5,21 +5,26 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Liste des véhicules</h2>
 
 @Html.Partial("_Notifications")
 
-<section class="section-form ">
-    @if (TempData["CreateVehicule"] != null)
-    {
-        @Html.Partial("_PartialCreateVehicule", new VehiculeViewModel())
-    }
-</section>
 
-<a href="~/Vehicule/Create" class=" btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
+@if (TempData["CreateVehicule"] != null)
+{
+    <section>
+        @Html.Partial("_PartialCreateVehicule", new VehiculeViewModel())
+    </section>
+}
+else
+{
+    <div class="add-x-right">
+        <a href="~/Vehicule/Create" class="justify-content-end btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
+    </div>
+}
 
 <section id="no-more-tables">
-    <table class="table table-bordered table-striped table-condensed cf text-center table-layout vertical-align table-shadow">
+    <table class="table table-bordered table-condensed cf text-center table-layout vertical-align table-shadow" style="margin-top:10px;">
         <thead class="cf ">
             <tr class="custom-tr text-center">
                 <th></th>
@@ -30,7 +35,7 @@
                     Model
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
+                    Couleur
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DateMisEnCirculation)
@@ -47,8 +52,14 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td id="detail-btn-@item.Id" class="detail-btn align-self-center ">
-                    <i class="fas fa-2x fa-plus-circle"></i>
+                @if (TempData["EditVehicule"] != null && TempData["IdVehicule"].ToString() == item.Id.ToString())
+                {
+                    @Html.Partial("_PartialEditVehicule", item);
+                    continue;
+                }
+
+                <td id="detail-btn-@item.Id" onclick="showDetails('@item.Immatriculation.ToString()')" class="detail-btn align-self-center">
+                    <i id="@item.Immatriculation.ToString()Icon" class="fas fa-2x fa-plus-circle"></i>
                 </td>
                 <td data-title="Marque">
                     @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
@@ -57,10 +68,10 @@
                     @Html.DisplayFor(modelItem => item.Model.Nom)
                 </td>
                 <td data-title="Couleur">
-                    @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
+                    <input type="color" disabled value="@item.Couleur.CodeCouleur" />
                 </td>
                 <td data-title="Mise en circulation">
-                    Mise en circulation
+                    @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
                 </td>
                 <td data-title="Kilometrage">
                     @Html.DisplayFor(modelItem => item.Kilometrage)
@@ -70,9 +81,12 @@
                 </td>
 
                 <td class="btn-td">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
-                    <a class="btnAllwidth button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
-                        <i class="fas fa-trash-alt "></i><span class="noPhone"> Supprimer</span>
+                    <a href="~/Vehicule/Edit/@item.Id" type="button" class="btn-details-vehicule button btn btn-info fontBlack">
+                        <i class="far fa-edit fontBlack"></i> Modifier
+                    </a>
+
+                    <a class="btn-details-vehicule button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
+                        <i class="fas fa-trash-alt "></i> Supprimer
                     </a>
 
                     <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,72 +110,68 @@
                 </td>
             </tr>
 
-            <tr class="">
-                <td colspan="100" style="padding:0px;">
-                    <table class="table table-bordered table-striped table-condensed cf text-center vertical-align">
-                        <thead class="cf ">
-                            <tr class="custom-tr text-center">
-                                <th>
-                                    référence
-                                </th>
-                                <th>
-                                    Carburent
-                                </th>
-                                <th>
-                                    Emission C02
-                                </th>
-                                <th>
-                                    Année modele
-                                </th>
-                                <th>
-                                    Puissance réelle
-                                </th>
-                                <th>
-                                    Nb. places
-                                </th>
-                                <th>
-                                    Type
-                                </th>
-                                <th>
-                                    Prix neuf
-                                </th>
-                                <th>
-                                    Boîte de vitesse
-                                </th>
-                            </tr>
-                        </thead>
-                        <tr class="custom-tr text-center">
-                            <td data-title="référence">
-                                @item.Model.Numero
-                            </td>
-                            <td data-title="Carburent">
-                                @item.Model.Carburent
-                            </td>
-                            <td data-title="Emission Co2">
-                                @item.Model.EmissionCo2
-                            </td>
-                            <td data-title="Année modele">
-                                @item.Model.Annee
-                            </td>
-                            <td data-title="Puissance réelle">
-                                @item.Model.PuissanceReel
-                            </td>
-                            <td data-title="Nb. places">
-                                @item.Model.NbPlaces
-                            </td>
-                            <td data-title="Type">
-                                @item.Model.Type
-                            </td>
-                            <td data-title="Prix neuf">
-                                @item.Model.Prix
-                            </td>
-                            <td data-title="Boîte de vitesse">
-                                @item.Model.BoiteDeVitesse
-                            </td>
-                        </tr>
-                    </table>
+            <tr class="hidden" id="@item.Immatriculation.ToString()">
+                <td colspan="8" style="padding: 0px; text-align: -webkit-center; background-color: #d1d0d0 ">
+                    <div class="row" style="width:100%">
+                        <div class="col-lg-4 row vehicule-details">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>référence :</bold></p>
+                                <p><bold>Carburent :</bold></p>
+                                <p><bold>Emission C02 :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Numero</p>
+                                <p>@item.Model.Carburent</p>
+                                <p>@item.Model.EmissionCo2</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 row vehicule-details bl-vehicules">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>Année :</bold></p>
+                                <p><bold>Puissance :</bold></p>
+                                <p><bold>Nb. places :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Annee</p>
+                                <p>@item.Model.PuissanceReel</p>
+                                <p>@item.Model.NbPlaces</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 row vehicule-details bl-vehicules">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>Type :</bold></p>
+                                <p><bold>Prix neuf :</bold></p>
+                                <p><bold>Boîte :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Type</p>
+                                <p>@item.Model.Prix</p>
+                                <p>@item.Model.BoiteDeVitesse</p>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
     </table>
 </section>
+
+<script>
+    function showDetails(param) {
+        var details = document.getElementById(param);
+        var icon = document.getElementById(param + 'Icon');
+
+        if (details.classList.contains('hidden')) {
+            details.setAttribute('class', '');
+            icon.setAttribute('class', 'fas fa-2x fa-minus-circle')
+        } else {
+            details.setAttribute('class', 'hidden');
+            icon.setAttribute('class', 'fas fa-2x fa-plus-circle')
+        }
+    }
+</script>

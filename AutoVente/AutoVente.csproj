@@ -505,8 +505,8 @@
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
     <Content Include="Views\Message\Contact.cshtml" />
     <Content Include="Views\Vehicule\Index.cshtml" />
-    <Content Include="Views\Vehicule\_PartialCreateModel.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
+    <Content Include="Views\Vehicule\_PartialEditVehicule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

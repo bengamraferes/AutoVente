@@ -31,7 +31,7 @@ namespace AutoVente.Controllers
         // GET
         public ActionResult Index()
         {
-            List<Vehicule> vehicules = service.GetAll().OrderBy(v => v.Model.Marque.Nom).OrderByDescending(v => v.Model.Nom).ToList();
+            List<Vehicule> vehicules = service.GetAll().OrderBy(v => v.Model.Marque.Nom).ToList();
             return View(vehicules);
         }
 
@@ -68,8 +68,6 @@ namespace AutoVente.Controllers
                 string MarqueNom = serviceMarque.FindById(serviceModel.FindById(viewModel.ModelId).MarqueId).Nom;
 
                 this.AddNotification($"Creation du véhicule {MarqueNom} - {modelNom} réussi.", NotificationType.SUCCESS);
-                //context.Vehicule.Add(vehicule);
-                //context.SaveChanges();
             }
 
             return RedirectToAction("index");
@@ -77,12 +75,45 @@ namespace AutoVente.Controllers
 
         //GET
         [HttpPost]
-        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
             service.Delete(id);
             service.SaveChanges();
 
+            this.AddNotification($"Véhicule supprimé.", NotificationType.SUCCESS);
+
+            return RedirectToAction("index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Vehicule vehicule = service.FindById(id);
+            if (vehicule != null)
+            {
+                TempData["EditVehicule"] = "EditVehicule";
+                TempData["IdVehicule"] = vehicule.Id;
+                TempData.Keep();
+            }
+            return RedirectToAction("index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Vehicule vehicule)
+        {
+            if (ModelState.IsValid)
+            {
+                service.Update(vehicule);
+                service.SaveChanges();
+                this.AddNotification($"Modification du véhicule {vehicule.Model.Marque.Nom} - {vehicule.Model.Nom} réussi.", NotificationType.SUCCESS);
+            }
+            else
+            {
+                TempData["EditVehicule"] = "EditVehicule";
+                TempData["IdVehicule"] = vehicule.Id;
+                TempData.Keep();
+                this.AddNotification($"Echec de mise à jour du véhicule {vehicule.Model.Marque.Nom} - {vehicule.Model.Nom}.", NotificationType.ERROR);
+            }
             return RedirectToAction("index");
         }
     }
