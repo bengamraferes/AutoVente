@@ -19,6 +19,10 @@ i {
     max-width: 120px;
 }
 
+.table-shadow {
+    box-shadow: 3px 3px 7px 3px rgba(0,0,0,0.4);
+}
+
 .table-couleur {
     text-align: center;
 }
@@ -33,6 +37,21 @@ i {
     width: 25%;
 }
 
+.noBootstrapHover {
+    --bs-table-hover-bg: inherit !important;
+}
+.custom-tbody {
+    border: 0px;
+}
+.custom-tbody > tr {
+    border: 1px solid #ddd;
+}
+.custom-tbody > tr:hover {
+    border: 1px solid #ddd;
+}
+.custom-tbody > tr > td{
+    border: 0px !important;
+}
 
 .vertical-align tr td {
     vertical-align: middle !important;
@@ -153,7 +172,7 @@ i {
 .th-custom-button {
     min-width: var(--WidtMax);
     width: var(--wdth);
-    
+
 }
 .detail-btn {
     cursor: pointer
@@ -194,7 +213,7 @@ i {
 }
 
 .card-message-details > .message-title {
-    font-size: 20px;>
+    font-size: 20px;
 }
 
 .card-message-details > .message-content {
@@ -203,6 +222,47 @@ i {
  th-custom-button> a {
     width: 100% !important;
 }
+
+.option-vehicule-color {
+    border: solid;
+}
+
+.vehicule-details > div {
+    padding: 0px;
+    text-align: left;
+}
+
+.btn-details-vehicule {
+    width: 120px;
+    min-width: inherit;
+    max-width: inherit;
+}
+
+@media (min-width: 992px) {
+    .bl-vehicules {
+        border-left: 1px solid #787878;
+    }
+}
+
+.table {
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.1);
+}
+
+.add-x-right {
+    text-align: right;
+}
+.add-x-right > a {
+    width: 200px;
+}
+
+/*.vehicule-details > div:first-child {
+    text-align: right;
+    padding-right: 1px;
+}
+.vehicule-details > div:last-child {
+    text-align: left;
+    padding-left: 1px;
+}*/
 /*
   Liste des diffétenes résolution par defaut
 
@@ -217,7 +277,6 @@ i {
         width: 80%;
         margin: auto;
     }
-   
 }
 
 @media (max-width: 767px) {
@@ -247,6 +306,12 @@ i {
 
     .card-message-details > .message-content {
         font-size: 16px;
+    }
+    .btn-td {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        display: flex !important;
+        justify-content: space-evenly;
     }
 }
 

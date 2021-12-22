@@ -190,6 +190,7 @@
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\CouleurViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
+    <Compile Include="ViewsModels\VehiculeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
@@ -520,8 +521,8 @@
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
     <Content Include="Views\Message\Contact.cshtml" />
     <Content Include="Views\Vehicule\Index.cshtml" />
-    <Content Include="Views\Vehicule\_PartialCreateModel.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
+    <Content Include="Views\Vehicule\_PartialEditVehicule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
