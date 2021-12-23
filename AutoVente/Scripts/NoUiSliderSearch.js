@@ -82,8 +82,8 @@ noUiSlider.create(nonLinearSliderKilometrrage, {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
         'min': [0],
-        '10%': [1000, 1000],
-        '50%': [125000, 1000],
+        '10%': [10000, 10000],
+        '50%': [125000, 10000],
         'max': [250000]
     }
 });

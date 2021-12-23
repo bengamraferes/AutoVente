@@ -18,3 +18,6 @@
         background-color: rgba(225,225,225);
         box-shadow: #ffc800 -3px -3px 10px
     }
+section {
+    padding: 3rem 0 ;
+}

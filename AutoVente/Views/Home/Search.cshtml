@@ -6,124 +6,135 @@
 
 <h2>Search</h2>
 
-<section class="search">
+<section class="search d-flex flex-column align-content-center">
 
     @using (Html.BeginForm())
     {
 
 
-    <div class="form-horizontal col-lg-12 ">
+    <div class="d-flex flex-column align-items-center justify-content-center ">
 
      
    
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row mb-4 col-lg-8 col-md-10 col-sm-12 p-2">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <label class="form-label" for="form6Example1">Marque </label>
+                <div class="form-outline">
+                    <select class="form-control" aria-label=".form-select-lg example " name="MarqueId">
+                        <option disabled selected>Nom de la marque</option>
+                        @foreach (var marque in Model.Marques)
+                        {
+                            <option value="@marque.Id">@marque.Nom</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <label class="form-label" for="form6Example1">Model </label>
+                <div class="form-outline">
+                    <select class="form-control" aria-label=".form-select-lg example " name="ModelId">
+                        <option disabled selected>Nom du model</option>
+                        @foreach (var item in Model.Models)
+                        {
+                            <option value="@item.Id">@item.Nom</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12  col-sm-12">
+                @Html.LabelFor(model => model.Etat, htmlAttributes: new { @class = "form-label control-label col-md-2" })
+                <div class="form-outline">
+                    @Html.EnumDropDownListFor(model => model.Etat, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Etat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
        
-        <div class="row mb-4 ">
-            
+        <div class="row mb-4 col-lg-8 col-md-10 col-sm-12 p-2">
            
-            <div class="col">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label" for="form6Example1">Prix </label>
                 <div id="nonlinear" class="col"></div>
                 <div class="col">
 
-                    @Html.LabelFor(model => model.PrixMin, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div >
+                    <label class="form-label" for="PrixMin">Min</label>
+                    <div>
                         @Html.EditorFor(model => model.PrixMin, new { htmlAttributes = new { @class = "form-control", @id = "input-numberMin" } })
                         @Html.ValidationMessageFor(model => model.PrixMin, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="col">
-                    @Html.LabelFor(model => model.PrixMax, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div >
+                    <label class="form-label" for="PrixMax">Max</label>
+                    <div>
                         @Html.EditorFor(model => model.PrixMax, new { htmlAttributes = new { @class = "form-control", @id = "input-number" } })
                         @Html.ValidationMessageFor(model => model.PrixMax, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label" for="Annees">Années </label>
                 <div id="nonlinearAnnee" class="col"></div>
-                <div class="col" >
-                    @Html.LabelFor(model => model.AnneeMin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    <label class="form-label" for="AnneeMin">Min</label>
                     <div>
-                        @Html.EditorFor(model => model.AnneeMin, new { htmlAttributes = new { @class = "form-control" , @id = "input-numberMinAnnee" } })
+                        @Html.EditorFor(model => model.AnneeMin, new { htmlAttributes = new { @class = "form-control", @id = "input-numberMinAnnee" } })
                         @Html.ValidationMessageFor(model => model.AnneeMin, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="col">
-                    @Html.LabelFor(model => model.AnneeMax, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div >
+                    <label class="form-label" for="AnneeMax">Max</label>
+                    <div>
                         @Html.EditorFor(model => model.AnneeMax, new { htmlAttributes = new { @class = "form-control", @id = "input-numberAnnee" } })
                         @Html.ValidationMessageFor(model => model.AnneeMax, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div id="nonlinearKilometrage" class="col"></div>
-                <div class="col">
-                    @Html.LabelFor(model => model.kilometrageMin, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.kilometrageMin, new { htmlAttributes = new { @class = "form-control" , @id = "input-numberMinKilometrrage" } })
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <label class="form-label" for="kilometrage ">kilométrage</label>
+                <div id="nonlinearKilometrage" class="col-md-12"></div>
+                <div class="col col-md-12">
+                    <label class="form-label" for="kilometrageMin">Min </label>
+                    <div class="">
+                        @Html.EditorFor(model => model.kilometrageMin, new { htmlAttributes = new { @class = "form-control", @id = "input-numberMinKilometrrage" } })
                         @Html.ValidationMessageFor(model => model.kilometrageMin, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="col">
-                    @Html.LabelFor(model => model.kilometrageMax, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.kilometrageMax, new { htmlAttributes = new { @class = "form-control" , @id = "input-numberKilometrrage" } })
+                <div class="col col-md-12">
+                    <label class="form-label" for="kilometrageMax">Max</label>
+                    <div class="">
+                        @Html.EditorFor(model => model.kilometrageMax, new { htmlAttributes = new { @class = "form-control", @id = "input-numberKilometrrage" } })
                         @Html.ValidationMessageFor(model => model.kilometrageMax, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
             </div>
         </div>
-  
-    
-        <div class="col">
-            <label class="form-label" for="form6Example1">Nom marque </label>
-            <div class="form-outline">
-                <select class="form-control" aria-label=".form-select-lg example " name="MarqueId">
-                    <option disabled selected>Nom de la marque</option>
-                    @foreach (var marque in Model.Marques)
-                    {
-                        <option value="@marque.Id">@marque.Nom</option>
-                    }
-                </select>
-            </div>
-        </div>
-        <div class="col">
-            <label class="form-label" for="form6Example1">Nom marque </label>
-            <div class="form-outline">
-                <select class="form-control" aria-label=".form-select-lg example " name="ModelId">
-                    <option disabled selected>Nom de la marque</option>
-                    @foreach (var item in Model.Models)
-                    {
-                        <option value="@item.Id">@item.Nom</option>
-                    }
-                </select>
-            </div>
-        </div>
 
-        <div class="row mb-4">
-            <div class="col">
-                @Html.LabelFor(model => model.Carburent, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="row mb-4 col-lg-8 col-md-10 col-sm-12 p-2">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                @Html.LabelFor(model => model.Carburent, htmlAttributes: new { @class = "form-label control-label col-md-2" })
                 <div class="form-outline">
                     @Html.EnumDropDownListFor(model => model.Carburent, htmlAttributes: new { @class = "form-control", @selected = "Essence" })
                     @Html.ValidationMessageFor(model => model.Carburent, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="col">
-                @Html.LabelFor(model => model.BoiteVitesse, htmlAttributes: new { @class = "control-label" })
+
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                @Html.LabelFor(model => model.BoiteVitesse, htmlAttributes: new { @class = "form-label control-label" })
                 <div class="form-outline">
                     @Html.EnumDropDownListFor(model => model.BoiteVitesse, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.BoiteVitesse, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="col">
-                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "form-label control-label col-md-2" })
                 <div class="form-outline">
                     @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })

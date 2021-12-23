@@ -17,6 +17,7 @@ namespace AutoVente.ViewsModels
 
         public CarburentViewModel Carburent { get; set; }
         public BoiteVitesseViewModel BoiteVitesse { get; set; }
+        public EtatViewModel Etat { get; set; }
 
         public int PrixMin { get; set; }
         public int PrixMax { get; set; }
@@ -56,6 +57,12 @@ namespace AutoVente.ViewsModels
         SUV = 6,
         LUDOSPACE = 7,
         BERLINE = 8
+    }
+    public enum EtatViewModel
+    {
+        Tout = 0,
+        Neuf = 1,
+        Occasion =2
     }
 
 }

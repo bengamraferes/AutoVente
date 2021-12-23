@@ -1,5 +1,6 @@
 ﻿using AutoVente.DAO;
 using AutoVente.Models;
+using AutoVente.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,10 @@ namespace AutoVente.Service
         public List<Vehicule> FindByKilometrage(int min, int max)
         {
             return daoVehicule.FindByKilometrage(min, max);
+        }
+        public List<Vehicule> SearchVehicule(List<Vehicule> vehicules, int KilometrageMin, int KilometrageMax, int prixMin, int prixMax, EtatViewModel etatViewModel)
+        {
+            return daoVehicule.SearchVehicule(vehicules, KilometrageMin, KilometrageMax, prixMin, prixMax, etatViewModel);
         }
     }
 }

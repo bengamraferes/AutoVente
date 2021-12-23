@@ -1,5 +1,6 @@
 ﻿using AutoVente.Metier;
 using AutoVente.Models;
+using AutoVente.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,6 +36,22 @@ namespace AutoVente.DAO
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Kilometrage >= min && v.Kilometrage <= max).ToList();
 
+            return vehicules;
+        }
+        public List<Vehicule> SearchVehicule(List<Vehicule> vehicules, int KilometrageMin, int KilometrageMax, int prixMin,int prixMax , EtatViewModel etatViewModel)
+        {
+            vehicules = vehicules.Where(v => v.Kilometrage >= KilometrageMin && v.Kilometrage <= KilometrageMax).Where(v => v.Prix >= prixMin && v.Prix <= prixMax).ToList();
+            if (etatViewModel != 0)
+            {
+                if (etatViewModel == EtatViewModel.Neuf)
+                {
+                    vehicules = vehicules.Where(v => v.Etat == EtatVoiture.NEUF).ToList();
+                }
+                else
+                {
+                    vehicules = vehicules.Where(v => v.Etat != EtatVoiture.NEUF).ToList();
+                }
+            }
             return vehicules;
         }
     }

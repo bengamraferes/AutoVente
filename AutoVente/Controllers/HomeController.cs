@@ -123,6 +123,7 @@ namespace AutoVente.Controllers
             {
                  vehicules = modelService.SearchModel( SviewModel.AnneeMin, SviewModel.AnneeMax, carburent, MyMethodes.GetValueType(SviewModel.Type.ToString()), boiteVitesse, SviewModel.MarqueId);
             }
+
             //List<Vehicule> vehiculesA =  modelService.FindByAnnees(SviewModel.AnneeMin, SviewModel.AnneeMax);
             //List<Vehicule> vehiculesP = modelService.FindByPrix(SviewModel.PrixMin, SviewModel.PrixMax);
             //List<Vehicule> vehiculesK = modelService.FindByPrix(SviewModel.kilometrageMin, SviewModel.kilometrageMax);
@@ -144,7 +145,7 @@ namespace AutoVente.Controllers
            
 
             
-            SviewModel.Vehicules = vehicules;
+            SviewModel.Vehicules = vehiculeService.SearchVehicule(vehicules,SviewModel.kilometrageMin,SviewModel.kilometrageMax,SviewModel.PrixMin,SviewModel.PrixMax,SviewModel.Etat);
 
             return View(SviewModel);
 
