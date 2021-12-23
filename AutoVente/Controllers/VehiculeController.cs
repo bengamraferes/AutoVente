@@ -38,8 +38,15 @@ namespace AutoVente.Controllers
         //GET
         public ActionResult Create()
         {
+            List<Model> models = serviceModel.GetAll().ToList();
+            List<decimal> modelsPrice = new List<decimal>();
 
+            foreach (var model in models)
+            {
+                modelsPrice.Add(model.Prix);
+            }
             TempData["CreateVehicule"] = "CreateVehicule";
+            TempData["modelsPrice"] = modelsPrice;
             TempData.Keep();
 
             return RedirectToAction("index");
@@ -58,7 +65,8 @@ namespace AutoVente.Controllers
                 viewModel.Vehicule.Kilometrage,
                 viewModel.Vehicule.Etat,
                 viewModel.ModelId,
-                viewModel.CouleurId
+                viewModel.CouleurId,
+                viewModel.Prix
                 );
 
                 service.Insert(vehicule);

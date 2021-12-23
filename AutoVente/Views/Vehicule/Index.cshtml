@@ -47,74 +47,74 @@ else
                     @Html.DisplayNameFor(model => model.Etat)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Prix)
+                    Prix de vente
                 </th>
                 <th></th>
             </tr>
         </thead>
         @foreach (var item in Model)
         {
-    <tr>
-        @if (TempData["EditVehicule"] != null && TempData["IdVehicule"].ToString() == item.Id.ToString())
-        {
-            @Html.Partial("_PartialEditVehicule", item);
-            continue;
-        }
+            <tr>
+                @if (TempData["EditVehicule"] != null && TempData["IdVehicule"].ToString() == item.Id.ToString())
+                {
+                    @Html.Partial("_PartialEditVehicule", item);
+                    continue;
+                }
 
-        <td id="detail-btn-@item.Id" onclick="showDetails('@item.Immatriculation.ToString()')" class="detail-btn align-self-center">
-            <i id="@item.Immatriculation.ToString()Icon" class="fas fa-2x fa-plus-circle"></i>
-        </td>
-        <td data-title="Marque">
-            @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
-        </td>
-        <td data-title="Model">
-            @Html.DisplayFor(modelItem => item.Model.Nom)
-        </td>
-        <td data-title="Couleur">
-            <input type="color" disabled value="@item.Couleur.CodeCouleur" />
-        </td>
-        <td data-title="Mise en circulation">
-            @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-        </td>
-        <td data-title="Kilometrage">
-            @Html.DisplayFor(modelItem => item.Kilometrage)
-        </td>
-        <td data-title="Etat">
-            @Html.DisplayFor(modelItem => item.Etat)
-        </td>
-        <td data-title="Prix">
-            @Html.DisplayFor(modelItem => item.Prix)
-        </td>
+                <td id="detail-btn-@item.Id" onclick="showDetails('@item.Immatriculation.ToString()')" class="detail-btn align-self-center">
+                    <i id="@item.Immatriculation.ToString()Icon" class="fas fa-2x fa-plus-circle"></i>
+                </td>
+                <td data-title="Marque">
+                    @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
+                </td>
+                <td data-title="Model">
+                    @Html.DisplayFor(modelItem => item.Model.Nom)
+                </td>
+                <td data-title="Couleur">
+                    <input type="color" disabled value="@item.Couleur.CodeCouleur" />
+                </td>
+                <td data-title="Mise en circulation">
+                    @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+                </td>
+                <td data-title="Kilometrage">
+                    @Html.DisplayFor(modelItem => item.Kilometrage)
+                </td>
+                <td data-title="Etat">
+                    @Html.DisplayFor(modelItem => item.Etat)
+                </td>
+                <td data-title="Prix de vente">
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
 
-        <td class="btn-td">
-            <a href="~/Vehicule/Edit/@item.Id" type="button" class="btn-details-vehicule button btn btn-info fontBlack">
-                <i class="far fa-edit fontBlack"></i> Modifier
-            </a>
+                <td class="btn-td">
+                    <a href="~/Vehicule/Edit/@item.Id" type="button" class="btn-details-vehicule button btn btn-info fontBlack">
+                        <i class="far fa-edit fontBlack"></i> Modifier
+                    </a>
 
-            <a class="btn-details-vehicule button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
-                <i class="fas fa-trash-alt "></i> Supprimer
-            </a>
+                    <a class="btn-details-vehicule button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
+                        <i class="fas fa-trash-alt "></i> Supprimer
+                    </a>
 
-            <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="exampleModalLabel">Supprimer : @item.Model.Marque.Nom - @item.Model.Nom</h4>
-                        </div>
-                        <div class="modal-body">
-                            Etes vous sûr de vouloir supprimer se véhicule ?
-                        </div>
-                        <div class="modal-footer">
-                            <form method="post" action="/Vehicule/Delete/@item.Id">
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
-                                <input type="submit" class="btn btn-danger" value="Valider">
-                            </form>
+                    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Supprimer : @item.Model.Marque.Nom - @item.Model.Nom</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Etes vous sûr de vouloir supprimer se véhicule ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="/Vehicule/Delete/@item.Id">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                        <input type="submit" class="btn btn-danger" value="Valider">
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </td>
-    </tr>
+                </td>
+            </tr>
 
             <tr class="hidden" id="@item.Immatriculation.ToString()">
                 <td colspan="8" style="padding: 0px; text-align: -webkit-center; background-color: #d1d0d0 ">

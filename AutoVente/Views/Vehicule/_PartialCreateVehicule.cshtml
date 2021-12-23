@@ -4,74 +4,123 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Vehicule</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h4>Vehicule</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.Model, "Model", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select class="form-control" aria-label=".form-select-lg example " name="ModelId" pla>
-                    <option value="">-- Choix du model --</option>
-                    @foreach (var mdl in Model.Models)
-                    {
-                        <option value="@mdl.Id">@mdl.Marque.Nom - @mdl.Nom</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.Immatriculation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicule.Immatriculation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicule.Immatriculation, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.DateMisEnCirculation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicule.DateMisEnCirculation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicule.DateMisEnCirculation, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.Kilometrage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicule.Kilometrage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicule.Kilometrage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Vehicule.Etat, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vehicule.IdCouleur, "Couleur", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select class="form-control" aria-label=".form-select-lg example " name="CouleurId" pla>
-                    <option value="">-- Choix de la couleur --</option>
-                    @foreach (var couleur in Model.Couleurs)
-                    {
-                        <option class="option-vehicule-color" value="@couleur.Id" style="background-color: @couleur.CodeCouleur;">@couleur.Nom</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div class="col d-flex flex-column-reverse ">
-            <div class="col-md-offset-2 form-outline d-flex flex-row-reverse justify-content-around">
-                <button type="submit" class="  btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
-                <a href="~/Vehicule" class="  btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.Model, "Model", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" aria-label=".form-select-lg example " name="ModelId" id="model">
+                <option value="">-- Choix du model --</option>
+                @foreach (var mdl in Model.Models.OrderBy(m => m.Marque.Nom))
+                {
+                    <option value="@mdl.Id">@mdl.Marque.Nom - @mdl.Nom</option>
+                }
+            </select>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.Immatriculation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Vehicule.Immatriculation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Vehicule.Immatriculation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.DateMisEnCirculation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Vehicule.DateMisEnCirculation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Vehicule.DateMisEnCirculation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.Kilometrage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Vehicule.Kilometrage, new { htmlAttributes = new { @class = "form-control", id = "kilometrage" } })
+            @Html.ValidationMessageFor(model => model.Vehicule.Kilometrage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "form-control", id = "etat" })
+            @Html.ValidationMessageFor(model => model.Vehicule.Etat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicule.IdCouleur, "Couleur", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" aria-label=".form-select-lg example " name="CouleurId">
+                <option value="">-- Choix de la couleur --</option>
+                @foreach (var couleur in Model.Couleurs.OrderBy(c => c.CodeCouleur))
+                {
+                    <option class="option-vehicule-color" value="@couleur.Id" style="background-color: @couleur.CodeCouleur;">@couleur.Nom</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class = "control-label col-md-2">Prix de vente</div>
+        <div class="col-md-10">
+            <input type="number" name="Prix" class="form-control" id="prix" />
+        </div>
+    </div>
+
+    <p>
+        <strong>Prix d'achat conseillé marge 30% : <span id="prixAchat"></span></strong>
+    </p>
+
+    <div class="col d-flex flex-column-reverse ">
+        <div class="col-md-offset-2 form-outline d-flex flex-row-reverse justify-content-around">
+            <button type="submit" class="btn btn-success fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+            <a href="~/Vehicule" class="btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
+        </div>
+    </div>
+</div>
 }
+
+<script>
+    var prixModels = [0];
+
+    @foreach (var item in Model.Models)
+    {
+        @:prixModels.push("@item.Prix")
+    }
+
+    var model = document.getElementById('model');
+    var km = document.getElementById('kilometrage');
+    var etat = document.getElementById('etat');
+    var prixConseille = 0;
+
+
+    model.addEventListener("input", estimatedPrice);
+    km.addEventListener("input", estimatedPrice);
+    etat.addEventListener("input", estimatedPrice);
+
+    function estimatedPrice() {
+        if (etat.value != 1) {
+            var malusEtat = (etat.value * etat.value) * 300
+        } else {
+            malusEtat = 0;
+        }
+
+        prixConseille = (prixModels[model.value] - malusEtat)
+        prixConseille = prixConseille / 1 - (km.value * 0.019);
+
+        if (prixConseille < 499) {
+            document.getElementById('prix').value = 0;
+            document.getElementById('prixAchat').textContent = "NON";
+        } else {
+            document.getElementById('prix').value = Math.ceil(prixConseille);
+            document.getElementById('prixAchat').textContent = Math.ceil(prixConseille * 0.7);
+        }
+    }
+</script>
