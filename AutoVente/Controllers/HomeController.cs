@@ -142,9 +142,6 @@ namespace AutoVente.Controllers
             //    Vehicule ve = _vehicules.FirstOrDefault(v => v.Immatriculation == imatVehicule);
             //    vehicules.Add(ve);
             //}
-           
-
-            
             SviewModel.Vehicules = vehiculeService.SearchVehicule(vehicules,SviewModel.kilometrageMin,SviewModel.kilometrageMax,SviewModel.PrixMin,SviewModel.PrixMax,SviewModel.Etat);
 
             return View(SviewModel);

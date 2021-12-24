@@ -149,59 +149,50 @@
     </div>
     }
 </section>
+    <div class="container ">
+        <div class="card-deck row ">
 
-<table class="table">
-    <tr>
-        <th>
-            code couleur
-        </th>
-        <th>
-            Numero
-        </th>
-        <th>
-            Id
-        </th>
-        <th>
-            DateMisEnCirculation
-        </th>
-        <th>
-            Kilometrage
-        </th>
-        <th>
-            Prix
-        </th>
-        <th>
-            Etat
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model.Vehicules)
+            {
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4  mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://picsum.photos/309/200?image=1050" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Model.Nom @item.Model.Marque.Nom  @item.DateMisEnCirculation </h5>
+                            <p class="card-text">@item.Prix €</p>
+                            <p class="card-text"><small class="text-muted"> @item.Model.PuissanceReel CV @item.Model.Carburent @item.Kilometrage</small></p>
+                        </div>
+                    </div>
+                 </div>
+                    }
+        </div>
+    </div>
+  
+        @*@foreach (var item in Model.Vehicules) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etat)
+            </td>
 
-    @foreach (var item in Model.Vehicules) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model.Numero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kilometrage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etat)
-        </td>
+        </tr>*@
+        @*}*@
 
-    </tr>
-}
-
-</table>
 
