@@ -649,6 +649,10 @@ progress {
   .container-lg, .container-md, .container-sm, .container {
     max-width: 960px;
   }
+  .prixAchatConseil {
+    padding-top: 24px;
+    font-size: 16px
+  }
 }
 @media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
