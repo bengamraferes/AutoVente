@@ -31,7 +31,7 @@ namespace AutoVente.Models
         [Required(ErrorMessage = "Type obligatoire")]
         public Type Type { get; set; }
         [Required(ErrorMessage = "Prix obligatoire")]
-        public decimal Prix { get; set; }
+        public int Prix { get; set; }
         [Required(ErrorMessage = "Type de boite de vitesse obligatoire")]
         public BoiteVitesse BoiteDeVitesse { get; set; }
         public List<Vehicule> Vehicules { get; set; }
@@ -44,7 +44,7 @@ namespace AutoVente.Models
         {
         }
 
-        public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, int nbPlaces, Type type, decimal prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
+        public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, int nbPlaces, Type type, int prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
         {
             Vehicules = new List<Vehicule>();
             Couleurs = new List<Couleur>();

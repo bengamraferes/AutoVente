@@ -46,6 +46,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.Etat)
                 </th>
+                <th>
+                    Prix de vente
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -79,6 +82,9 @@ else
                 <td data-title="Etat">
                     @Html.DisplayFor(modelItem => item.Etat)
                 </td>
+                <td data-title="Prix de vente">
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
 
                 <td class="btn-td">
                     <a href="~/Vehicule/Edit/@item.Id" type="button" class="btn-details-vehicule button btn btn-info fontBlack">
@@ -111,7 +117,7 @@ else
             </tr>
 
             <tr class="hidden" id="@item.Immatriculation.ToString()">
-                <td colspan="8" style="padding: 0px; text-align: -webkit-center; background-color: #d1d0d0 ">
+                <td colspan="9" style="padding: 0px; text-align: -webkit-center; background-color: #d1d0d0 ">
                     <div class="row" style="width:100%">
                         <div class="col-lg-4 row vehicule-details">
                             <div class="col-1"></div>

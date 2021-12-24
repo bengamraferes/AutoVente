@@ -31,15 +31,22 @@ namespace AutoVente.Controllers
         // GET
         public ActionResult Index()
         {
-            List<Vehicule> vehicules = service.GetAll().OrderBy(v => v.Model.Marque.Nom).ToList();
+            List<Vehicule> vehicules = service.GetAll().OrderBy(v => v.Model.Marque.Nom).Where(v => v.Vendu == Vendu.NON_VENDU).ToList();
             return View(vehicules);
         }
 
         //GET
         public ActionResult Create()
         {
+            List<Model> models = serviceModel.GetAll().ToList();
+            List<decimal> modelsPrice = new List<decimal>();
 
+            foreach (var model in models)
+            {
+                modelsPrice.Add(model.Prix);
+            }
             TempData["CreateVehicule"] = "CreateVehicule";
+            TempData["modelsPrice"] = modelsPrice;
             TempData.Keep();
 
             return RedirectToAction("index");
@@ -58,7 +65,8 @@ namespace AutoVente.Controllers
                 viewModel.Vehicule.Kilometrage,
                 viewModel.Vehicule.Etat,
                 viewModel.ModelId,
-                viewModel.CouleurId
+                viewModel.CouleurId,
+                viewModel.Prix
                 );
 
                 service.Insert(vehicule);
@@ -99,20 +107,26 @@ namespace AutoVente.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Vehicule vehicule)
+        public ActionResult Edit(Vehicule v)
         {
-            if (ModelState.IsValid)
+            Vehicule vehicule = service.FindByImmatriculation(v.Immatriculation);
+
+            if (ModelState.IsValidField("Kilometrage") && ModelState.IsValidField("Etat") && ModelState.IsValidField("Prix"))
             {
+                vehicule.Kilometrage = v.Kilometrage;
+                vehicule.Etat = v.Etat;
+                vehicule.Prix = v.Prix;
+
                 service.Update(vehicule);
                 service.SaveChanges();
-                this.AddNotification($"Modification du véhicule {vehicule.Model.Marque.Nom} - {vehicule.Model.Nom} réussi.", NotificationType.SUCCESS);
+                this.AddNotification($"Modification du véhicule réussi.", NotificationType.SUCCESS);
             }
             else
             {
                 TempData["EditVehicule"] = "EditVehicule";
-                TempData["IdVehicule"] = vehicule.Id;
+                TempData["IdVehicule"] = vehicule.Immatriculation;
                 TempData.Keep();
-                this.AddNotification($"Echec de mise à jour du véhicule {vehicule.Model.Marque.Nom} - {vehicule.Model.Nom}.", NotificationType.ERROR);
+                //this.AddNotification($"Echec de mise à jour du véhicule {vehicule.Model.Marque.Nom} - {vehicule.Model.Nom}.", NotificationType.ERROR);
             }
             return RedirectToAction("index");
         }
