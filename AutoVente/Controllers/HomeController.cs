@@ -96,7 +96,7 @@ namespace AutoVente.Controllers
             }
             else
             {
-                voitures = vehiculeService.GetAll().OrderBy(v => v.Prix).ToList();
+                voitures = vehiculeService.GetVehiculesWithPricipalPhoto();
                
             }
 

@@ -19,7 +19,10 @@ namespace AutoVente.DAO
         {
             return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Couleur);
         }
-
+        public List<Vehicule> GetVehiculesWithPricipalPhoto()
+        {
+            return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Photos).ToList();
+        }
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();

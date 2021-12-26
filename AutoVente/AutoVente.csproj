@@ -445,6 +445,7 @@
     <Content Include="Content\Layout\Site\js\layout.js" />
     <Content Include="Content\Layout\Site\js\scripts.js" />
     <Content Include="Content\Layout\Site\js\utils.js" />
+    <Content Include="Content\Prod\img\wallys-iris-modèle.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

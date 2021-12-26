@@ -108,3 +108,11 @@ inputNumberMinKilometrrage.addEventListener('change', function () {
 inputNumberKilometrrage.addEventListener('change', function () {
     nonLinearSliderKilometrrage.noUiSlider.set([null, this.value]);
 });
+
+
+
+   
+ 
+
+
+
