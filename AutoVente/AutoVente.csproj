@@ -166,9 +166,18 @@
     <Compile Include="Migrations\202112160945414_AddPrixVoiture.Designer.cs">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\202112170942003_UpdateAnneeModel.cs" />
     <Compile Include="Migrations\202112170942003_UpdateAnneeModel.Designer.cs">
       <DependentUpon>202112170942003_UpdateAnneeModel.cs</DependentUpon>
+    <Compile Include="Migrations\202112221408251_AddVenduVoiture.cs" />
+    <Compile Include="Migrations\202112221408251_AddVenduVoiture.Designer.cs">
+      <DependentUpon>202112221408251_AddVenduVoiture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112231235081_ModelPriceInt.cs" />
+    <Compile Include="Migrations\202112231235081_ModelPriceInt.Designer.cs">
+      <DependentUpon>202112231235081_ModelPriceInt.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adresse.cs" />
@@ -197,7 +206,11 @@
     <Compile Include="ViewsModels\CouleurModelViewModel.cs" />
     <Compile Include="ViewsModels\CouleurViewModel.cs" />
     <Compile Include="ViewsModels\ModelMarqueViewModel.cs" />
+
     <Compile Include="ViewsModels\SearchViewModel.cs" />
+
+    <Compile Include="ViewsModels\VehiculeViewModel.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\contactform\contactform.php" />
@@ -530,10 +543,13 @@
     <Content Include="Views\Model\_PartialCouleursAdd.cshtml" />
     <Content Include="Views\Message\Contact.cshtml" />
     <Content Include="Views\Vehicule\Index.cshtml" />
-    <Content Include="Views\Vehicule\_PartialCreateModel.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
+
     <Content Include="Views\Home\View.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+
+    <Content Include="Views\Vehicule\_PartialEditVehicule.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -554,12 +570,21 @@
     <EmbeddedResource Include="Migrations\202112160945414_AddPrixVoiture.resx">
       <DependentUpon>202112160945414_AddPrixVoiture.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Migrations\202112170942003_UpdateAnneeModel.resx">
       <DependentUpon>202112170942003_UpdateAnneeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+
+    <EmbeddedResource Include="Migrations\202112221408251_AddVenduVoiture.resx">
+      <DependentUpon>202112221408251_AddVenduVoiture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112231235081_ModelPriceInt.resx">
+      <DependentUpon>202112231235081_ModelPriceInt.cs</DependentUpon>
+    </EmbeddedResource>
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -33,10 +33,11 @@ namespace AutoVente.Models
         public int IdCouleur { get; set; }
         public List<Photo> Photos { get; set; }
         // Au niveau du set condition pour avoir au moins une photo
+        public Vendu Vendu { get; set; }
         public List<HystoriqueFrai> HystoriqueFrais { get; set; }
         public List<HystoriqueAchatVente> HystoriqueAchats { get; set; }
         public List<Utilisateur> Utilisateurs { get; set; }
-        public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, Model model, Couleur couleur, List<Photo> photos)
+        public Vehicule(string immatriculation, string dateMisEnCirculation, int kilometrage, EtatVoiture etat, int idModel, int idCouleur, int prix/*, List<Photo> photos*/)
         {
             HystoriqueAchats = new List<HystoriqueAchatVente>();
             HystoriqueFrais = new List<HystoriqueFrai>();
@@ -45,11 +46,11 @@ namespace AutoVente.Models
             DateMisEnCirculation = dateMisEnCirculation;
             Kilometrage = kilometrage;
             Etat = etat;
-            Model = model;
-            Couleur = couleur;
-            Photos = photos;
-            IdModel = Model.Id;
-            IdCouleur = Couleur.Id;
+            //Photos = photos;
+            IdModel = idModel;
+            IdCouleur = idCouleur;
+            Prix = prix;
+            Vendu = Vendu.NON_VENDU;
         }
 
         public Vehicule()
@@ -65,6 +66,11 @@ namespace AutoVente.Models
         MOYEN = 5,
         MAUVAIS = 6,
         TRES_MAUVAIS = 7
+    }
+    public enum Vendu
+    {
+        NON_VENDU = 1,
+        VENDU = 2
     }
 }
 

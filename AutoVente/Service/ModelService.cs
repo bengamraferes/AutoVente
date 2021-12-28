@@ -15,6 +15,11 @@ namespace AutoVente.Service
             daoModel = new SqlRepositoryModel(new MyContext());
         }
 
+        public override Model FindById(int id)
+        {
+            return daoModel.FindById(id);
+        }
+
         public override IQueryable<Model> GetAll()
         {
             return daoModel.Collection();

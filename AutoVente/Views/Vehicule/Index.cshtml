@@ -1,69 +1,183 @@
 ﻿@model IEnumerable<AutoVente.Models.Vehicule>
-@using AutoVente.Models
+@using AutoVente.ViewsModels
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Liste des véhicules</h2>
+
+@Html.Partial("_Notifications")
+
 
 @if (TempData["CreateVehicule"] != null)
 {
-    @Html.Partial("_PartialCreateVehicule", new Vehicule())
+    <section>
+        @Html.Partial("_PartialCreateVehicule", new VehiculeViewModel())
+    </section>
+}
+else
+{
+    <div class="add-x-right">
+        <a href="~/Vehicule/Create" class="justify-content-end btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
+    </div>
 }
 
-<a href="~/Vehicule/Create" class=" btn btn-info fontBlack btnAllwidth "><i class="fas fa-plus"></i><span class="noPhone"> Nouvelle voiture</span></a>
+<section id="no-more-tables">
+    <table class="table table-bordered table-condensed cf text-center table-layout vertical-align table-shadow" style="margin-top:10px;">
+        <thead class="cf ">
+            <tr class="custom-tr text-center">
+                <th></th>
+                <th>
+                    Marque
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Couleur
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateMisEnCirculation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kilometrage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Etat)
+                </th>
+                <th>
+                    Prix de vente
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (TempData["EditVehicule"] != null && TempData["IdVehicule"].ToString() == item.Id.ToString())
+                {
+                    @Html.Partial("_PartialEditVehicule", item);
+                    continue;
+                }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Model.Numero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateMisEnCirculation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kilometrage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Etat)
-        </th>
-        <th></th>
-    </tr>
+                <td id="detail-btn-@item.Id" onclick="showDetails('@item.Immatriculation.ToString()')" class="detail-btn align-self-center">
+                    <i id="@item.Immatriculation.ToString()Icon" class="fas fa-2x fa-plus-circle"></i>
+                </td>
+                <td data-title="Marque">
+                    @Html.DisplayFor(modelItem => item.Model.Marque.Nom)
+                </td>
+                <td data-title="Model">
+                    @Html.DisplayFor(modelItem => item.Model.Nom)
+                </td>
+                <td data-title="Couleur">
+                    <input type="color" disabled value="@item.Couleur.CodeCouleur" />
+                </td>
+                <td data-title="Mise en circulation">
+                    @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
+                </td>
+                <td data-title="Kilometrage">
+                    @Html.DisplayFor(modelItem => item.Kilometrage)
+                </td>
+                <td data-title="Etat">
+                    @Html.DisplayFor(modelItem => item.Etat)
+                </td>
+                <td data-title="Prix de vente">
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Couleur.CodeCouleur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateMisEnCirculation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kilometrage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Etat)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Immatriculation }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Immatriculation }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Immatriculation })
-            </td>
-        </tr>
+                <td class="btn-td">
+                    <a href="~/Vehicule/Edit/@item.Id" type="button" class="btn-details-vehicule button btn btn-info fontBlack">
+                        <i class="far fa-edit fontBlack"></i> Modifier
+                    </a>
+
+                    <a class="btn-details-vehicule button btn btn-danger fontBlack " data-toggle="modal" data-target="#@item.Id">
+                        <i class="fas fa-trash-alt "></i> Supprimer
+                    </a>
+
+                    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Supprimer : @item.Model.Marque.Nom - @item.Model.Nom</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Etes vous sûr de vouloir supprimer se véhicule ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="/Vehicule/Delete/@item.Id">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                                        <input type="submit" class="btn btn-danger" value="Valider">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="hidden" id="@item.Immatriculation.ToString()">
+                <td colspan="9" style="padding: 0px; text-align: -webkit-center; background-color: #d1d0d0 ">
+                    <div class="row" style="width:100%">
+                        <div class="col-lg-4 row vehicule-details">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>référence :</bold></p>
+                                <p><bold>Carburent :</bold></p>
+                                <p><bold>Emission C02 :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Numero</p>
+                                <p>@item.Model.Carburent</p>
+                                <p>@item.Model.EmissionCo2</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 row vehicule-details bl-vehicules">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>Année :</bold></p>
+                                <p><bold>Puissance :</bold></p>
+                                <p><bold>Nb. places :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Annee</p>
+                                <p>@item.Model.PuissanceReel</p>
+                                <p>@item.Model.NbPlaces</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 row vehicule-details bl-vehicules">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <p><bold>Type :</bold></p>
+                                <p><bold>Prix neuf :</bold></p>
+                                <p><bold>Boîte :</bold></p>
+                            </div>
+                            <div class="col-6">
+                                <p>@item.Model.Type</p>
+                                <p>@item.Model.Prix</p>
+                                <p>@item.Model.BoiteDeVitesse</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</section>
+
+<script>
+    function showDetails(param) {
+        var details = document.getElementById(param);
+        var icon = document.getElementById(param + 'Icon');
+
+        if (details.classList.contains('hidden')) {
+            details.setAttribute('class', '');
+            icon.setAttribute('class', 'fas fa-2x fa-minus-circle')
+        } else {
+            details.setAttribute('class', 'hidden');
+            icon.setAttribute('class', 'fas fa-2x fa-plus-circle')
+        }
     }
-
-</table>
+</script>

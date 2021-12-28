@@ -1,0 +1,42 @@
+﻿@model AutoVente.Models.Vehicule
+
+
+@using (Html.BeginForm("Edit", "Vehicule"))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Immatriculation)
+
+    <td></td>
+    <td>@Model.Model.Marque.Nom</td>
+    <td>@Model.Model.Nom</td>
+    <td><input type="color" disabled value="@Model.Couleur.CodeCouleur" /></td>
+    <td>@Model.DateMisEnCirculation</td>
+    <td data-title="Kilometrage">
+        <div class="form-group">
+                @Html.EditorFor(model => model.Kilometrage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Kilometrage, "", new { @class = "text-danger" })
+
+        </div>
+    </td>
+    <td data-title="Etat">
+        <div class="form-group">
+                @Html.EnumDropDownListFor(model => model.Etat, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Etat, "", new { @class = "text-danger" })
+
+        </div>
+    </td>
+    <td data-title="Prix">
+        <div class="form-group">
+                @Html.EditorFor(model => model.Prix, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prix, "", new { @class = "text-danger" })
+
+        </div>
+    </td>
+
+    <td>
+        <button type="submit" class="btn btn-success  fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+        <a href="~/Vehicule/Index" class=" btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
+    </td>
+}

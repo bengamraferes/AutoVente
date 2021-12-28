@@ -21,7 +21,7 @@ namespace AutoVente.Models
         {
             Url = url;
             Numero = numero;
-        
+
         }
 
         public Photo()
