@@ -537,6 +537,7 @@
     <Content Include="Views\Vehicule\Index.cshtml" />
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
     <Content Include="Views\Vehicule\_PartialEditVehicule.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
