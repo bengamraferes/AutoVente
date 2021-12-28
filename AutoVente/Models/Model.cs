@@ -43,7 +43,7 @@ namespace AutoVente.Models
         }
 
 
-        public Model(string numero, Carburent carburent, decimal emissionCo2, string annee, int puissanceReel, int nbPlaces, Type type, int prix, BoiteVitesse boiteDeVitesse, List<Couleur> couleurs, Marque marque, string nom):base(nom)
+        public Model(string numero, Carburent carburent, decimal emissionCo2, int annee, int puissanceReel, int nbPlaces, Type type, int prix, BoiteVitesse boiteDeVitesse, Marque marque, string nom):base(nom)
 
         {
             Vehicules = new List<Vehicule>();
@@ -57,7 +57,7 @@ namespace AutoVente.Models
             Type = type;
             Prix = prix;
             BoiteDeVitesse = boiteDeVitesse;
-            Couleurs = couleurs;
+            //Couleurs = couleurs;
             //Marque = marque;
             MarqueId = marque.Id;
             Nom = nom;

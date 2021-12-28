@@ -79,13 +79,15 @@ namespace AutoVente.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<Couleur> couleurs = serviceCouleur.GetBlackAndwhite();
+                //List<Couleur> couleurs = serviceCouleur.GetBlackAndwhite();
                 Marque marque = serviceMarque.FindById(viewModel.MarqueId);
-                Model model =  new Model(viewModel.Model.Numero,viewModel.Model.Carburent, viewModel.Model.EmissionCo2, viewModel.Model.Annee, viewModel.Model.PuissanceReel, viewModel.Model.NbPlaces, viewModel.Model.Type, viewModel.Model.Prix, viewModel.Model.BoiteDeVitesse,couleurs,marque, viewModel.Model.Nom);
+                Model model =  new Model(viewModel.Model.Numero,viewModel.Model.Carburent, viewModel.Model.EmissionCo2, viewModel.Model.Annee, viewModel.Model.PuissanceReel, viewModel.Model.NbPlaces, viewModel.Model.Type, viewModel.Model.Prix, viewModel.Model.BoiteDeVitesse,marque, viewModel.Model.Nom);
                 service.Insert(model);
+                //model.Couleurs = couleurs;
+
                 service.SaveChanges();
                 this.AddNotification("Creation de la" + model.Nom, NotificationType.SUCCESS);
-                TempData["NomModel"] = model.Nom.ToString();
+                TempData["NumeroModel"] = model.Numero.ToString();
                 TempData.Keep();
             }
             else

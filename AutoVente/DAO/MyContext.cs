@@ -17,7 +17,11 @@ namespace AutoVente.DAO
             : base("name=MyContext")
         {
         }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<MyContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Model> Models { get; set; }
         public DbSet<Marque> Marques { get; set; }
         public DbSet<Couleur> Couleurs { get; set; }
