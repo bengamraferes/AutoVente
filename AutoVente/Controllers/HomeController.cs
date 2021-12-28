@@ -52,6 +52,7 @@ namespace AutoVente.Controllers
             List<Vehicule> voitures = new List<Vehicule>();
             SviewModel.Marques = marqueService.GetAll().ToList();
             SviewModel.Models = modelService.GetAll().ToList();
+            voitures = vehiculeService.GetVehiculesWithPricipalPhoto();
             if (id != null)
             {
                 try
@@ -60,28 +61,33 @@ namespace AutoVente.Controllers
                     switch (id)
                     {
                         case  1:
-                           voitures = modelService.FindByType(Models.Type.BREAK);
+                           voitures = voitures.Where(v => v.Model.Type == Models.Type.BREAK).ToList();
                             break;
                         case 2:
-                            voitures = modelService.FindByType(Models.Type.CITADINE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.CITADINE).ToList();
                             break;
                         case 3:
-                            voitures = modelService.FindByType(Models.Type.ROUTIERE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.ROUTIERE).ToList();
+                            
                             break;
                         case 4:
-                            voitures = modelService.FindByType(Models.Type.SPROTIVE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.SPROTIVE).ToList();
+
                             break;
                         case 5:
-                            voitures = modelService.FindByType(Models.Type.MONOSPACE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.MONOSPACE).ToList();
+
                             break;
                         case 6:
-                            voitures = modelService.FindByType(Models.Type.SUV);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.SUV).ToList();
+
                             break;
                         case 7:
-                            voitures = modelService.FindByType(Models.Type.LUDOSPACE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.LUDOSPACE).ToList();
+
                             break;
                         case 8:
-                            voitures = modelService.FindByType(Models.Type.BERLINE);
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.BERLINE).ToList();
                             break;
 
                     }
@@ -94,11 +100,7 @@ namespace AutoVente.Controllers
                 }
                
             }
-            else
-            {
-                voitures = vehiculeService.GetVehiculesWithPricipalPhoto();
-               
-            }
+           
 
             SviewModel.Vehicules = voitures;
             return View(SviewModel);

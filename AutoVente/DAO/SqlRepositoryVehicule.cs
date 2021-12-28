@@ -26,7 +26,7 @@ namespace AutoVente.DAO
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();
-
+            
             return vehicules;
         }
 
