@@ -18,7 +18,6 @@ detailBtns.forEach((e) => {
         i.classList.toggle("fa-plus-circle")
         i.classList.toggle("fa-minus-circle")
         tr.classList.toggle("hidden")
-      
 
     })
    

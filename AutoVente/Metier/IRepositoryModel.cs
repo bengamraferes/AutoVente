@@ -11,7 +11,7 @@ namespace AutoVente.Metier
    public  interface IRepositoryModel :IRepositoryNom<Model>
     {
         List<Vehicule> FindByCarburent(Carburent carburent);
-        List<Vehicule> FindByAnnees(DateTime dateMin, DateTime dateMax);
+        List<Vehicule> FindByAnnees(int dateMin, int dateMax);
         List<Vehicule> FindByPrix(decimal PrixMin, decimal prixMax);// A voir le prix affiché du veicule
         List<Vehicule> FindByPuissanceReel(int PuissanceMin, int PuissanceMax);
         List<Vehicule> FindByType(Type type);

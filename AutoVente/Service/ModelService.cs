@@ -24,12 +24,15 @@ namespace AutoVente.Service
         {
             return daoModel.Collection();
         }
-
+        public List<Vehicule> FindByIdModel(int id, Carburent carburent, BoiteVitesse boiteVitesse)
+        {
+            return daoModel.FindByIdModel(id, carburent, boiteVitesse);
+        }
         public  List<Vehicule> FindByCarburent(Carburent carburent) {
             return daoModel.FindByCarburent(carburent);
         }
 
-        public  List<Vehicule> FindByAnnees(DateTime dateMin, DateTime dateMax)
+        public  List<Vehicule> FindByAnnees(int dateMin, int dateMax)
         {
             return daoModel.FindByAnnees(dateMin, dateMax);
         }
@@ -44,7 +47,16 @@ namespace AutoVente.Service
         }
         public List<Vehicule> FindByType(Models.Type type)
         {
-            return daoModel.FindByType(type);
+            List<Vehicule> vehicules = daoModel.FindByType(type);
+
+            if (vehicules.Count> 0)
+            {
+                return vehicules;
+            }
+            else
+            {
+                throw new Exception("Type introuvable");
+            }
         }
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse)
         {
@@ -53,6 +65,10 @@ namespace AutoVente.Service
         public void AddCouleurs(List<Couleur> couleurs, int IdModel)
         {
             daoModel.AddCouleurs(couleurs, IdModel);
+        }
+        public List<Vehicule> SearchModel( int dateMin, int dateMax, Carburent carburent, Models.Type type, BoiteVitesse boiteVitesse, int marqueId)
+        {
+          return  daoModel.SearchModel(dateMin, dateMax, carburent, type, boiteVitesse, marqueId);
         }
     }
 }

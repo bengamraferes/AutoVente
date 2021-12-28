@@ -7,6 +7,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Agency - Start Bootstrap Theme</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*NoUiSlider*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="~/Content/Layout/Site/assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -38,7 +42,7 @@
             </div>
         </div>
     </nav>
-  
+
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
@@ -46,50 +50,50 @@
             <div class="container">
                 <div class="btn-circle row">
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 8 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/berline.png" />
                         </a>
                         <p>BERLINE</p>
                     </div>
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 1 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/break.png" />
                         </a>
                         <p>BREAK</p>
                     </div>
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 2 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/citadine.png" />
                         </a>
                         <p>CITADINE</p>
                     </div>
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 7 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/ludospace.png" />
                         </a>
                         <p>LUDOSPACE</p>
                     </div>
-              
+
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 5 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/monospace.png" />
                         </a>
                         <p>MONOSPACE</p>
                     </div>
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 3 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/routiere.png" />
                         </a>
                         <p>ROUTIERE</p>
                     </div>
                     <div class="col ">
-                        <a class="btn" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 4 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/sportive.png" />
                         </a>
                         <p>SPORTIVE</p>
                     </div>
                     <div class="col   ">
-                        <a class="btn d-flex flex-column align-items-center" href="#services">
+                        <a class="btn" href="@Url.Action("Search", "Home", new { id = 6 })">
                             <img src="~/Content/Layout/Site/assets/img/logos-voiture/suv.png" />
                         </a>
                         <p>SUV</p>
@@ -119,8 +123,11 @@
             </div>
         </footer>
     </section>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- NoUiSlider-->
 
-    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Scripts/NoUiSliderSearch.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="~/Content/Layout/Site/js/scripts.js"></script>

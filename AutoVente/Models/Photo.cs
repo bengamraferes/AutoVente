@@ -23,5 +23,9 @@ namespace AutoVente.Models
             Numero = numero;
 
         }
+
+        public Photo()
+        {
+        }
     }
 }

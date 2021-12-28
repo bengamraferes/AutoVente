@@ -65,7 +65,7 @@ namespace AutoVente.Models
         BON = 4,
         MOYEN = 5,
         MAUVAIS = 6,
-        TRES_MOVAIS = 7
+        TRES_MAUVAIS = 7
     }
     public enum Vendu
     {
