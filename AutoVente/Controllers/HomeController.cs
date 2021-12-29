@@ -133,9 +133,16 @@ namespace AutoVente.Controllers
             }
             return View(SviewModel);
         }
-        public ActionResult DetailVehicule(Vehicule vehicule)
+        [HttpGet]
+        public ActionResult DetailVehicule(int id)
         {
-            return View(vehicule);
+            if (id != 0)
+            {
+                return View(vehiculeService.GetDetailVehicule(id));
+            }
+            return HttpNotFound();
+
+
         }
     }
 }

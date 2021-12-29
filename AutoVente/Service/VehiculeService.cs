@@ -24,7 +24,10 @@ namespace AutoVente.Service
         {
             return daoVehicule.GetVehiculesWithPricipalPhoto();
         }
-
+        public Vehicule GetDetailVehicule(int id)
+        {
+            return daoVehicule.GetDetailVehicule(id);
+        }
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
            return daoVehicule.FindByEtat( etat);

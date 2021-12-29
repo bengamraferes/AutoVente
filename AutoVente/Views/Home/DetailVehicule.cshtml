@@ -5,10 +5,11 @@
 }
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="~/Content/Layout/Site/css/DetailVoiture.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<div class=".containerSlide">
-    <h1>Thumbnail Slider / Carousel</h1>
+
+<div class=".containerSlide container">
+
     <div id="myCarousel" class="carousel slide" data-interval="false">
 
         <div class="carousel-inner" role="listbox">
@@ -27,7 +28,7 @@
                     url = "https://demo.vehica.com/wp-content/uploads/2020/08/6.jpg";
                 }
                 <div class="item @Html.Conditional(IsActive,"active","")">
-                    <img src="" alt="XZ" style="width: 420px; height: 440px">
+                    <img src="@url" alt="XZ">
                 </div>
             }
 
@@ -43,30 +44,28 @@
 
         <div id="thumbCarousel">
             @foreach (var photo in @Model.Photos)
-                    {
-                        string url = photo.Url.ToString();
-                        bool IsActive = false;
-                        int numero = photo.Numero - 1;
-                        if (photo.Numero == 1)
-                        {
+            {
+                string url = photo.Url.ToString();
+                bool IsActive = false;
+                int numero = photo.Numero - 1;
+                if (photo.Numero == 1)
+                {
 
-                            IsActive = true;
+                    IsActive = true;
 
-                        }
-                        if (url == null)
-                        {
-                            url = "https://demo.vehica.com/wp-content/uploads/2020/08/6.jpg";
-                        }
-                <div class="item ">
-                    <img src="" alt="XZ" style="width: 420px; height: 440px">
-                </div>
-                <div data-target="#myCarousel" data-slide-to="@numero" class="thumb @Html.Conditional(IsActive,"active","")"><img src="https://www.technobuffalo.com/wp-content/uploads/2016/09/Xperia-XZ_platinum_group_SCR1-1280x1280.png" alt="XZ" style="width: 120px; height: 130px"></div>
+                }
+                if (url == null)
+                {
+                    url = "https://demo.vehica.com/wp-content/uploads/2020/08/6.jpg";
+                }
+
+                <div data-target="#myCarousel" data-slide-to="@numero" class="thumb @Html.Conditional(IsActive,"active","")"><img src="@url" alt="XZ" @*style="width: 120px; "*@></div>
 
             }
             @*<div data-target="#myCarousel" data-slide-to="1" class="thumb"><img src="https://cdn.arstechnica.net/wp-content/uploads/2016/08/Xperia-XZ_forestBlue_group_SCR1.png" alt="XZ" style="width: 120px; height: 130px"></div>
-            <div data-target="#myCarousel" data-slide-to="2" class="thumb"><img src="https://sits-pod35.demandware.net/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw9ddcfe3a/images/XPERIAXZB/XPERIAXZB.png?sw=442&sh=442&sm=fit" alt="XZ" style="width: 120px; height: 130px"></div>
-            <div data-target="#myCarousel" data-slide-to="3" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-blue-back.png" alt="XZ" style="width: 120px; height: 130px"></div>
-            <div data-target="#myCarousel" data-slide-to="4" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-platinum-back.png" alt="XZ" style="width: 120px; height: 130px"></div>*@
+                <div data-target="#myCarousel" data-slide-to="2" class="thumb"><img src="https://sits-pod35.demandware.net/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw9ddcfe3a/images/XPERIAXZB/XPERIAXZB.png?sw=442&sh=442&sm=fit" alt="XZ" style="width: 120px; height: 130px"></div>
+                <div data-target="#myCarousel" data-slide-to="3" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-blue-back.png" alt="XZ" style="width: 120px; height: 130px"></div>
+                <div data-target="#myCarousel" data-slide-to="4" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-platinum-back.png" alt="XZ" style="width: 120px; height: 130px"></div>*@
         </div>
 
     </div>
@@ -107,6 +106,8 @@
         });
     });
 </script>
+<link href="~/Content/Layout/Site/css/styles.css" rel="stylesheet" />
+<link href="~/Content/Layout/Site/css/DetailVoiture.css" rel="stylesheet" />
 @*<div class="container">
         <h4>Vehicule</h4>
         <hr />

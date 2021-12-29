@@ -7,46 +7,86 @@
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
     margin: auto;
+   
 }
+.carousel-inner > .item > img{
+    width: inherit;
 
+}
 #myCarousel {
-    max-width: 650px;
+    max-width: 1024px;
+    max-height: 800px;
     margin: 0 auto;
     background: #fff;
+    border-radius: calc(1rem - 1px);
 }
-
+#myCarousel img {
+border-radius: calc(1rem - 1px);
+}
 #thumbCarousel {
-    max-width: 650px;
+    max-width: 1024px;
     margin: 0 auto;
     overflow: hidden;
     background: #eaeaea;
     padding: 10px 0;
+    height: 30%;
+    display: flex;
+    justify-content:space-around;
+    overflow-x:auto;
 }
 
-    #thumbCarousel .thumb {
-        float: left;
-        margin-right: 10px;
-        border: 1px solid #ccc;
-        background: #fff;
-    }
+#thumbCarousel .thumb {
+   
+ margin-right: 10px;
+ border: 1px solid #ccc;
+ height: 100%;
 
-        #thumbCarousel .thumb:last-child {
-            margin-right: 0;
-        }
+ }
+    #thumbCarousel .thumb img {
+        width: 190px;
+        border-radius: calc(1rem - 1px);
+    }
+    #thumbCarousel .thumb:last-child {
+        margin-right: 0;
+    }
 
 .thumb:hover {
     cursor: pointer;
+    box-shadow: #ffc800 -3px -3px 10px
 }
 
 .thumb img {
     opacity: 0.5;
 }
 
-    .thumb img:hover {
+.thumb img:hover {
         opacity: 1;
+     
     }
 
 .thumb.active img {
     opacity: 1;
-    border: 1px solid #1d62b7;
+    border: 3px solid #df6d14;
 }
+body, li {
+    font-size: 1.5rem;
+}
+a {
+    font-size: 1.5rem !important;
+}
+
+header.masthead {
+        padding-top:30rem !important;
+        padding-bottom: 15.5rem;
+    }
+@media (min-width: 768px) {
+    header.masthead {
+        padding-top: 30rem;
+        padding-bottom: 15.5rem;
+    }
+}
+
+
+
+
+
