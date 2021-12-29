@@ -17,6 +17,7 @@ namespace AutoVente.Controllers
         private ModelService serviceModel;
         private MarqueService serviceMarque;
         private CouleurService serviceCouleur;
+        private BaseService<Photo> servicePhoto;
         private MyContext context;
 
         public VehiculeController()
@@ -25,6 +26,7 @@ namespace AutoVente.Controllers
             serviceModel = new ModelService();
             serviceMarque = new MarqueService();
             serviceCouleur = new CouleurService();
+            servicePhoto = new BaseService<Photo>();
             context = new MyContext();
         }
 
@@ -55,7 +57,7 @@ namespace AutoVente.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(VehiculeViewModel viewModel)
+        public ActionResult Create(VehiculeViewModel viewModel, HttpPostedFileBase photo1, HttpPostedFileBase photo2, HttpPostedFileBase photo3, HttpPostedFileBase photo4, HttpPostedFileBase photo5)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +73,30 @@ namespace AutoVente.Controllers
 
                 service.Insert(vehicule);
                 service.SaveChanges();
+
+                List<HttpPostedFileBase> photos = new List<HttpPostedFileBase>();
+                photos.Add(photo1);
+                photos.Add(photo2);
+                photos.Add(photo3);
+                photos.Add(photo4);
+                photos.Add(photo5);
+
+                var number = 1;
+                foreach (var photo in photos)
+                {
+                    if (photo != null)
+                    {
+                        string fileName = number + "_" + vehicule.Immatriculation + photo.FileName; //Personaliser le nom de la photo
+                        string path = Server.MapPath("~/Content/img/Vehicules/" + fileName);
+                        photo.SaveAs(path);
+
+                        Photo p = new Photo("/Content/img/Vehicules/" + fileName, number, vehicule.Immatriculation);
+                        servicePhoto.Insert(p);
+                        servicePhoto.SaveChanges();
+
+                        number++;
+                    }
+                }
 
                 string modelNom = serviceModel.FindById(viewModel.ModelId).Nom;
                 string MarqueNom = serviceMarque.FindById(serviceModel.FindById(viewModel.ModelId).MarqueId).Nom;

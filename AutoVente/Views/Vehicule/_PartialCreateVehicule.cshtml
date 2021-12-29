@@ -1,6 +1,9 @@
 ﻿@model AutoVente.ViewsModels.VehiculeViewModel
+@using AutoVente.Models
+
 <link href="~/Content/Admin/css/CustomStyle.css" rel="stylesheet" />
-@using (Html.BeginForm("Create", "Vehicule"))
+
+@using (Html.BeginForm("Create", "Vehicule", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -52,8 +55,13 @@
             <strong>Prix d'achat conseillé marge 30% : <span id="prixAchat"></span></strong>
         </div>
     </div>
+
     <div>
-        <input type="text" name="Photos"/>
+        Photo 1 : <input type="file" id="picture" name="photo1" accept=".png, .jpg" />
+        Photo 2 : <input type="file" id="picture" name="photo2" accept=".png, .jpg" />
+        Photo 3 : <input type="file" id="picture" name="photo3" accept=".png, .jpg" />
+        Photo 4 : <input type="file" id="picture" name="photo4" accept=".png, .jpg" />
+        Photo 5 : <input type="file" id="picture" name="photo5" accept=".png, .jpg" />
     </div>
 </div>
 
