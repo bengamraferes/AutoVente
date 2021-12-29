@@ -17,11 +17,11 @@ namespace AutoVente.Models
         public Vehicule Vehicule { get; set; }
         [ForeignKey("Vehicule")]
         public string Immatriculation { get;  set; }
-        public Photo(string url, int numero)
+        public Photo(string url, int numero, string immatriculation)
         {
             Url = url;
             Numero = numero;
-
+            Immatriculation = immatriculation;
         }
 
         public Photo()
