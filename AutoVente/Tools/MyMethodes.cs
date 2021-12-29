@@ -15,19 +15,18 @@ namespace AutoVente.Tools
             Carburent carburent = 0;
             switch (enumVueValue)
             {
-                case "ESSENCE":
+                case "Essence":
                     carburent = Carburent.ESSENCE;
                     break;
-                case "GASOLE":
+                case "Gasole":
                     carburent = Carburent.GASOLE;
                     break;
-                case "ELECTRIQUE":
-                    carburent = Carburent.ELECTRIQUE; 
+                case "Electrique":
+                    carburent = Carburent.ELECTRIQUE;
                     break;
-                case "HYBRIDE":
+                case "Hybride":
                     carburent = Carburent.HYBRIDE;
                     break;
-            
 
             }
             return carburent;
@@ -38,13 +37,12 @@ namespace AutoVente.Tools
             BoiteVitesse boiteVitesse = 0;
             switch (enumVueValue)
             {
-                case "AUTO":
+                case "Automatique":
                     boiteVitesse = BoiteVitesse.AUTO;
                     break;
-                case "MANUEL":
+                case "Manuel":
                     boiteVitesse = BoiteVitesse.MANUEL;
                     break;
-              
 
             }
             return boiteVitesse;
@@ -55,71 +53,34 @@ namespace AutoVente.Tools
             Models.Type type = 0;
             switch (enumVueValue)
             {
-                case "BREAK":
+                case "Breack":
                     type = Models.Type.BREAK;
                     break;
-                case "CITADINE":
+                case "Citadine":
                     type = Models.Type.CITADINE;
                     break;
-                case "ROUTIERE":
+                case "Routiere":
                     type = Models.Type.ROUTIERE;
                     break;
-                case "SPROTIVE":
+                case "Sportive":
                     type = Models.Type.SPROTIVE;
                     break;
-                case "MONOSPACE":
+                case "Monospace":
                     type = Models.Type.MONOSPACE;
                     break;
-                case "SUV":
+                case "Suv":
                     type = Models.Type.SUV;
                     break;
-                case "LUDOSPACE":
+                case "Ludospace":
                     type = Models.Type.LUDOSPACE;
                     break;
-                case "BERLINE":
+                case "Berline":
                     type = Models.Type.BERLINE;
                     break;
-
 
             }
             return type;
         }
     }
-    //BREAK = 1,
-    //    CITADINE = 2,
-    //    ROUTIERE = 3,
-    //    SPROTIVE = 4,
-    //    MONOSPACE = 5,
-    //    SUV = 6,
-    //    LUDOSPACE = 7,
-    //    BERLINE = 8
-    //}
-    //public class EnumCorrespond<T> where T : Enum
-    //{
-    //    public T EnumBdd { get; set; }
-    //    public System.Type t = typeof(T);
-    //    public EnumCorrespond(T enumBdd)
-    //    {
-    //        EnumBdd = enumBdd;
-    //    }
 
-        //public T CorrespondEnum(string valueEnum)
-        //{
-        //    //Enum.GetNames
-        //    //return T;
-
-        //    T res;
-        //    foreach (int item in Enum.GetValues(t))
-        //    {
-
-        //        if (Enum.GetName(t, item) == valueEnum)
-        //        {
-
-        //            res = item;
-        //        }
-        //    }
-        //    return res;
-
-    //    //}
-    //}
 }

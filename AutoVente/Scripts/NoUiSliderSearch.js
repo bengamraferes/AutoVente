@@ -3,7 +3,7 @@
 noUiSlider.create(nonLinearSlider, {
     connect: true,
     behaviour: 'tap',
-    start: [5000,10000],
+    start: [5000,20000],
     range: {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
@@ -77,7 +77,7 @@ var nonLinearSliderKilometrrage = document.getElementById('nonlinearKilometrage'
 noUiSlider.create(nonLinearSliderKilometrrage, {
     connect: true,
     behaviour: 'tap',
-    start: [10000, 50000],
+    start: [10000, 100000],
     range: {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
