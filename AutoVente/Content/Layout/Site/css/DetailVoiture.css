@@ -18,7 +18,7 @@
     max-height: 800px;
     margin: 0 auto;
     background: #fff;
-    border-radius: calc(1rem - 1px);
+    border-radius: calc(3rem - 1px);
 }
 #myCarousel img {
 border-radius: calc(1rem - 1px);
@@ -68,6 +68,25 @@ border-radius: calc(1rem - 1px);
     opacity: 1;
     border: 3px solid #df6d14;
 }
+.elementsDetail {
+    background-color: rgba(110,193,228,0.3);
+    margin-top: 250px;
+    max-width: 612px;
+    border-radius: calc(1rem - 1px);
+}
+.price {
+    font-size: 35px;
+    line-height: 44px;
+    font-weight: 800;
+    color: #ff4605
+}
+.textTransform {
+    text-transform: uppercase;
+   
+}
+.textTransformElement {
+   
+}
 body, li {
     font-size: 1.5rem;
 }
@@ -76,9 +95,9 @@ a {
 }
 
 header.masthead {
-        padding-top:30rem !important;
-        padding-bottom: 15.5rem;
-    }
+    padding-top: 30rem !important;
+    padding-bottom: 15.5rem;
+}
 @media (min-width: 768px) {
     header.masthead {
         padding-top: 30rem;

@@ -62,12 +62,113 @@
                 <div data-target="#myCarousel" data-slide-to="@numero" class="thumb @Html.Conditional(IsActive,"active","")"><img src="@url" alt="XZ" @*style="width: 120px; "*@></div>
 
             }
-            @*<div data-target="#myCarousel" data-slide-to="1" class="thumb"><img src="https://cdn.arstechnica.net/wp-content/uploads/2016/08/Xperia-XZ_forestBlue_group_SCR1.png" alt="XZ" style="width: 120px; height: 130px"></div>
-                <div data-target="#myCarousel" data-slide-to="2" class="thumb"><img src="https://sits-pod35.demandware.net/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw9ddcfe3a/images/XPERIAXZB/XPERIAXZB.png?sw=442&sh=442&sm=fit" alt="XZ" style="width: 120px; height: 130px"></div>
-                <div data-target="#myCarousel" data-slide-to="3" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-blue-back.png" alt="XZ" style="width: 120px; height: 130px"></div>
-                <div data-target="#myCarousel" data-slide-to="4" class="thumb"><img src="https://www.starhub.com/content/dam/catalog/starhub-store-sony-xperia-xz-platinum-back.png" alt="XZ" style="width: 120px; height: 130px"></div>*@
+
         </div>
 
+    </div>
+</div>
+<div class="container elementsDetail textTransform">
+    <div class="d-flex justify-content-center">
+
+        <div class="p-2 price">
+            @Html.DisplayFor(model => model.Model.Prix) €
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Marque :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Marque.Nom)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Model :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Nom)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Année du model :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Annee)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Carburent :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Carburent)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Boite de vitesse :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.BoiteDeVitesse)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            kilometrage :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Kilometrage)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Puissance réelle :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.PuissanceReel)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Nombre de place :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.NbPlaces)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Emission co2 :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.EmissionCo2)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Type:
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Type)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Année de mise en circulation :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.DateMisEnCirculation)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <a  href="+33627483612" class=" btn p-2 w-50" style="background: #05cd51; color:#ffffff" ">
+            Appeler
+        </a>
+        <a href="@Url.Action("Contact","Message")" class="btn p-2 w-50" style="background: #ff4605; color:#ffffff">
+            Message 
+        </a>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -178,5 +279,5 @@
 
         </dl>
     </div>*@
-@*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
 

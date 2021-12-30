@@ -396,6 +396,7 @@
     <Content Include="Content\Layout\assets\webfonts\fa-regular-400.svg" />
     <Content Include="Content\Layout\assets\webfonts\fa-solid-900.svg" />
     <Content Include="Content\Layout\images\header.jpg" />
+    <Content Include="Content\Layout\images\image.jpg" />
     <Content Include="Content\Layout\images\pic01.jpg" />
     <Content Include="Content\Layout\images\pic02.jpg" />
     <Content Include="Content\Layout\images\pic03.jpg" />

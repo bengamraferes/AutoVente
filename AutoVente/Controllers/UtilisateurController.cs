@@ -23,6 +23,7 @@ namespace AutoVente.Controllers
         [AuthorisationFilter(Roles.CLIENT,Roles.ADMINISTRATEUR)]
         public ActionResult Index( Utilisateur utilisateur)
         {
+            RedirectToAction("Seach", "Home");
             List<Vehicule> vehiculesFavories = utilisateur.Favories;
             return View(vehiculesFavories);
         }
@@ -51,7 +52,7 @@ namespace AutoVente.Controllers
                 service.Insert(user);
                 service.SaveChanges();
                 this.AddNotification("Bienvenue" + user.Prenom,NotificationType.SUCCESS);
-                return RedirectToAction("Index", user);
+                return Redirect("~/Login/Connexion");
             }
             else
             {
