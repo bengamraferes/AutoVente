@@ -1,5 +1,6 @@
 ﻿using AutoVente.DAO;
 using AutoVente.Extensions;
+using AutoVente.Filter;
 using AutoVente.Models;
 using AutoVente.Service;
 using AutoVente.ViewsModels;
@@ -13,6 +14,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
+    [AuthorisationFilter( Roles.ADMINISTRATEUR)]
     public class ModelController : Controller
     {
         private ModelService service;
@@ -86,7 +88,7 @@ namespace AutoVente.Controllers
                 //model.Couleurs = couleurs;
 
                 service.SaveChanges();
-                this.AddNotification("Creation de la" + model.Nom, NotificationType.SUCCESS);
+                this.AddNotification("Creation du model " + model.Nom, NotificationType.SUCCESS);
                 TempData["NumeroModel"] = model.Numero.ToString();
                 TempData.Keep();
             }

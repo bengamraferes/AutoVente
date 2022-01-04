@@ -71,7 +71,7 @@ namespace AutoVente.Controllers
                             
                             break;
                         case 4:
-                            voitures = voitures.Where(v => v.Model.Type == Models.Type.SPROTIVE).ToList();
+                            voitures = voitures.Where(v => v.Model.Type == Models.Type.SPOROTIVE).ToList();
 
                             break;
                         case 5:
