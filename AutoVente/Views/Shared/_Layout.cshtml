@@ -7,7 +7,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Agency - Start Bootstrap Theme</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link  href="~/Content/bootstrap.css" rel="stylesheet" />
     @*NoUiSlider*@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,18 +27,19 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Search","Home")">Recherche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Connexion","Login")">Connexion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Message")">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -47,7 +49,7 @@
     <header class="masthead">
         <div class="container">
             <div class="masthead-subheading">Welcome To Our Studio!</div>
-            <div class="container">
+            <div class="container mt-2">
                 <div class="btn-circle row">
                     <div class="col ">
                         <a class="btn" href="@Url.Action("Search", "Home", new { id = 8 })">
@@ -136,5 +138,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
 </body>
 </html>

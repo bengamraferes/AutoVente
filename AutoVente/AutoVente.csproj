@@ -144,6 +144,7 @@
     <Compile Include="DAO\SqlRepositoryVehicule.cs" />
     <Compile Include="Extensions\CustomHtmlHelper.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
+    <Compile Include="Extensions\VehiculeComparer.cs" />
     <Compile Include="Filter\AuthorisationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -395,6 +396,7 @@
     <Content Include="Content\Layout\assets\webfonts\fa-regular-400.svg" />
     <Content Include="Content\Layout\assets\webfonts\fa-solid-900.svg" />
     <Content Include="Content\Layout\images\header.jpg" />
+    <Content Include="Content\Layout\images\image.jpg" />
     <Content Include="Content\Layout\images\pic01.jpg" />
     <Content Include="Content\Layout\images\pic02.jpg" />
     <Content Include="Content\Layout\images\pic03.jpg" />
@@ -444,6 +446,7 @@
     <Content Include="Content\Layout\Site\assets\img\team\3.jpg" />
     <Content Include="Content\Layout\Site\css\colorpicker.css" />
     <Content Include="Content\Layout\Site\css\customStyle.css" />
+    <Content Include="Content\Layout\Site\css\DetailVoiture.css" />
     <Content Include="Content\Layout\Site\css\layout.css" />
     <Content Include="Content\Layout\Site\css\styles.css" />
     <Content Include="Content\Layout\Site\js\colorpicker.js" />
@@ -452,6 +455,7 @@
     <Content Include="Content\Layout\Site\js\layout.js" />
     <Content Include="Content\Layout\Site\js\scripts.js" />
     <Content Include="Content\Layout\Site\js\utils.js" />
+    <Content Include="Content\Prod\img\wallys-iris-modèle.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -499,6 +503,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Content\Admin\js\ColorPicker.js" />
+    <Content Include="Scripts\NoUiSliderSearch.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -538,6 +543,7 @@
     <Content Include="Views\Vehicule\_PartialCreateVehicule.cshtml" />
     <Content Include="Views\Vehicule\_PartialEditVehicule.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\DetailVehicule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

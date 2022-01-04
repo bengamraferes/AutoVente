@@ -34,29 +34,29 @@ namespace AutoVente.ViewsModels
     }
     public enum CarburentViewModel
     {
-        TOUT =0,
-        ESSENCE = 1,
-        GASOLE = 2,
-        ELECTRIQUE = 3,
-        HYBRIDE = 4,
+        Tout =0,
+        Essence = 1,
+        Gasole = 2,
+        Electrique = 3,
+        Hybride = 4,
     }
     public enum BoiteVitesseViewModel
     {
-        TOUT = 0,
-        AUTO = 1,
-        MANUEL = 2
+        Tout = 0,
+        Automatique = 1,
+        Manuel = 2
     }
     public enum TypeViewModel
     {
-        TOUT = 0,
-        BREAK = 1,
-        CITADINE = 2,
-        ROUTIERE = 3,
-        SPROTIVE = 4,
-        MONOSPACE = 5,
-        SUV = 6,
-        LUDOSPACE = 7,
-        BERLINE = 8
+        Tout = 0,
+        Breack = 1,
+        Citadine = 2,
+        Routiere = 3,
+        Sportive = 4,
+        Monospace = 5,
+        Suv = 6,
+        Ludospace = 7,
+        Berline = 8
     }
     public enum EtatViewModel
     {

@@ -1,4 +1,5 @@
-﻿using AutoVente.Metier;
+﻿using AutoVente.Extensions;
+using AutoVente.Metier;
 using AutoVente.Models;
 using AutoVente.ViewsModels;
 using System;
@@ -23,6 +24,10 @@ namespace AutoVente.DAO
         {
             return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Photos).ToList();
         }
+        public Vehicule GetDetailVehicule(int id)
+        {
+            return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Photos).SingleOrDefault(v =>v.Id == id);
+        }
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();
@@ -43,6 +48,7 @@ namespace AutoVente.DAO
         }
         public List<Vehicule> SearchVehicule(List<Vehicule> vehicules, int KilometrageMin, int KilometrageMax, int prixMin,int prixMax , EtatViewModel etatViewModel)
         {
+            List<Vehicule> allVehicules = GetVehiculesWithPricipalPhoto();
             vehicules = vehicules.Where(v => v.Kilometrage >= KilometrageMin && v.Kilometrage <= KilometrageMax).Where(v => v.Prix >= prixMin && v.Prix <= prixMax).ToList();
             if (etatViewModel != 0)
             {
@@ -55,6 +61,8 @@ namespace AutoVente.DAO
                     vehicules = vehicules.Where(v => v.Etat != EtatVoiture.NEUF).ToList();
                 }
             }
+            VehiculeComparer vehiculeComparer = new VehiculeComparer();
+            vehicules = allVehicules.Intersect(vehicules, vehiculeComparer).ToList();
             return vehicules;
         }
     }

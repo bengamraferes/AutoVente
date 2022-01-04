@@ -108,45 +108,39 @@ namespace AutoVente.Controllers
         [HttpPost]
         public ActionResult Search( SearchViewModel SviewModel)
         {
-            //if (ModelState.IsValid)
-            //{
-            SviewModel.Marques = marqueService.GetAll().ToList();
-            SviewModel.Models = modelService.GetAll().ToList();
-            Carburent carburent = MyMethodes.GetValueCarburent(SviewModel.Carburent.ToString());
-            BoiteVitesse boiteVitesse = MyMethodes.GetValueBoiteVitesse(SviewModel.BoiteVitesse.ToString());
-
-            List<Vehicule> vehicules = new List<Vehicule>();
-
-            if (SviewModel.ModelId != 0)
+            if (ModelState.IsValid)
             {
-                vehicules = modelService.FindByIdModel(SviewModel.ModelId,carburent,boiteVitesse);
-            }
-            else
-            {
-                 vehicules = modelService.SearchModel( SviewModel.AnneeMin, SviewModel.AnneeMax, carburent, MyMethodes.GetValueType(SviewModel.Type.ToString()), boiteVitesse, SviewModel.MarqueId);
-            }
+                SviewModel.Marques = marqueService.GetAll().ToList();
+                SviewModel.Models = modelService.GetAll().ToList();
+                Carburent carburent = MyMethodes.GetValueCarburent(SviewModel.Carburent.ToString());
+                BoiteVitesse boiteVitesse = MyMethodes.GetValueBoiteVitesse(SviewModel.BoiteVitesse.ToString());
 
-            //List<Vehicule> vehiculesA =  modelService.FindByAnnees(SviewModel.AnneeMin, SviewModel.AnneeMax);
-            //List<Vehicule> vehiculesP = modelService.FindByPrix(SviewModel.PrixMin, SviewModel.PrixMax);
-            //List<Vehicule> vehiculesK = modelService.FindByPrix(SviewModel.kilometrageMin, SviewModel.kilometrageMax);
-            //List<Vehicule> _vehicules = new List<Vehicule>();
-            //_vehicules.AddRange(vehiculesA);
-            //_vehicules.AddRange(vehiculesP);
-            //_vehicules.AddRange(vehiculesK);
-            //List<string> AllImmatvehiculesNoDistict = _vehicules.Select(v => v.Immatriculation).ToList();
-            //List<string> AllImmatvehicules = AllImmatvehiculesNoDistict.Distinct().ToList();
-            //List<Vehicule> vehicules = from vehicule in _vehicules
-            //                group vehicule by vehicule
-            //                              into g
-            //                select g;
-            //foreach (var imatVehicule in AllImmatvehicules)
-            //{
-            //    Vehicule ve = _vehicules.FirstOrDefault(v => v.Immatriculation == imatVehicule);
-            //    vehicules.Add(ve);
-            //}
-            SviewModel.Vehicules = vehiculeService.SearchVehicule(vehicules,SviewModel.kilometrageMin,SviewModel.kilometrageMax,SviewModel.PrixMin,SviewModel.PrixMax,SviewModel.Etat);
+                List<Vehicule> vehicules = new List<Vehicule>();
 
+                if (SviewModel.ModelId != 0)
+                {
+                    vehicules = modelService.FindByIdModel(SviewModel.ModelId, carburent, boiteVitesse);
+                }
+                else
+                {
+                    vehicules = modelService.SearchModel(SviewModel.AnneeMin, SviewModel.AnneeMax, carburent, MyMethodes.GetValueType(SviewModel.Type.ToString()), boiteVitesse, SviewModel.MarqueId);
+                }
+
+                SviewModel.Vehicules = vehiculeService.SearchVehicule(vehicules, SviewModel.kilometrageMin, SviewModel.kilometrageMax, SviewModel.PrixMin, SviewModel.PrixMax, SviewModel.Etat);
+
+                
+
+            }
             return View(SviewModel);
+        }
+        [HttpGet]
+        public ActionResult DetailVehicule(int id)
+        {
+            if (id != 0)
+            {
+                return View(vehiculeService.GetDetailVehicule(id));
+            }
+            return HttpNotFound();
 
 
         }

@@ -1,0 +1,283 @@
+﻿@model AutoVente.Models.Vehicule
+@using AutoVente.Extensions
+@{
+    ViewBag.Title = "DetailVehicule";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<div class=".containerSlide container">
+
+    <div id="myCarousel" class="carousel slide" data-interval="false">
+
+        <div class="carousel-inner" role="listbox">
+            @foreach (var photo in @Model.Photos)
+            {
+                string url = photo.Url.ToString();
+                bool IsActive = false;
+                if (photo.Numero == 1)
+                {
+
+                    IsActive = true;
+
+                }
+                if (url == null)
+                {
+                    url = "https://demo.vehica.com/wp-content/uploads/2020/08/6.jpg";
+                }
+                <div class="item @Html.Conditional(IsActive,"active","")">
+                    <img src="@url" alt="XZ">
+                </div>
+            }
+
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div id="thumbCarousel">
+            @foreach (var photo in @Model.Photos)
+            {
+                string url = photo.Url.ToString();
+                bool IsActive = false;
+                int numero = photo.Numero - 1;
+                if (photo.Numero == 1)
+                {
+
+                    IsActive = true;
+
+                }
+                if (url == null)
+                {
+                    url = "https://demo.vehica.com/wp-content/uploads/2020/08/6.jpg";
+                }
+
+                <div data-target="#myCarousel" data-slide-to="@numero" class="thumb @Html.Conditional(IsActive,"active","")"><img src="@url" alt="XZ" @*style="width: 120px; "*@></div>
+
+            }
+
+        </div>
+
+    </div>
+</div>
+<div class="container elementsDetail textTransform">
+    <div class="d-flex justify-content-center">
+
+        <div class="p-2 price">
+            @Html.DisplayFor(model => model.Model.Prix) €
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Marque :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Marque.Nom)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Model :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Nom)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Année du model :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Annee)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Carburent :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Carburent)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Boite de vitesse :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.BoiteDeVitesse)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            kilometrage :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Kilometrage)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Puissance réelle :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.PuissanceReel)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Nombre de place :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.NbPlaces)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Emission co2 :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.EmissionCo2)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Type:
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.Model.Type)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="p-2 w-50">
+            Année de mise en circulation :
+        </div>
+        <div class="p-2">
+            @Html.DisplayFor(model => model.DateMisEnCirculation)
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <a  href="+33627483612" class=" btn p-2 w-50" style="background: #05cd51; color:#ffffff" ">
+            Appeler
+        </a>
+        <a href="@Url.Action("Contact","Message")" class="btn p-2 w-50" style="background: #ff4605; color:#ffffff">
+            Message 
+        </a>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        //Show carousel-control
+
+        $("#myCarousel").mouseover(function () {
+            $("#myCarousel .carousel-control").show();
+        });
+
+        $("#myCarousel").mouseleave(function () {
+            $("#myCarousel .carousel-control").hide();
+        });
+
+        //Active thumbnail
+
+        $("#thumbCarousel .thumb").on("click", function () {
+            $(this).addClass("active");
+            $(this).siblings().removeClass("active");
+
+        });
+
+        //When the carousel slides, auto update
+
+        $('#myCarousel').on('slid.bs.carousel', function () {
+            var index = $('.carousel-inner .item.active').index();
+
+            var thumbnailActive = $('#thumbCarousel .thumb[data-slide-to="' + index + '"]');
+            thumbnailActive.addClass('active');
+            $(thumbnailActive).siblings().removeClass("active");
+
+        });
+    });
+</script>
+<link href="~/Content/Layout/Site/css/styles.css" rel="stylesheet" />
+<link href="~/Content/Layout/Site/css/DetailVoiture.css" rel="stylesheet" />
+@*<div class="container">
+        <h4>Vehicule</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Couleur.CodeCouleur)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Couleur.CodeCouleur)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Model.Numero)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Model.Numero)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateMisEnCirculation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateMisEnCirculation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Kilometrage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kilometrage)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prix)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prix)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Etat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Etat)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vendu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vendu)
+            </dd>
+
+        </dl>
+    </div>*@
+
+
