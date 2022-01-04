@@ -14,9 +14,11 @@
         @Html.LabelFor(model => model.Vehicule.Model, "Model", htmlAttributes: new { @class = "control-label" })
         <select class="form-control" aria-label=".form-select-lg example " name="ModelId" id="model">
             <option value="">-- Choix du model --</option>
+            @{int i = 1;}
             @foreach (var mdl in Model.Models.OrderBy(m => m.Marque.Nom))
             {
-                <option value="@mdl.Id">@mdl.Marque.Nom - @mdl.Nom</option>
+                <option value="@i">@mdl.Marque.Nom - @mdl.Nom</option>
+                i++;
             }
         </select>
     </div>
@@ -85,7 +87,6 @@
     var km = document.getElementById('kilometrage');
     var etat = document.getElementById('etat');
     var prixConseille = 0;
-
 
     model.addEventListener("input", estimatedPrice);
     km.addEventListener("input", estimatedPrice);

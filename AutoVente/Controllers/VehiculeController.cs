@@ -41,7 +41,7 @@ namespace AutoVente.Controllers
         public ActionResult Create()
         {
             List<Model> models = serviceModel.GetAll().ToList();
-            List<decimal> modelsPrice = new List<decimal>();
+            List<int> modelsPrice = new List<int>();
 
             foreach (var model in models)
             {
