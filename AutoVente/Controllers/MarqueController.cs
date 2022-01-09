@@ -1,4 +1,5 @@
 ﻿using AutoVente.Extensions;
+using AutoVente.Filter;
 using AutoVente.Models;
 using AutoVente.Service;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
+    [AuthorisationFilter(Roles.ADMINISTRATEUR)]
     public class MarqueController : Controller
     {
         // GET: Marque

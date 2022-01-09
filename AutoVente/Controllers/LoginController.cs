@@ -43,6 +43,7 @@ namespace AutoVente.Controllers
                     if (userDb.Password.Equals(user.Password))
                     {
                         Session["email"] = userDb.Email;
+                        Session["Role"] = userDb.Role;
                         // Redirect to Admin selon le type
                         string root = "~/Login/Index";
                         if (userDb.Role == Roles.CLIENT)
@@ -57,7 +58,7 @@ namespace AutoVente.Controllers
                     }
                     else
                     {
-                        msgErreur = "Mot de passe Invalide ";
+                        msgErreur = "Mot de passe ou email Invalide ";
 
                     }
                 }
@@ -75,6 +76,12 @@ namespace AutoVente.Controllers
 
             this.AddNotification(msgErreur, NotificationType.WARNING);
             return View(user);
+        }
+        public ActionResult Logout()
+        {
+         
+            Session.Clear();
+            return Redirect("~/Home/Index");
         }
 
     }

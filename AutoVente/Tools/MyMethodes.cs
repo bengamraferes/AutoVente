@@ -63,7 +63,7 @@ namespace AutoVente.Tools
                     type = Models.Type.ROUTIERE;
                     break;
                 case "Sportive":
-                    type = Models.Type.SPROTIVE;
+                    type = Models.Type.SPOROTIVE;
                     break;
                 case "Monospace":
                     type = Models.Type.MONOSPACE;

@@ -1,5 +1,6 @@
 ﻿using AutoVente.DAO;
 using AutoVente.Extensions;
+using AutoVente.Filter;
 using AutoVente.Models;
 using AutoVente.Service;
 using AutoVente.ViewsModels;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
+    [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
     public class VehiculeController : Controller
     {
         private VehiculeService service;

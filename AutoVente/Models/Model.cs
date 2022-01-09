@@ -75,7 +75,7 @@ namespace AutoVente.Models
         BREAK = 1,
         CITADINE = 2,
         ROUTIERE = 3,
-        SPROTIVE = 4,
+        SPOROTIVE = 4,
         MONOSPACE = 5,
         SUV = 6,
         LUDOSPACE = 7,

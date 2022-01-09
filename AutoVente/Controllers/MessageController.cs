@@ -1,5 +1,6 @@
 ﻿using AutoVente.DAO;
 using AutoVente.Extensions;
+using AutoVente.Filter;
 using AutoVente.Models;
 using AutoVente.Service;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
+    [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
     public class MessageController : Controller
     {
         private BaseService<Message> service;

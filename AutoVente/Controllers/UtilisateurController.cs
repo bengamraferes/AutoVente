@@ -27,8 +27,8 @@ namespace AutoVente.Controllers
             List<Vehicule> vehiculesFavories = utilisateur.Favories;
             return View(vehiculesFavories);
         }
-       
-     
+
+
         public ActionResult Create()
         {
             Utilisateur utilisateur = new Utilisateur();

@@ -98,8 +98,17 @@ header.masthead {
     padding-top: 30rem !important;
     padding-bottom: 15.5rem;
 }
+header.masthead .masthead-subheading {
+        font-size: 3.75rem;
+        font-style: italic;
+        line-height: 3.25rem;
+        margin-bottom: 10rem;
+    }
+.mt-2 {
+    margin-top: 18rem !important;
+}
 @media (min-width: 768px) {
-    header.masthead {
+    header .masthead {
         padding-top: 30rem;
         padding-bottom: 15.5rem;
     }

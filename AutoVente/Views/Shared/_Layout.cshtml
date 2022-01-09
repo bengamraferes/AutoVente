@@ -1,4 +1,5 @@
-﻿
+﻿@using AutoVente.Models
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <meta name="author" content="" />
     <title>Agency - Start Bootstrap Theme</title>
 
-    <link  href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @*NoUiSlider*@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,7 +29,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -38,7 +39,16 @@
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Search","Home")">Recherche</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Connexion","Login")">Connexion</a></li>
+                    @if (Session["email"] != null)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Logout","Login")">Déconnexion</a></li>
+
+                    }
+                    else
+                    {
+                      <li class="nav-item"><a class="nav-link" href="@Url.Action("Connexion","Login")">Connexion</a></li>
+
+                    }
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Message")">Contact</a></li>
                 </ul>
             </div>
@@ -48,7 +58,7 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Welcome To Our Studio!</div>
+            <div class="masthead-subheading">Welcome To Auto Sale </div>
             <div class="container mt-2">
                 <div class="btn-circle row">
                     <div class="col ">
@@ -108,22 +118,22 @@
         @RenderBody()
 
         <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2021</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+        @*<footer class="footer py-4">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2021</div>
+                        <div class="col-lg-4 my-3 my-lg-0">
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                            <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>*@
     </section>
     <script src="~/Scripts/bootstrap.js"></script>
     <!-- NoUiSlider-->
