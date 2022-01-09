@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
-    [AuthorisationFilter(Roles.ADMINISTRATEUR)]
+   
     public class AdminController : Controller
     {
         // GET: Admin
@@ -21,16 +21,19 @@ namespace AutoVente.Controllers
             this.utilisateurService = new UtilisateurService();
         }
 
+        [AuthorisationFilter(Roles.ADMINISTRATEUR,Roles.SECRETAIRE)]
         public ActionResult Index()
         {
             return View();
         }
+        [AuthorisationFilter(Roles.ADMINISTRATEUR)]
         public ActionResult AllUtilisateurs()
         {
           
             List<Utilisateur> utilisateurs = utilisateurService.GetAll().OrderBy(u => u.Nom).ToList();
             return View(utilisateurs);
         }
+        [AuthorisationFilter(Roles.ADMINISTRATEUR)]
         public ActionResult EditUtilisateur(int id)
         {
             Utilisateur user = utilisateurService.FindById(id);
@@ -44,6 +47,7 @@ namespace AutoVente.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorisationFilter(Roles.ADMINISTRATEUR)]
         public ActionResult EditUtilisateur([Bind(Include = "Id,Nom,Prenom,Email,Role,Telephone")] Utilisateur user)
         {
             if (ModelState.IsValidField("Nom") && ModelState.IsValidField("Prenom") && ModelState.IsValidField("Email") && ModelState.IsValidField("Telephone") && ModelState.IsValidField("Role"))
@@ -70,6 +74,7 @@ namespace AutoVente.Controllers
      
         [HttpPost]
         [ActionName("DeleteUtilisateur")]
+        [AuthorisationFilter(Roles.ADMINISTRATEUR)]
         public ActionResult ConfirmDeleteUtilisateur(int id)
         {
             utilisateurService.Delete(id);
