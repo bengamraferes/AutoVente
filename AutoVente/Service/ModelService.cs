@@ -20,6 +20,11 @@ namespace AutoVente.Service
             return daoModel.FindById(id);
         }
 
+        internal Model FindByIdWithCouleurs(int id)
+        {
+            return daoModel.FindByIdWithCouleurs(id);
+        }
+
         public override IQueryable<Model> GetAll()
         {
             return daoModel.Collection();
@@ -58,6 +63,7 @@ namespace AutoVente.Service
                 throw new Exception("Type introuvable");
             }
         }
+
         public List<Vehicule> FindBoiteDeVitesse(BoiteVitesse BoiteVitesse)
         {
             return daoModel.FindBoiteDeVitesse(BoiteVitesse);

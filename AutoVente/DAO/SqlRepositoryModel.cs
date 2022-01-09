@@ -29,6 +29,20 @@ namespace AutoVente.DAO
             }
         }
 
+        public Model FindByIdWithCouleurs(int id)
+        {
+            Model obj = dbSet.AsNoTracking().Include(m => m.Couleurs).SingleOrDefault(x => x.Id == id);
+
+            if (obj != null)
+            {
+                return obj;
+            }
+            else
+            {
+                throw new Exception($"{obj.GetType()} introuvable");
+            }
+        }
+
         public override IQueryable<Model> Collection()
         {
             return dbSet.Include(m => m.Marque).Include(m =>m.Couleurs);
@@ -40,7 +54,7 @@ namespace AutoVente.DAO
             {
                 Vehicules = Vehicules.Where(m => m.Model.Carburent == carburent).ToList();
             }
-         
+
             if (boiteVitesse != 0)
             {
                 Vehicules = Vehicules.Where(m => m.Model.BoiteDeVitesse == boiteVitesse).ToList();

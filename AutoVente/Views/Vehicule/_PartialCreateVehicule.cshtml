@@ -13,94 +13,127 @@
     <div class="col-lg-6">
         @Html.LabelFor(model => model.Vehicule.Model, "Model", htmlAttributes: new { @class = "control-label" })
         <select class="form-control" aria-label=".form-select-lg example " name="ModelId" id="model">
-            <option value="">-- Choix du model --</option>
-            @{int i = 1;}
+            <option value="" selected disabled hidden>-- Choix du model --</option>
             @foreach (var mdl in Model.Models.OrderBy(m => m.Marque.Nom))
             {
-                <option value="@i">@mdl.Marque.Nom - @mdl.Nom</option>
-                i++;
+                <option value="@mdl.Id" @if (mdl.Id.ToString() == TempData["mdl"].ToString()) { @Html.Raw("selected") }>@mdl.Marque.Nom - @mdl.Nom</option>
             }
         </select>
-    </div>
-    <div class="col-lg-6">
-        @Html.LabelFor(model => model.Vehicule.Immatriculation, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.Vehicule.Immatriculation, new { htmlAttributes = new { @class = "form-control" } })
-    </div>
-    <div class="col-lg-6">
-        @Html.LabelFor(model => model.Vehicule.DateMisEnCirculation, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.Vehicule.DateMisEnCirculation, new { htmlAttributes = new { @class = "form-control" } })
-    </div>
-    <div class="col-lg-6">
-        @Html.LabelFor(model => model.Vehicule.Kilometrage, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.Vehicule.Kilometrage, new { htmlAttributes = new { @class = "form-control", id = "kilometrage" } })
-    </div>
-    <div class="col-lg-6">
-        @Html.LabelFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "control-label" })
-        @Html.EnumDropDownListFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "form-control", id = "etat" })
-    </div>
-    <div class="col-lg-6">
-        @Html.LabelFor(model => model.Vehicule.IdCouleur, "Couleur", htmlAttributes: new { @class = "control-label" })
-        <select class="form-control" aria-label=".form-select-lg example " name="CouleurId">
-            <option value="">-- Choix de la couleur --</option>
-            @foreach (var couleur in Model.Couleurs.OrderBy(c => c.CodeCouleur))
-            {
-                <option class="option-vehicule-color" value="@couleur.Id" style="background-color: @couleur.CodeCouleur;">@couleur.Nom</option>
-            }
-        </select>
-    </div>
-    <div class="col-lg-6">
-        <div class="control-label">Prix de vente</div>
-        <input type="number" name="Prix" class="form-control" id="prix" />
-    </div>
-    <div class="col-lg-6">
-        <div class="prixAchatConseil">
-            <strong>Prix d'achat conseillé marge 30% : <span id="prixAchat"></span></strong>
-        </div>
     </div>
 
-    <div>
-        Photo 1 : <input type="file" id="picture" name="photo1" accept=".png, .jpg" />
-        Photo 2 : <input type="file" id="picture" name="photo2" accept=".png, .jpg" />
-        Photo 3 : <input type="file" id="picture" name="photo3" accept=".png, .jpg" />
-        Photo 4 : <input type="file" id="picture" name="photo4" accept=".png, .jpg" />
-        Photo 5 : <input type="file" id="picture" name="photo5" accept=".png, .jpg" />
-    </div>
+    @if (TempData["mdl"].ToString() != "0")
+    {
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Vehicule.Immatriculation, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Vehicule.Immatriculation, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Vehicule.DateMisEnCirculation, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Vehicule.DateMisEnCirculation, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Vehicule.Kilometrage, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Vehicule.Kilometrage, new { htmlAttributes = new { @class = "form-control", id = "kilometrage" } })
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "control-label" })
+            <select class="form-control" name="Etat" id="etat">
+                <option value="" selected disabled hidden>-- Choix de l'état' --</option>
+                <option value="1">Neuf</option>
+                <option value="2">PARFAIT</option>
+                <option value="3">TRES_BON</option>
+                <option value="4">BON</option>
+                <option value="5">MOYEN</option>
+                <option value="6">MAUVAIS</option>
+                <option value="7">TRES_MAUVAIS</option>
+            </select>
+           @* @Html.EnumDropDownListFor(model => model.Vehicule.Etat, htmlAttributes: new { @class = "form-control", id = "etat" })*@
+        </div>
+        <div class="col-lg-6">
+            @Html.LabelFor(model => model.Vehicule.IdCouleur, "Couleur", htmlAttributes: new { @class = "control-label" })
+            <select class="form-control" aria-label=".form-select-lg example " name="CouleurId">
+                <option value="" selected disabled hidden>-- Choix de la couleur --</option>
+                foreach (var engagement in (List<Engagement>)TempData["DeletedE"])
+                @foreach (var couleur in (List<Couleur>)TempData["couleurs"])
+                {
+                    <option class="option-vehicule-color" value="@couleur.Id" style="background-color: @couleur.CodeCouleur;">@couleur.Nom</option>
+                }
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <div class="control-label">Prix de vente</div>
+            <input type="number" name="Prix" class="form-control" id="prix" value="@TempData["prix"]" />
+        </div>
+        <div class="col-lg-6">
+            <div class="prixAchatConseil">
+                <strong>Prix d'achat conseillé marge 30% : <span id="prixAchat"></span></strong>
+            </div>
+        </div>
+
+        <div>
+            Photo 1 : (Photo de présentation) <input type="file" id="picture" name="photo1" accept=".png, .jpg" />
+            Photo 2 : <input type="file" id="picture" name="photo2" accept=".png, .jpg" />
+            Photo 3 : <input type="file" id="picture" name="photo3" accept=".png, .jpg" />
+            Photo 4 : <input type="file" id="picture" name="photo4" accept=".png, .jpg" />
+            Photo 5 : <input type="file" id="picture" name="photo5" accept=".png, .jpg" />
+        </div>
+    }
+
 </div>
 
     <div class="col d-flex flex-column-reverse" style="margin-top:10px;">
         <div class="col-lg-offset-2 form-outline d-flex flex-row-reverse justify-content-around">
-            <button type="submit" class="btn btn-success fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+            @if (TempData["mdl"].ToString() != "0")
+            {
+                <button type="submit" class="btn btn-success fontBlack"><i class="fas fa-check"></i><span class="noPhone"> Valider</span></button>
+            }
             <a href="~/Vehicule" class="btn btn-info fontBlack"><i class="fas fa-undo-alt"></i><span class="noPhone"> Annuler</span></a>
         </div>
     </div>
     }
 
-    <script>
-    var prixModels = [0];
+<script>
+    @*var prixModels = [0];
 
     @foreach (var item in Model.Models)
     {
         @:prixModels.push("@item.Prix")
-    }
+    }*@
 
     var model = document.getElementById('model');
     var km = document.getElementById('kilometrage');
     var etat = document.getElementById('etat');
     var prixConseille = 0;
 
-    model.addEventListener("input", estimatedPrice);
+    model.addEventListener("input", loadColor);
     km.addEventListener("input", estimatedPrice);
     etat.addEventListener("input", estimatedPrice);
 
+    function loadColor() {
+            window.location.replace('http://localhost:61232/Vehicule/Create?mdl=' + model.value);
+        }
+
     function estimatedPrice() {
+        var kmMalus = km.value;
+
         if (etat.value != 1) {
-            var malusEtat = (etat.value * etat.value) * 300
+            var malusEtat = @TempData["prix"] * 0.8
+            malusEtat = (etat.value * etat.value) * 340
         } else {
             malusEtat = 0;
         }
 
-        prixConseille = (prixModels[model.value] - malusEtat)
-        prixConseille = prixConseille / 1 - (km.value * 0.019);
+        if (km.value > 299999) {
+            kmMalus = km.value * 2.7;
+        } else if(km.value > 199999) {
+            kmMalus = km.value * 2;
+        } else if (km.value > 99999) {
+            kmMalus = km.value * 1.3;
+        }
+
+
+        prixConseille = (@TempData["prix"] - malusEtat)
+        prixConseille = prixConseille / 1 - (kmMalus * 0.02);
 
         if (prixConseille < 499) {
             document.getElementById('prix').value = 0;
@@ -110,4 +143,4 @@
             document.getElementById('prixAchat').textContent = Math.ceil(prixConseille * 0.7);
         }
     }
-    </script>
+</script>

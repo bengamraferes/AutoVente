@@ -38,17 +38,31 @@ namespace AutoVente.Controllers
         }
 
         //GET
-        public ActionResult Create()
+        public ActionResult Create(int? mdl)
         {
             List<Model> models = serviceModel.GetAll().ToList();
-            List<int> modelsPrice = new List<int>();
 
-            foreach (var model in models)
+            TempData["prix"] = 0;
+
+            if (mdl != null)
             {
-                modelsPrice.Add(model.Prix);
+                int id = (int)mdl;
+                Model mdlSelection = serviceModel.FindByIdWithCouleurs(id);
+
+                TempData["mdl"] = mdl;
+                TempData["prix"] = mdlSelection.Prix;
+                List<Couleur> couleurs = new List<Couleur>();
+                foreach (var couleur in mdlSelection.Couleurs)
+                {
+                    couleurs.Add(couleur);
+                }
+                TempData["couleurs"] = couleurs;
+            } else
+            {
+                TempData["mdl"] = 0;
             }
+
             TempData["CreateVehicule"] = "CreateVehicule";
-            TempData["modelsPrice"] = modelsPrice;
             TempData.Keep();
 
             return RedirectToAction("index");
@@ -65,7 +79,7 @@ namespace AutoVente.Controllers
                 viewModel.Vehicule.Immatriculation,
                 viewModel.Vehicule.DateMisEnCirculation,
                 viewModel.Vehicule.Kilometrage,
-                viewModel.Vehicule.Etat,
+                viewModel.Etat,
                 viewModel.ModelId,
                 viewModel.CouleurId,
                 viewModel.Prix

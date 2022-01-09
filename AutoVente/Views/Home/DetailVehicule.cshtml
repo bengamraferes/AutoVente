@@ -163,11 +163,15 @@
         </div>
     </div>
     <div class="d-flex justify-content-start">
-        <a  href="+33627483612" class=" btn p-2 w-50" style="background: #05cd51; color:#ffffff" ">
+        <a  href="+33627483612" class=" btn p-2 w-50" style="background: #05cd51; color:#ffffff">
             Appeler
         </a>
-        <a href="@Url.Action("Contact","Message")" class="btn p-2 w-50" style="background: #ff4605; color:#ffffff">
-            Message 
+        <a href="@Url.Action("Contact","Message", new { titre =
+                @Html.DisplayFor(model => model.Model.Marque.Nom) + " " +
+                @Html.DisplayFor(model => model.Model.Nom) + " - " +
+                @Html.DisplayFor(model => model.Model.Annee)})"
+           class="btn p-2 w-50" style="background: #ff4605; color:#ffffff">
+            Message
         </a>
     </div>
 </div>

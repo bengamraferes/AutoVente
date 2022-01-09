@@ -18,7 +18,7 @@
         <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post" action="~/Message/Contact">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
-                    @if (Session["email"] != null)
+                    @if (Session["email"] == null)
                     {
                         <p class="section-heading" style="font-size: 20px">
                             Veuillez vous connecter pour envoyer un message.
@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <!-- Name input-->
-                        <input class="form-control id="title" name="Titre" type="text" placeholder="Titre *" data-sb-validations="required" @(Session["email"] != null ? "" : "disabled") />
+                        <input class="form-control id="title" name="Titre" type="text" placeholder="Titre *" data-sb-validations="required" @(Session["email"] != null ? "" : "disabled") value="@Request.Params["titre"]" />
                     </div>
 
                     <div class="form-group mb-md-0">

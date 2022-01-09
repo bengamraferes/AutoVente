@@ -22,6 +22,7 @@ namespace AutoVente.ViewsModels
         public int ModelId { get; set; }
         public int CouleurId { get; set; }
         public int Prix { get; set; }
+        public EtatVoiture Etat { get; set; }
         public List<string> Photos { get; set; }
 
         public VehiculeViewModel()

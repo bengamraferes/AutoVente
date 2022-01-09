@@ -88,7 +88,7 @@
         <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="custom-modal-header">
                         @if (item.EtatMessage == EtatsMessage.FERME)
                         {
                             <p class="modal-warning"><i class="fas fa-exclamation-triangle"></i> ATTENTION ! Message non lus.</p>
@@ -100,12 +100,12 @@
                     <div class="modal-body text-modal-wrapper">
                         @Html.DisplayFor(modelItem => item.Contenu)
                     </div>
-                    <div class="modal-footer">
+                    <div class="custom-modal-footer">
                         <form method="post" action="/Message/Delete/@item.Id" class="custom-modal-form">
                             <div>
                                 Voulez vous supprimer se message ?
                             </div>
-                            <div>
+                            <div class="modal-btn">
                                 <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
                                 <input type="submit" class="btn btn-danger" value="Valider">
                             </div>
