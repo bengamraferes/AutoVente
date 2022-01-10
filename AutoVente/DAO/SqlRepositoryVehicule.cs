@@ -28,6 +28,11 @@ namespace AutoVente.DAO
         {
             return dbSet.Include(v => v.Model).Include(v => v.Model.Marque).Include(v => v.Photos).SingleOrDefault(v =>v.Id == id);
         }
+        public List<Vehicule> VehiculesVendu()
+        {
+
+            return dbSet.Where(v => v.Vendu == Vendu.VENDU).Include(v => v.Model).Include(v => v.Model.Marque).ToList();
+        }
         public List<Vehicule> FindByEtat(EtatVoiture etat)
         {
             List<Vehicule> vehicules = dbSet.AsNoTracking().Where(v => v.Etat == etat).ToList();
