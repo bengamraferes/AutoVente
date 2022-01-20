@@ -26,12 +26,18 @@ $.get("http://" + window.location.hostname + ":" + window.location.port+"/api/In
             //});
 
             Morris.Donut({
-                element: 'hero-donut',
-                data: data,
+                element: 'origine-donut',
+                data: data.origines,
                 colors: ['#3498db', '#2980b9', '#34495e'],
                 formatter: function (y) { return y + "%" }
             });
-
+            Morris.Donut({
+                element: 'type-donut',
+                data: data.types,
+                colors: ['#3498db', '#2980b9', '#34495e'],
+                formatter: function (y) { return y + "%" }
+            });
+            
             //Morris.Area({
             //    element: 'hero-area',
             //    data: [
@@ -68,8 +74,8 @@ $.get("http://" + window.location.hostname + ":" + window.location.port+"/api/In
             //        { device: 'iPhone 4S', geekbench: 655 },
             //        { device: 'iPhone 5', geekbench: 1571 }
             //    ],
-            //    xkey: 'device',
-            //    ykeys: ['geekbench'],
+            //    xkey: 'Date',
+            //    ykeys: ['chiffreAffaire'],
             //    labels: ['Geekbench'],
             //    barRatio: 0.4,
             //    xLabelAngle: 35,

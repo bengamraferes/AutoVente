@@ -17,6 +17,12 @@ namespace AutoVente.Models
         public Vehicule Vehicule { get; set; }
         [ForeignKey("Vehicule")]
         public string Immatriculation { get; private set; }
+
+        public HystoriqueAchatVente()
+        {
+           
+        }
+
         public HystoriqueAchatVente(int prix, AchatVente etat, DateTime dateAchatVente , Vehicule vehicule)
         {
             Prix = prix;

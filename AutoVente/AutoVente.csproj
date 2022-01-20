@@ -160,6 +160,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Insight\BarValues.cs" />
     <Compile Include="Insight\DontValues.cs" />
     <Compile Include="Insight\InsightModel.cs" />
     <Compile Include="Metier\IRepositoryAdresse.cs" />

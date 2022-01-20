@@ -19,13 +19,13 @@ namespace AutoVente.Controllers
             
             this.utilisateurService = new UtilisateurService();
         }
-        public List<DontValues> Get()
+        public InsightModel Get()
         {
             InsightModel insightM = new InsightModel();
             insightM.OrigineAssigneValues();
             List<DontValues> list = insightM.Origines;
             
-            return list;
+            return insightM;
         }
 
     }
