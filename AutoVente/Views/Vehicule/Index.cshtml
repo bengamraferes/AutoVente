@@ -52,7 +52,7 @@ else
                 <th></th>
             </tr>
         </thead>
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderBy(v => v.Model.Nom).OrderBy(v => v.Model.Marque.Nom))
         {
             <tr>
                 @if (TempData["EditVehicule"] != null && TempData["IdVehicule"].ToString() == item.Id.ToString())
