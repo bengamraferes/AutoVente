@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace AutoVente.Controllers
 {
-    [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
+  
     public class MessageController : Controller
     {
         private BaseService<Message> service;
@@ -26,6 +26,7 @@ namespace AutoVente.Controllers
         }
 
         // GET
+        [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
         public ActionResult Index()
         {
             List<Message> messages = service.GetAll().ToList();
@@ -33,6 +34,7 @@ namespace AutoVente.Controllers
         }
 
         // GET
+       
         public ActionResult Contact()
         {
             Message message = new Message();
@@ -41,6 +43,7 @@ namespace AutoVente.Controllers
 
         // POST
         [HttpPost]
+        [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
         public ActionResult Contact(Message message)
         {
             if (ModelState.IsValid)
@@ -55,6 +58,7 @@ namespace AutoVente.Controllers
         }
 
         // GET
+        [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
         public ActionResult Details(int id)
         {
             Message message = service.FindById(id);
@@ -68,6 +72,7 @@ namespace AutoVente.Controllers
 
         // POST
         [HttpPost]
+        [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
         public ActionResult Delete(int id)
         {
             service.Delete(id);
@@ -76,6 +81,7 @@ namespace AutoVente.Controllers
         }
 
         // GET
+        [AuthorisationFilter(Roles.SECRETAIRE, Roles.ADMINISTRATEUR)]
         public ActionResult ChangeEtat(int id)
         {
             Message message = service.FindById(id);

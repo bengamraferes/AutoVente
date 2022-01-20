@@ -3,14 +3,14 @@
 noUiSlider.create(nonLinearSlider, {
     connect: true,
     behaviour: 'tap',
-    start: [5000,20000],
+    start: [0,100000],
     range: {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
-        'min': [2000],
+        'min': [0],
         '10%': [100, 100],
         '50%': [25000, 100],
-        'max': [50000]
+        'max': [100000]
     }
 });
 var inputNumber = document.getElementById('input-number');
@@ -40,7 +40,7 @@ var nonLinearSliderAnnee = document.getElementById('nonlinearAnnee');
 noUiSlider.create(nonLinearSliderAnnee, {
     connect: true,
     behaviour: 'tap',
-    start: [2005, 2018],
+    start: [1930, 2022],
     range: {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
@@ -77,14 +77,14 @@ var nonLinearSliderKilometrrage = document.getElementById('nonlinearKilometrage'
 noUiSlider.create(nonLinearSliderKilometrrage, {
     connect: true,
     behaviour: 'tap',
-    start: [10000, 100000],
+    start: [0, 350000],
     range: {
         // Starting at 500, step the value by 500,
         // until 4000 is reached. From there, step by 1000.
         'min': [0],
         '10%': [10000, 10000],
         '50%': [125000, 10000],
-        'max': [250000]
+        'max': [350000]
     }
 });
 var inputNumberKilometrrage = document.getElementById('input-numberKilometrrage');

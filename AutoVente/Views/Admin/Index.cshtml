@@ -1,9 +1,43 @@
 ﻿
 @{
-   
+
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
 
+
 <h2>Dashboard</h2>
 
+<section class="wrapper site-min-height">
+    
+    <!-- page start-->
+    <div id="morris">
+ 
+        <div class="row mt">
+            <div class="col-lg-6">
+            <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Pourcentege de vehicule vendu par type</h4>
+                <div class="panel-body">
+                    <div id="type-donut" class="graph"></div>
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-6">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i> Pourcentege de vehicule vendu par origine </h4>
+                    <div class="panel-body">
+                        <div id="origine-donut" class="graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page end-->
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="~/Content/Admin/lib/morris-conf.js"></script>
+<script>
+    console.log(window.location.hostname + ":" + window.location.port)
+</script>
