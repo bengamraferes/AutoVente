@@ -28,15 +28,77 @@ $.get("http://" + window.location.hostname + ":" + window.location.port+"/api/In
             Morris.Donut({
                 element: 'origine-donut',
                 data: data.origines,
-                colors: ['#3498db', '#2980b9', '#34495e'],
+                colors: ['#3498db', '#2980b9', '#34495e','#62809e'],
                 formatter: function (y) { return y + "%" }
             });
             Morris.Donut({
                 element: 'type-donut',
                 data: data.types,
-                colors: ['#3498db', '#2980b9', '#34495e'],
+                colors: ['#3498db', '#2980b9', '#34495e','#62809e'],
                 formatter: function (y) { return y + "%" }
             });
+            Morris.Donut({
+                element: 'carburent-donut',
+                data: data.carburents,
+                colors: ['#3498db', '#2980b9', '#34495e', '#62809e'],
+                formatter: function (y) { return y + "%" }
+            });
+            //get the pie chart canvas
+            var ctx1 = $("#pie");
+          
+            var boiteVitesses = data.boiteVitesses;
+            //pie chart data
+            var data1 = {
+                labels: [boiteVitesses[0].label, boiteVitesses[1].label],
+                datasets: [
+                    {
+                        label: "TeamA Score",
+                        data: [boiteVitesses[0].value, boiteVitesses[1].value],
+                        backgroundColor: [
+                            "#3498db",
+                            "#34495e",
+                           
+                        ],
+                        borderColor: [
+                            "#ffffff",
+                            "#ffffff",
+                          
+                        ],
+                        borderWidth: [2, 2]
+                    }
+                ]
+            };
+
+         
+
+            //options
+            var options = {
+                responsive: false,
+                title: {
+                    display: true,
+                    position: "top",
+                    text: "Pie Chart",
+                    fontSize: 18,
+                    fontColor: "#111"
+                },
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    labels: {
+                        fontColor: "#333",
+                        fontSize: 16
+                    }
+                }
+            };
+
+            //create Chart class object
+            var chart1 = new Chart(ctx1, {
+                type: "pie",
+                data: data1,
+                options: options
+            });
+
+          
             
             //Morris.Area({
             //    element: 'hero-area',

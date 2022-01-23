@@ -163,6 +163,7 @@
     <Compile Include="Insight\BarValues.cs" />
     <Compile Include="Insight\DontValues.cs" />
     <Compile Include="Insight\InsightModel.cs" />
+    <Compile Include="Insight\PieChartJs.cs" />
     <Compile Include="Metier\IRepositoryAdresse.cs" />
     <Compile Include="Metier\IRepositoryNom.cs" />
     <Compile Include="Metier\IRepository.cs" />

@@ -81,4 +81,11 @@ header.masthead .masthead-subheading {
     line-height: 2.25rem;
     margin-bottom: 12rem;
 }
-
+.card-img-top{
+     height:300px;
+}
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 250px;
+    }
+}
